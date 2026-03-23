@@ -18,9 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(BASE_DIR / '.env')
 
-print("DB_SERVER:", os.getenv('DB_SERVER'))
-print("DB_NAME:", os.getenv('DB_NAME'))
-print("DB_USER:", os.getenv('DB_USER'))
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 

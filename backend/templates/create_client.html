@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>NetPay - Cadastro</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="form-img">
+            <img src="{% static 'img/undraw_cloudflare-dev_nf79 (3).svg' %}" alt="">
+        </div>
+
+        <div class="form">
+            <form method="POST" action="{% url 'create_client' %}" novalidate>
+                {% csrf_token %}
+
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastre-se</h1>
+                    </div>
+
+                    <div class="login-button">
+                        <a href="#">Entrar</a>
+                    </div>
+                </div>
+
+                <div class="input-group">
+
+                    <div class="input-box">
+                        <label for="first_name">Primeiro nome</label>
+                        <input id="first_name" type="text" name="first_name"
+                            placeholder="Digite o seu primeiro nome">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="last_name">Sobrenome</label>
+                        <input id="last_name" type="text" name="last_name"
+                            placeholder="Digite o seu sobrenome">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" name="email"
+                            placeholder="Digite seu email">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="phone">Celular</label>
+                        <input id="phone" type="text" name="phone"
+                            placeholder="(xx) xxxx-xxxx">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="password">Senha</label>
+                        <input id="password" type="password" name="password"
+                            placeholder="Digite sua senha">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="confirm_password">Confirmar Senha</label>
+                        <input id="confirm_password" type="password" name="confirm_password"
+                            placeholder="Confirme sua senha">
+                    </div>
+
+                    <div class="gender-inputs">
+                        <div class="gender-title">
+                            <h6>Gênero</h6>
+                        </div>
+
+                        <div class="gender-group">
+                            <div class="gender-input">
+                                <input type="radio" id="male" name="gender" value="M">
+                                <label for="male">Masculino</label>
+                            </div>
+
+                            <div class="gender-input">
+                                <input type="radio" id="female" name="gender" value="F">
+                                <label for="female">Feminino</label>
+                            </div>
+
+                            <div class="gender-input">
+                                <input type="radio" id="other" name="gender" value="O">
+                                <label for="other">Outro</label>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="continue-button">
+                    <button type="submit">Continuar</button>
+                </div>
+
+                    <!-- ERROS DO DJANGO -->
+                    {% if form.errors %}
+                        <div style="color: red; margin-top: 10px;">
+                            {{ form.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

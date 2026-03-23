@@ -1,90 +1,168 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
+/* FUNDO */
 body {
+    width: 100%;
+    height: 100vh;
+    background: #0c5f02;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
 }
 
+/* CONTAINER */
 .container {
-    position: relative;
-    width: 850px;
-    height: 550px;
-    background: #fff;
-    border-radius: 30px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-}
-
-.form-box-login {
-    position: absolute;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background: seagreen;
+    width: 900px;
+    height: 500px;
     display: flex;
+    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* LADO ESQUERDO */
+.form-img {
+    width: 50%;
+    background-color: #8a8a8a;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    color: #333;
-    text-align: center;
 }
 
-form {
-    width: 100%;
+.form-img img {
+    width: 70%;
 }
 
-.container h1 {
-    font-size: 36px;
-    margin: -10px 0;
+/* LADO DIREITO */
+.form {
+    width: 50%;
+    background-color: #f9f9f9;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
-.input-box {
+/* HEADER */
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title h1 {
+    font-size: 24px;
     position: relative;
-    margin: 30px 0;
 }
 
-.input-box input {
-    width: 100%;
-    padding: 13px 50px 13px 20px;
-    background: #eee;
-    border-radius: 8px;
+/* LINHA VERDE */
+.title h1::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #167a0b;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+/* BOTÃO ENTRAR */
+.login-button button {
     border: none;
-    outline: none;
-    font-size: 16px;
-    color: #333;
+    background-color: #167a0b;
+    padding: 6px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.login-button button:hover {
+    background-color: #0f5a07;
+    transform: scale(1.05);
+}
+
+.login-button a {
+    text-decoration: none;
+    color: #fff;
     font-weight: 500;
 }
 
-.input-box input::placeholder {
-    color: #888;
-    font-weight: 400;
+/* GRID */
+.input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
-.input-box svg {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #888;
+/* INPUT BOX */
+.input-box {
+    display: flex;
+    flex-direction: column;
 }
 
-.input-box svg {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #888;
+.input-box label {
+    font-size: 13px;
+    margin-bottom: 4px;
 }
 
-.forgot-link {
-    margin: -15px 0 15px;
+/* INPUTS */
+.input-box input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input-box input:focus {
+    border-color: #167a0b;
+    box-shadow: 0 0 0 2px rgba(22, 122, 11, 0.2);
+}
+
+/* GÊNERO */
+.gender-inputs {
+    grid-column: span 2;
+    margin-top: 10px;
+}
+
+.gender-group {
+    display: flex;
+    gap: 15px;
+}
+
+.gender-input {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* BOTÃO FINAL */
+.continue-button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.continue-button button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #167a0b;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.continue-button button:hover {
+    background-color: #0f5c08;
 }
