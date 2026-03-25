@@ -1,68 +1,106 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=[device-width], initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <title>NextPay - Cadastro</title>
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>NetPay - Cadastro</title>
 </head>
 
 <body>
+
     <div class="container">
-        <div class="form-img">
-            <img src="{% static 'img/cloudflare.svg' %}" alt="">
+
+        <!-- LADO ESQUERDO -->
+        <div class="left">
+
+            <h1>NextPay</h1>
+            <h1>Suas cobranças no<br>automático.</h1>
+
+            <p class="sub">
+                <br>
+                Para academias, professores, revendedores e qualquer negócio
+                que cobra mensalidade.
+            </p>
+
+            <ul>
+                <li>Cadastre seus clientes</li>
+                <br>
+                <li>Controle vencimentos e pagamentos</li>
+                <br>
+                <li>Receba alertas de inadimplência</li>
+            </ul>
         </div>
 
-        <div class="form">
-            <form method="POST">
-    {% csrf_token %}
+        <!-- LADO DIREITO -->
+        <div class="right">
+            <h2>Crie sua conta grátis</h2>
+            <p class="sub">Para microempreendedores que cobram mensalidades</p>
 
-    <div class="input-group">
-        <div class="input-box">
-            <label>Primeiro nome</label>
-            <input type="text" name="first_name" placeholder="Digite o seu primeiro nome" required>
-        </div>
+            <form method="POST" action="{% url 'create_client' %}">
+                {% csrf_token %}
+                {% if erros %}
+                <div class="error-box">
+                    {% for erro in erros %}
+                    <p>⚠ {{ erro }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
 
-        <div class="input-box">
-            <label>Sobrenome</label>
-            <input type="text" name="last_name" placeholder="Digite o seu sobrenome" required>
-        </div>
+                <div class="input-group">
 
-        <div class="input-box">
-            <label>E-mail</label>
-            <input type="email" name="email" placeholder="Digite seu email" required>
-        </div>
+                    <div class="input-box">
+                        <label>Primeiro nome</label>
+                        <input type="text" name="first_name" placeholder="Digite o seu primeiro nome"
+                            value="{{ dados.first_name }}" required>
+                    </div>
 
-        <div class="input-box">
-            <label>Celular</label>
-            <input type="text" name="phone" placeholder="(xx) xxxx-xxxx" required>
-        </div>
+                    <div class="input-box">
+                        <label>Sobrenome</label>
+                        <input type="text" name="last_name" placeholder="Digite o seu sobrenome"
+                            value="{{ dados.last_name }}" required>
+                    </div>
 
-        <div class="input-box">
-            <label>Senha</label>
-            <input type="password" name="password" placeholder="Digite sua senha" required>
-        </div>
+                    <div class="input-box">
+                        <label>E-mail</label>
+                        <input type="email" name="email" placeholder="Digite seu email" value="{{ dados.email }}"
+                            required>
+                    </div>
 
-        <div class="input-box">
-            <label>Confirmar Senha</label>
-            <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
-        </div>
+                    <div class="input-box">
+                        <label>Celular</label>
+                        <input type="text" name="phone" placeholder="(xx) xxxx-xxxx" value="{{ dados.phone }}" required>
+                    </div>
 
-        <div class="gender-inputs">
-            <h6>Gênero</h6>
+                    <div class="input-box">
+                        <label>Senha</label>
+                        <input type="password" name="password" placeholder="Digite sua senha" required>
+                    </div>
 
-            <input type="radio" name="gender" value="M" required> Masculino
-            <input type="radio" name="gender" value="F"> Feminino
-            <input type="radio" name="gender" value="O"> Outro
-        </div>
+                    <div class="input-box">
+                        <label>Confirmar senha</label>
+                        <input type="password" name="confirm_password" placeholder="Confirme sua senha" required>
+                    </div>
 
-        <div class="continue-button">
-            <button type="submit">Continuar</button>
-        </div>
-    </div>
-</form>
+                </div>
+
+                <label class="gender-label">Gênero</label>
+                <div class="gender">
+                    <label><input type="radio" name="gender" value="M" required> Masculino</label>
+                    <label><input type="radio" name="gender" value="F"> Feminino</label>
+                    <label><input type="radio" name="gender" value="O"> Outro</label>
+                </div>
+
+                <button type="submit" class="btn"><a href="#"></a>Continuar</button>
+
+                <p class="login">Já tem conta? <a href="{% url 'login_client' %}">Entrar</a></p>
+
+            </form>
         </div>
     </div>
 </body>
