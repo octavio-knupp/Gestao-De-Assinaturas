@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Pay - Digital Payments</title>
+    <style>
+        /* Configurações Globais e Cores */
+        :root {
+            --bg-dark: #1e1e1e;
+            --sidebar-bg: #2a2a2a;
+            --primary-green: #00c86f;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Barra de Rolagem Customizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 10px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 70px;
+            background-color: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            border-right: 1px solid #333;
+        }
+
+        .sidebar-icon {
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            opacity: 0.7;
+        }
+
+        .sidebar-icon:hover {
+            transform: scale(1.1);
+            opacity: 1;
+            color: var(--primary-green);
+        }
+
+        /* Área Principal */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-auth button {
+            background: transparent;
+            border: 1px solid var(--primary-green);
+            color: var(--text-white);
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-register {
+            background-color: var(--primary-green) !important;
+            color: #000 !important;
+            font-weight: bold;
+        }
+
+        .nav-auth button:hover {
+            filter: brightness(1.2);
+            box-shadow: 0 0 10px rgba(0, 200, 111, 0.3);
+        }
+
+        /* Seção de Texto */
+        .hero-section {
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Cards de Planos */
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .plan-card {
+            background: linear-gradient(145deg, #252525, #1a1a1a);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Efeito de Crescer ao passar o mouse */
+        .plan-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 200, 111, 0.1);
+        }
+
+        .plan-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+        }
+
+        .plan-card p {
+            color: var(--text-gray);
+            margin-bottom: 25px;
+        }
+
+        .btn-plan {
+            background-color: var(--primary-green);
+            color: #000;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-icon">☰</div>
+        <div class="sidebar-icon">👤</div>
+        <div class="sidebar-icon">🔍</div>
+        <div class="sidebar-icon">⚙️</div>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="logo">
+                <img src="img/logosemfundo.png" alt="Next Pay" style="height: 40px;"> 
+                <span>Next Pay</span>
+            </div>
+            <div class="nav-auth">
+                <button onclick="location.href='#login'">Login</button>
+                <button class="btn-register" onclick="alert('Redirecionando para Cadastro...')">Cadastro</button>
+            </div>
+        </header>
+
+        <section class="hero-section">
+            <h1>Inserir um subtítulo</h1>
+            <div class="description-grid">
+                <div>Inserir um pouquinho de texto explicativo sobre o seu serviço financeiro.</div>
+                <div>Inserir um pouquinho de texto explicativo sobre o seu serviço financeiro.</div>
+                <div>Inserir um pouquinho de texto explicativo sobre o seu serviço financeiro.</div>
+            </div>
+        </section>
+
+        <div class="plans-container">
+            <div class="plan-card">
+                <h3>Plan A</h3>
+                <p>Inserir um pouquinho de texto descrevendo as vantagens deste plano.</p>
+                <button class="btn-plan">Selecionar</button>
+            </div>
+
+            <div class="plan-card">
+                <h3>Plan B</h3>
+                <p>Inserir um pouquinho de texto descrevendo as vantagens deste plano.</p>
+                <button class="btn-plan">Selecionar</button>
+            </div>
+
+            <div class="plan-card">
+                <h3>Plan C</h3>
+                <p>Inserir um pouquinho de texto descrevendo as vantagens deste plano.</p>
+                <button class="btn-plan">Selecionar</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
