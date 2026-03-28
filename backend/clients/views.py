@@ -66,7 +66,13 @@ def login_client(request):
 
         try:
             client = Client.objects.get(email=email, password=password)
-            return redirect('create_client')  # depois você muda isso
+
+            # ✅ CRIA SESSÃO
+            request.session['client_id'] = client.id
+            request.session['client_name'] = client.first_name
+
+            return redirect('home_client')  # muda pra home
+
         except Client.DoesNotExist:
             return render(request, 'login_client.html', {
                 'erro': 'Email ou senha inválidos'

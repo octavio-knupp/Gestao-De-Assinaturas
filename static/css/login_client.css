@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #111;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* LADO ESQUERDO */
+.left {
+    width: 50%;
+    background-color: #166534; /* verde */
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.left .sub {
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.left ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.left li {
+    margin-bottom: 15px;
+}
+
+/* LADO DIREITO */
+.right {
+    width: 50%;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centraliza (importante pro login) */
+}
+
+.right h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.right .sub {
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+/* INPUTS */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-box label {
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.input-box input {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.input-box input::placeholder {
+    color: #888;
+}
+
+.input-box input:focus {
+    outline: 2px solid #22c55e;
+}
+
+/* BOTÃO */
+.btn {
+    margin-top: 25px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #166534;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #15803d;
+}
+
+/* LINK */
+.login {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.login a {
+    color: #22c55e;
+    text-decoration: none;
+}
+
+.login a:hover {
+    text-decoration: underline;
+}
+
+/* ERRO */
+.error-box {
+    background-color: #7f1d1d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}

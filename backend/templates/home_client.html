@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Next Pay - Digital Payments</title>
    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+   <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
 <body>
 
@@ -23,10 +24,8 @@
                 <span>Next Pay</span>
             </div>
             <div class="nav-auth">
-                <button onclick="location.href='{% url 'login_client.html' %}'">Login</button>
-                <button class="btn-register" onclick="location.href='{% url 'create_client' %}'">
-Cadastro
-</button>
+                <a href="{% url 'login_client' %}" class="btn-register">Login</a>
+                <a href="{% url 'create_client' %}" class="btn-register">Cadastro</a>
             </div>
         </header>
 
