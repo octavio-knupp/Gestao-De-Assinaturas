@@ -1,7 +1,9 @@
 from django.urls import path
-from .views import create_client, login_client
+from .views import create_client, login_client, home_client
 
 urlpatterns = [
-    path('', create_client, name='create_client'),
-    path('login/', login_client, name='login_client'),
+      path('', home_client, name='home_client'),
+      path('create/', create_client, name='create_client'),
+      path('login/', login_client, name='login_client')
+  
 ]

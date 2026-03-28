@@ -55,7 +55,7 @@ def create_client(request):
             gender=gender
         )
 
-        return redirect('create_client')
+        return redirect('login_client')
 
     return render(request, 'create_client.html')
 
@@ -73,3 +73,6 @@ def login_client(request):
             })
 
     return render(request, 'login_client.html')
+
+def home_client(request):
+    return render(request, 'home_client.html')
