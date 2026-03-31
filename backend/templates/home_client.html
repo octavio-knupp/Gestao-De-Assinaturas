@@ -7,22 +7,37 @@
     <title>Next Pay - Digital Payments</title>
    <link rel="stylesheet" href="{% static 'css/home.css' %}">
    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <script src="{% static 'js/home.js' %}" defer></script>
 </head>
 <body>
 
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
+    <div class="sidebar-item" id="menuBtn">
         <div class="sidebar-icon">☰</div>
+        <span class="sidebar-text">Menu</span>
+    </div>
+
+    <div class="sidebar-item">
         <div class="sidebar-icon">👤</div>
+        <span class="sidebar-text">Perfil</span>
+    </div>
+
+    <div class="sidebar-item">
         <div class="sidebar-icon">🔍</div>
+        <span class="sidebar-text">Pesquisar</span>
+    </div>
+
+    <div class="sidebar-item">
         <div class="sidebar-icon">⚙️</div>
-    </aside>
+        <span class="sidebar-text">Configurações</span>
+    </div>
+</aside>
 
     <main class="main-content">
         <header>
             <div class="logo">
-                <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay" style="height: 40px;"> 
-                <span>Next Pay</span>
-            </div>
+    <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay" class="logo-icon">
+</div>
             <div class="nav-auth">
                 <a href="{% url 'login_client' %}" class="btn-register">Login</a>
                 <a href="{% url 'create_client' %}" class="btn-register">Cadastro</a>
@@ -40,20 +55,23 @@
 
         <div class="plans-container">
             <div class="plan-card">
-                <h3>Plan A</h3>
-                <p>Inserir um pouquinho de texto descrevendo as vantagens deste plano.</p>
+         <h2>Plano Bronze</h2>
+    <h3>R$ 39,90<span>/mês</span></h3>
+    <p>Envie lembretes automáticos de vencimento para seus clientes sem precisar cobrar manualmente.</p>
                 <button class="btn-plan">Selecionar</button>
             </div>
 
             <div class="plan-card">
-                <h3>Plan B</h3>
-                <p>Inserir um pouquinho de texto descrevendo as vantagens deste plano.</p>
+                    <h2>Plano Gold</h2>
+    <h3>R$ 79,90<span>/mês</span></h3>
+    <p>Mais clientes, mais mensagens e recursos avançados para você nunca mais perder tempo cobrando um por um.</p>
                 <button class="btn-plan">Selecionar</button>
             </div>
 
             <div class="plan-card">
-                <h3>Plan C</h3>
-                <p>Inserir um pouquinho de texto descrevendo as vantagens deste plano.</p>
+           <h2>Plano Black</h2>
+    <h3>R$ 149,90<span>/mês</span></h3>
+    <p>Tenha cobranças totalmente automáticas, clientes ilimitados e atendimento exclusivo.</p>
                 <button class="btn-plan">Selecionar</button>
             </div>
         </div>
