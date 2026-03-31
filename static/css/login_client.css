@@ -138,8 +138,18 @@ body {
 
 /* ERRO */
 .error-box {
-    background-color: #7f1d1d;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: #3a0d0d;   /* fundo mais vivo */
+    border: 1px solid #ff3b3b;   /* borda mais forte */
+    color: #ffffff;
+
+    padding: 14px 18px;
+    border-radius: 10px;
     margin-bottom: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 15px;
+    font-weight: 500;
 }

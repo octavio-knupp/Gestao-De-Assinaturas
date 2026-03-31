@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Client
+from django.contrib.auth.hashers import make_password, check_password
+
 
 def create_client(request):
     if request.method == 'POST':
@@ -27,31 +29,31 @@ def create_client(request):
         if Client.objects.filter(email=email).exists():
             erros.append('Este email já está cadastrado!')
 
-        # Email inválido (simples)
+        # Email simples
         if "@" not in email:
             erros.append('Email inválido!')
 
-        # Telefone (simples)
+        # Telefone
         if not phone.isdigit():
             erros.append('Telefone deve conter apenas números!')
 
         if len(phone) < 10:
             erros.append('Telefone inválido!')
 
-        # ❌ SE TIVER ERRO → NÃO SALVA
+        # ❌ SE TIVER ERRO
         if erros:
             return render(request, 'create_client.html', {
                 'erros': erros,
                 'dados': request.POST
             })
 
-        # ✅ SALVA
+        # ✅ SALVAR COM SENHA CRIPTOGRAFADA
         Client.objects.create(
             first_name=first_name,
             last_name=last_name,
             email=email,
             phone=phone,
-            password=password,
+            password=make_password(password),
             gender=gender
         )
 
@@ -59,19 +61,25 @@ def create_client(request):
 
     return render(request, 'create_client.html')
 
+
 def login_client(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
 
         try:
-            client = Client.objects.get(email=email, password=password)
+            client = Client.objects.get(email=email)
 
-            # ✅ CRIA SESSÃO
-            request.session['client_id'] = client.id
-            request.session['client_name'] = client.first_name
+            # 🔐 VERIFICA SENHA
+            if check_password(password, client.password):
 
-            return redirect('home_client')  # muda pra home
+                request.session['client_id'] = client.id
+                request.session['client_name'] = client.first_name
+
+                return redirect('home_client')
+
+            else:
+                raise Client.DoesNotExist
 
         except Client.DoesNotExist:
             return render(request, 'login_client.html', {
@@ -80,5 +88,13 @@ def login_client(request):
 
     return render(request, 'login_client.html')
 
+
 def home_client(request):
-    return render(request, 'home_client.html')
+    return render(request, 'home_client.html', {
+        'name': request.session.get('client_name')
+    })
+
+
+def logout_client(request):
+    request.session.flush()
+    return redirect('home_client')
