@@ -23,7 +23,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,9 +78,10 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_SERVER'),
-        'PORT': '1433',
+        'PORT': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
+            'extra_params': 'Trusted_Connection=no',
         },
     }
 }
@@ -109,3 +110,5 @@ STATICFILES_DIRS = [
 LOGIN_URL = 'login_client'
 LOGIN_REDIRECT_URL = 'home_client'
 LOGOUT_REDIRECT_URL = 'login_client'
+
+"""Salve"""
