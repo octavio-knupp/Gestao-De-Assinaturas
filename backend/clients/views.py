@@ -1,60 +1,48 @@
 from django.shortcuts import render, redirect
-from .models import Client
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
+# 🚀 CADASTRO DE USUÁRIO
 def create_client(request):
     if request.method == 'POST':
 
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
-        phone = request.POST.get('phone')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
-        gender = request.POST.get('gender')
 
         erros = []
 
         # 🔥 VALIDAÇÕES
-
-        # Senha
         if password != confirm_password:
             erros.append('As senhas não coincidem!')
 
         if len(password) < 6:
             erros.append('A senha deve ter pelo menos 6 caracteres!')
 
-        # Email duplicado
-        if Client.objects.filter(email=email).exists():
+        if User.objects.filter(username=email).exists():
             erros.append('Este email já está cadastrado!')
 
-        # Email simples
         if "@" not in email:
             erros.append('Email inválido!')
 
-        # Telefone
-        if not phone.isdigit():
-            erros.append('Telefone deve conter apenas números!')
-
-        if len(phone) < 10:
-            erros.append('Telefone inválido!')
-
-        # ❌ SE TIVER ERRO
+        # ❌ SE TIVER ERROS
         if erros:
             return render(request, 'create_client.html', {
                 'erros': erros,
                 'dados': request.POST
             })
 
-        # ✅ SALVAR COM SENHA CRIPTOGRAFADA
-        Client.objects.create(
-            first_name=first_name,
-            last_name=last_name,
+        # ✅ CRIA USUÁRIO
+        User.objects.create_user(
+            username=email,
             email=email,
-            phone=phone,
-            password=make_password(password),
-            gender=gender
+            password=password,
+            first_name=first_name,
+            last_name=last_name
         )
 
         return redirect('login_client')
@@ -62,26 +50,23 @@ def create_client(request):
     return render(request, 'create_client.html')
 
 
+# 🔐 LOGIN
 def login_client(request):
     if request.method == 'POST':
+
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        try:
-            client = Client.objects.get(email=email)
+        user = authenticate(
+            request,
+            username=email,
+            password=password
+        )
 
-            # 🔐 VERIFICA SENHA
-            if check_password(password, client.password):
-
-                request.session['client_id'] = client.id
-                request.session['client_name'] = client.first_name
-
-                return redirect('home_client')
-
-            else:
-                raise Client.DoesNotExist
-
-        except Client.DoesNotExist:
+        if user is not None:
+            login(request, user)
+            return redirect('home_client')
+        else:
             return render(request, 'login_client.html', {
                 'erro': 'Email ou senha inválidos'
             })
@@ -89,12 +74,15 @@ def login_client(request):
     return render(request, 'login_client.html')
 
 
+# 🏠 HOME
+@login_required
 def home_client(request):
     return render(request, 'home_client.html', {
-        'name': request.session.get('client_name')
+        'name': request.user.first_name
     })
 
 
+# 🚪 LOGOUT
 def logout_client(request):
-    request.session.flush()
-    return redirect('home_client')
+    logout(request)
+    return redirect('login_client')

@@ -105,3 +105,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR.parent / "static",
 ]
+
+LOGIN_URL = 'login_client'
+LOGIN_REDIRECT_URL = 'home_client'
+LOGOUT_REDIRECT_URL = 'login_client'

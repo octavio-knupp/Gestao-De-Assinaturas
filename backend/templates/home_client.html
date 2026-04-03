@@ -41,8 +41,8 @@
                 <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay" class="logo-icon">
             </div>
             <div class="nav-auth">
-                {% if request.session.client_id %}
-                <span class="user-name">Olá, {{ request.session.client_name }}</span>
+                {% if user.is_authenticated %}
+                <span class="user-name">Olá, {{ user.first_name }}</span>
                 <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
                 {% else %}
                 <a href="{% url 'login_client' %}" class="btn-register">Login</a>
