@@ -86,3 +86,61 @@ def home_client(request):
 def logout_client(request):
     logout(request)
     return redirect('login_client')
+
+
+# ===============================
+# 📋 STATUS CLIENTE (LISTAGEM)
+# ===============================
+
+@login_required
+def list_clients(request):
+
+    return render(
+        request,
+        'list_client.html'
+    )
+
+# ===============================
+# 📋 CADASTRO CLIENTE 
+# ===============================
+
+@login_required
+def cadastro_client(request):
+
+    return render(
+        request,
+        'cadastro_client.html'
+    )
+
+
+# ===============================
+# ✏️ ALTERAÇÃO CLIENTE
+# ===============================
+
+@login_required
+def update_client(request, client_id):
+
+    return render(
+        request,
+        'update_client.html',
+        {
+            'client_id': client_id
+        }
+    )
+
+
+# ===============================
+# 🗑️ EXCLUSÃO CLIENTE
+# ===============================
+
+@login_required
+def delete_client(request, client_id):
+
+    return render(
+        request,
+        'delete_client.html',
+        {
+            'client_id': client_id
+        }
+    )
+

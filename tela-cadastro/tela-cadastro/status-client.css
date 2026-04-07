@@ -1,0 +1,140 @@
+/* Fonte e fundo */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a5c0a, #16a34a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    width: 950px;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecer 0.6s ease forwards;
+}
+
+/* Lado esquerdo */
+.left {
+    width: 30%;
+    background: linear-gradient(180deg, #14532d, #16a34a);
+    position: relative;
+}
+
+/* detalhe decorativo */
+.left::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    top: 20px;
+    left: 20px;
+}
+
+/* Lado direito */
+.right {
+    width: 70%;
+    padding: 30px;
+}
+
+/* Título */
+h2 {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Cabeçalho */
+th {
+    background: #14532d;
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Linhas */
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Hover nas linhas */
+tbody tr {
+    transition: 0.2s;
+}
+
+tbody tr:hover {
+    background: #f0fdf4;
+    transform: scale(1.01);
+}
+
+/* Inputs (para telas editáveis) */
+td input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Focus elegante */
+td input:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 5px rgba(22, 163, 74, 0.3);
+}
+
+/* Campo ID */
+.id {
+    background: #f0f0f0;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Botão excluir */
+.delete {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 500;
+}
+
+.delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+}
+
+.delete:active {
+    transform: scale(0.95);
+}
+
+/* Animação */
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

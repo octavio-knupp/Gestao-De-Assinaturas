@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Alterar Cliente</title>
+    <link rel="stylesheet" href="{% static 'css/alteracao-client.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="left"></div>
+
+    <div class="right">
+        <h2>Alterar Cliente</h2>
+
+        <form>
+            <div class="campo">
+                <input type="text" placeholder="ID" value="">
+            </div>
+
+            <div class="campo">
+                <input type="text" placeholder="Nome" value="">
+            </div>
+
+            <div class="campo">
+                <input type="text" placeholder="Telefone" value="" readonly>
+            </div>
+
+            <div class="campo">
+                <input type="email" placeholder="E-mail" value="">
+            </div>
+
+            <button>Salvar Alterações</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -35,7 +35,7 @@
     background-color: var(--sidebar-bg);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
     transition: width 0.3s ease;
     border-right: 1px solid #333;
     padding-top: 20px;
@@ -141,7 +141,7 @@
             font-weight: bold;
         }
 
-        .nav-auth button:hover {
+        .nav-auth a.btn-register:hover {
             filter: brightness(1.2);
             box-shadow: 0 0 10px rgba(0, 200, 111, 0.3);
         }
@@ -156,6 +156,7 @@
             font-size: 2.5rem;
             margin-bottom: 20px;
             background: linear-gradient(to right, #fff, var(--primary-green));
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -214,3 +215,47 @@
             font-weight: bold;
             cursor: pointer;
         }
+       /* SUBMENU PERFIL */
+
+.submenu {
+
+    display: none;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    background-color: #222;
+
+}
+
+.submenu-item {
+    display: block;
+    padding: 12px 20px 12px 55px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.submenu-item:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--primary-green);
+}
+
+/* Quando ativo */
+
+.submenu.active {
+    display: flex;
+
+}
+
+.submenu a {
+
+    color: white;
+
+    text-decoration: none;
+
+    width: 100%;
+
+}
