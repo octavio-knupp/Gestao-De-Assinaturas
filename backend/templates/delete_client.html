@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>Excluir Cliente</title>
@@ -15,10 +14,12 @@
 
 <div class="container">
 
+    <!-- LADO ESQUERDO COM LOGO -->
     <div class="left">
-        Excluir Cliente
+        <img src="{% static 'img/logosemfundo.png' %}" class="logo">
     </div>
 
+    <!-- LADO DIREITO -->
     <div class="right">
 
         <h2>Confirmar Exclusão</h2>
@@ -28,30 +29,22 @@
         </p>
 
         <div class="client-box">
-
             <strong>
-                {{ client.first_name }}
-                {{ client.last_name }}
+                {{ client.first_name }} {{ client.last_name }}
             </strong>
-
-            <p>
-                ID: {{ client.id }}
-            </p>
-
+            <p>ID: {{ client.id }}</p>
         </div>
 
         <form method="POST">
-
             {% csrf_token %}
 
             <button type="submit" class="delete">
-                🗑️ Confirmar Exclusão
+                Confirmar Exclusão
             </button>
 
             <a href="{% url 'list_clients' %}" class="cancel">
                 Cancelar
             </a>
-
         </form>
 
     </div>

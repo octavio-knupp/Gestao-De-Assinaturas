@@ -153,6 +153,20 @@ button:hover {
     box-shadow: 0 6px 15px rgba(34,197,94,0.4);
 }
 
+/* Seleciona o input de data dentro do seu formulário */
+input[type="date"] {
+    color: #ffffff; /* Garante que o texto seja branco */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 3px;
+    /* Inverte a cor para branco e aumenta um pouco o brilho */
+    filter: invert(1) brightness(100%); 
+    cursor: pointer;
+}
+
 
 /* ANIMAÇÃO */
 
