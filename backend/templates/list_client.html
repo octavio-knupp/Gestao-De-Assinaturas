@@ -2,67 +2,92 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
-<title>Lista de Clientes</title>
-<link rel="stylesheet" href="{% static 'css/list_client.css' %}">
-<link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="{% static 'css/list_client.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
+
 <body>
 
-<h2>Lista de Clientes</h2>
+    <h2>Lista de Clientes</h2>
 
-<table>
+    <a href="{% url 'home_client' %}" class="btn-home">
+        ⬅ Voltar para Home
+    </a>
 
-<tr>
-    <th>ID</th>
-    <th>Nome</th>
-    <th>Telefone</th>
-    <th>Vencimento</th>
-    <th>Status</th>
-</tr>
+    <table>
 
-{% for item in clients_status %}
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Vencimento</th>
+            <th>Status</th>
+            <th>Ações</th> <!-- NOVO -->
+        </tr>
 
-<tr>
+        {% for item in clients_status %}
 
-<td>
-{{ item.client.id }}
-</td>
+        <tr>
 
-<td>
-{{ item.client.first_name }}
-{{ item.client.last_name }}
-</td>
+            <td>
+                {{ item.client.id }}
+            </td>
 
-<td>
-{{ item.client.phone }}
-</td>
+            <td>
+                {{ item.client.first_name }}
+                {{ item.client.last_name }}
+            </td>
 
-<td>
-{{ item.client.due_date }}
-</td>
+            <td>
+                {{ item.client.phone }}
+            </td>
 
-<td class="{{ item.status }}">
+            <td>
+                {{ item.client.due_date }}
+            </td>
 
-{% if item.status == "vencido" %}
-🔴 Vencido
+            <td class="{{ item.status }}">
 
-{% elif item.status == "vence_hoje" %}
-🟡 Vence hoje
+                {% if item.status == "vencido" %}
+                🔴 Vencido
 
-{% else %}
-🟢 Em dia
+                {% elif item.status == "vence_hoje" %}
+                🟡 Vence hoje
 
-{% endif %}
+                {% elif item.status == "vence_breve" %}
+                🟠 Vence em breve
 
-</td>
+                {% else %}
+                🟢 Em dia
 
-</tr>
+                {% endif %}
 
-{% endfor %}
+            </td>
 
-</table>
+            <!-- NOVA COLUNA -->
+            <td>
+
+                <a href="{% url 'update_client' item.client.id %}">
+                    ✏️ Editar
+                </a>
+
+                <br>
+
+                <a href="{% url 'delete_client' item.client.id %}">
+                    🗑️ Excluir
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
 
 </body>
 

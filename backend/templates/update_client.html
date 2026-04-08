@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Alterar Cliente</title>
     <link rel="stylesheet" href="{% static 'css/update_client.css' %}">
+      <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
 <body>
 
@@ -14,24 +15,69 @@
     <div class="right">
         <h2>Alterar Cliente</h2>
 
-        <form>
+        <form method="POST">
+            {% csrf_token %}
+
             <div class="campo">
-                <input type="text" placeholder="ID" value="">
+                <input 
+                    type="text"
+                    name="first_name"
+                    placeholder="Nome"
+                    value="{{ client.first_name }}"
+                    required>
             </div>
 
             <div class="campo">
-                <input type="text" placeholder="Nome" value="">
+                <input 
+                    type="text"
+                    name="last_name"
+                    placeholder="Sobrenome"
+                    value="{{ client.last_name }}"
+                    required>
             </div>
 
             <div class="campo">
-                <input type="text" placeholder="Telefone" value="" readonly>
+                <input 
+                    type="tel"
+                    name="phone"
+                    placeholder="Telefone"
+                    value="{{ client.phone }}"
+                    required>
             </div>
 
             <div class="campo">
-                <input type="email" placeholder="E-mail" value="">
+                <input 
+                    type="date"
+                    name="due_date"
+                    value="{{ client.due_date|date:'Y-m-d' }}"
+                    required>
             </div>
 
-            <button>Salvar Alterações</button>
+            <div class="campo">
+                <select name="gender">
+
+                    <option value="M"
+                    {% if client.gender == 'M' %}selected{% endif %}>
+                    Masculino
+                    </option>
+
+                    <option value="F"
+                    {% if client.gender == 'F' %}selected{% endif %}>
+                    Feminino
+                    </option>
+
+                    <option value="O"
+                    {% if client.gender == 'O' %}selected{% endif %}>
+                    Outro
+                    </option>
+
+                </select>
+            </div>
+
+            <button type="submit">
+                Salvar Alterações
+            </button>
+
         </form>
     </div>
 </div>

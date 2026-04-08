@@ -45,14 +45,30 @@ tr:hover {
     border-radius: 50%;
 }
 
-.vencido {
-    background-color: #ff4d4d;
+.btn-home {
+
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    padding: 10px 15px;
+
+    background: #15803d;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
 }
 
-.vence_hoje {
-    background-color: #ffa500;
-}
+.btn-home:hover {
 
-.em_dia {
-    background-color: #00c86f;
+    background: #15803d;
+
+    transform: translateY(-1px);
 }

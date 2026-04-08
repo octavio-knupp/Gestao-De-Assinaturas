@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Client
 from datetime import date
+from datetime import timedelta
 
 
 # 🚀 CADASTRO DE USUÁRIO
@@ -102,9 +103,7 @@ def list_clients(request):
     )
 
     today = date.today()
-
     clients_status = []
-
     for client in clients:
 
         if client.due_date < today:
@@ -112,6 +111,9 @@ def list_clients(request):
 
         elif client.due_date == today:
             status = "vence_hoje"
+
+        elif client.due_date <= today + timedelta(days=3):
+            status = "vence_breve"
 
         else:
             status = "em_dia"
@@ -164,11 +166,29 @@ def cadastro_client(request):
 @login_required
 def update_client(request, client_id):
 
+    client = get_object_or_404(
+        Client,
+        id=client_id,
+        owner=request.user
+    )
+
+    if request.method == 'POST':
+
+        client.first_name = request.POST.get('first_name')
+        client.last_name = request.POST.get('last_name')
+        client.phone = request.POST.get('phone')
+        client.gender = request.POST.get('gender')
+        client.due_date = request.POST.get('due_date')
+
+        client.save()
+
+        return redirect('list_clients')
+
     return render(
         request,
         'update_client.html',
         {
-            'client_id': client_id
+            'client': client
         }
     )
 
@@ -180,11 +200,23 @@ def update_client(request, client_id):
 @login_required
 def delete_client(request, client_id):
 
+    client = get_object_or_404(
+        Client,
+        id=client_id,
+        owner=request.user
+    )
+
+    if request.method == 'POST':
+
+        client.delete()
+
+        return redirect('list_clients')
+
     return render(
         request,
         'delete_client.html',
         {
-            'client_id': client_id
+            'client': client
         }
     )
 
