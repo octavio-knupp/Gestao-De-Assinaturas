@@ -1,52 +1,69 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Status do Cliente</title>
-
-    <!-- Fonte bonita -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{% static 'css/status-client.css' %}">
+<meta charset="UTF-8">
+<title>Lista de Clientes</title>
+<link rel="stylesheet" href="{% static 'css/list_client.css' %}">
+<link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
 <body>
 
-<div class="container">
-    <div class="left"></div>
+<h2>Lista de Clientes</h2>
 
-    <div class="right">
-        <h2>Status dos Clientes</h2>
+<table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+<tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Telefone</th>
+    <th>Vencimento</th>
+    <th>Status</th>
+</tr>
 
-            <tbody>
-                <tr>
-                    <td><input type="text" value="" readonly class="id"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="email" value=""></td>
-                </tr>
+{% for item in clients_status %}
 
-                <tr>
-                    <td><input type="text" value="" readonly class="id"></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="text" value=""></td>
-                    <td><input type="email" value=""></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<tr>
+
+<td>
+{{ item.client.id }}
+</td>
+
+<td>
+{{ item.client.first_name }}
+{{ item.client.last_name }}
+</td>
+
+<td>
+{{ item.client.phone }}
+</td>
+
+<td>
+{{ item.client.due_date }}
+</td>
+
+<td class="{{ item.status }}">
+
+{% if item.status == "vencido" %}
+🔴 Vencido
+
+{% elif item.status == "vence_hoje" %}
+🟡 Vence hoje
+
+{% else %}
+🟢 Em dia
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
 
 </body>
+
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro Cliente</title>
-    <link rel="stylesheet" href="{% static 'css/cadastro-client.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cadastro_client.css' %}">
 </head>
 <body>
 
@@ -14,23 +14,67 @@
     <div class="right">
         <h2>Cadastro Cliente</h2>
 
-        <div class="campo">
-            <input type="text" placeholder="id">
-        </div>
+        <form method="POST">
 
-        <div class="campo">
-            <input type="text" placeholder="Nome">
-        </div>
+            {% csrf_token %}
 
-        <div class="campo">
-            <input type="text" placeholder="telefone">
-        </div>
+            <div class="campo">
+                <input type="text"
+                       name="first_name"
+                       placeholder="Nome"
+                       required>
+            </div>
 
-        <div class="campo">
-            <input type="email" placeholder="E-mail">
-        </div>
+            <div class="campo">
+                <input type="text"
+                       name="last_name"
+                       placeholder="Sobrenome"
+                       required>
+            </div>
 
-        <button>Continuar</button>
+            <div class="campo">
+                <input type="text"
+                       name="phone"
+                       placeholder="Telefone"
+                       required>
+            </div>
+
+            <!-- GÊNERO COM SELECT -->
+            <div class="campo">
+                <select name="gender" required>
+
+                    <option value="">
+                        Selecione o gênero
+                    </option>
+
+                    <option value="M">
+                        Masculino
+                    </option>
+
+                    <option value="F">
+                        Feminino
+                    </option>
+
+                    <option value="O">
+                        Outro
+                    </option>
+
+                </select>
+            </div>
+
+            <!-- DATA DE VENCIMENTO -->
+            <div class="campo">
+                <input type="date"
+                       name="due_date"
+                       required>
+            </div>
+
+            <button type="submit">
+                Continuar
+            </button>
+
+        </form>
+
     </div>
 </div>
 

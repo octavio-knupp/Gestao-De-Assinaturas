@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Client
+from datetime import date
 
 
 # 🚀 CADASTRO DE USUÁRIO
@@ -95,9 +97,36 @@ def logout_client(request):
 @login_required
 def list_clients(request):
 
+    clients = Client.objects.filter(
+        owner=request.user
+    )
+
+    today = date.today()
+
+    clients_status = []
+
+    for client in clients:
+
+        if client.due_date < today:
+            status = "vencido"
+
+        elif client.due_date == today:
+            status = "vence_hoje"
+
+        else:
+            status = "em_dia"
+
+        clients_status.append({
+            'client': client,
+            'status': status
+        })
+
     return render(
         request,
-        'list_client.html'
+        'list_client.html',
+        {
+            'clients_status': clients_status
+        }
     )
 
 # ===============================
@@ -107,11 +136,26 @@ def list_clients(request):
 @login_required
 def cadastro_client(request):
 
+    if request.method == 'POST':
+
+        Client.objects.create(
+
+            owner=request.user,
+
+            first_name=request.POST.get('first_name'),
+            last_name=request.POST.get('last_name'),
+            phone=request.POST.get('phone'),
+            gender=request.POST.get('gender'),
+            due_date=request.POST.get('due_date')
+
+        )
+
+        return redirect('cadastro_client')
+
     return render(
         request,
         'cadastro_client.html'
     )
-
 
 # ===============================
 # ✏️ ALTERAÇÃO CLIENTE

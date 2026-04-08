@@ -1,0 +1,58 @@
+body {
+    background-color: #1e1e1e;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+.table-container {
+    background-color: #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #333;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #444;
+}
+
+tr:hover {
+    background-color: #3a3a3a;
+}
+
+/* STATUS */
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.vencido {
+    background-color: #ff4d4d;
+}
+
+.vence_hoje {
+    background-color: #ffa500;
+}
+
+.em_dia {
+    background-color: #00c86f;
+}
