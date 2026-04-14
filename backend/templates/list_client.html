@@ -80,6 +80,10 @@
                 <a href="{% url 'delete_client' item.client.id %}">
                     🗑️ Excluir
                 </a>
+                <br>
+                <a href="{% url 'send_whatsapp_client' item.client.id %}" class="btn-whatsapp">
+                    📩 WhatsApp
+                </a>
 
             </td>
 
