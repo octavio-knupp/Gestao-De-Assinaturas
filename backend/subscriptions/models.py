@@ -1,13 +1,27 @@
 from django.db import models
-from clients.models import Client
+from django.contrib.auth.models import User
 from plans.models import Plan
 
 class Subscription(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
-    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
 
-    start_date = models.DateField()
-    next_due_date = models.DateField()
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+    plan = models.ForeignKey(
+        Plan,
+        on_delete=models.CASCADE
+    )
+
+    start_date = models.DateField(
+        auto_now_add=True
+    )
+
+    next_due_date = models.DateField(
+        null=True,
+        blank=True
+    )
 
     status = models.CharField(
         max_length=20,
@@ -20,4 +34,4 @@ class Subscription(models.Model):
     )
 
     def __str__(self):
-        return f"{self.client} - {self.plan}"
+        return f"{self.user} - {self.plan}"

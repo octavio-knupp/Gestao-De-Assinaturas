@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Client
 from datetime import date
 from datetime import timedelta
+from subscriptions.models import Subscription
+from plans.models import Plan
 
 
 # 🚀 CADASTRO DE USUÁRIO
@@ -40,12 +42,20 @@ def create_client(request):
             })
 
         # ✅ CRIA USUÁRIO
-        User.objects.create_user(
+        user = User.objects.create_user(
             username=email,
             email=email,
             password=password,
             first_name=first_name,
             last_name=last_name
+        )
+        # CRIA ASSINATURA AUTOMÁTICA COM PLANO BRONZE
+        plan = Plan.objects.get(name="Bronze")
+
+        Subscription.objects.create(
+            user=user,
+            plan=plan,
+            next_due_date=date.today() + timedelta(days=30)
         )
 
         return redirect('login_client')
@@ -148,7 +158,8 @@ def cadastro_client(request):
             last_name=request.POST.get('last_name'),
             phone=request.POST.get('phone'),
             gender=request.POST.get('gender'),
-            due_date=request.POST.get('due_date')
+            due_date=request.POST.get('due_date'),
+            monthly_fee=request.POST.get('monthly_fee')
 
         )
 
@@ -179,6 +190,7 @@ def update_client(request, client_id):
         client.phone = request.POST.get('phone')
         client.gender = request.POST.get('gender')
         client.due_date = request.POST.get('due_date')
+        client.monthly_fee = request.POST.get('monthly_fee')
 
         client.save()
 

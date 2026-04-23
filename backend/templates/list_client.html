@@ -26,6 +26,7 @@
             <th>Telefone</th>
             <th>Vencimento</th>
             <th>Status</th>
+            <th>Mensalidade</th>
             <th>Ações</th> <!-- NOVO -->
         </tr>
 
@@ -66,6 +67,10 @@
 
                 {% endif %}
 
+            </td>
+
+            <td>
+                R$ {{ item.client.monthly_fee|floatformat:2}}
             </td>
 
             <!-- NOVA COLUNA -->

@@ -23,6 +23,13 @@ class Client(models.Model):
     # DATA DE VENCIMENTO
     due_date = models.DateField()
 
+    # MENSALIDADE
+    monthly_fee = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        default=0
+    )
+
     # GÊNERO COM OPÇÕES FIXAS
     gender = models.CharField(
         max_length=1,
