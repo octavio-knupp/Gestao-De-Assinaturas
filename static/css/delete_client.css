@@ -45,7 +45,9 @@ body {
 
 /* LOGO */
 .logo {
-    width: 300px;
+    width: 450px;
+    max-width: 700px;
+    object-fit: contain;
 }
 
 
