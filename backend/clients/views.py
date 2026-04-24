@@ -3,14 +3,20 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Client
-from datetime import date
-from datetime import timedelta
+
+from datetime import date, timedelta
+from decimal import Decimal
+
 from subscriptions.models import Subscription
 from plans.models import Plan
 
 
+# ===============================
 # 🚀 CADASTRO DE USUÁRIO
+# ===============================
+
 def create_client(request):
+
     if request.method == 'POST':
 
         first_name = request.POST.get('first_name')
@@ -22,6 +28,7 @@ def create_client(request):
         erros = []
 
         # 🔥 VALIDAÇÕES
+
         if password != confirm_password:
             erros.append('As senhas não coincidem!')
 
@@ -35,13 +42,19 @@ def create_client(request):
             erros.append('Email inválido!')
 
         # ❌ SE TIVER ERROS
+
         if erros:
-            return render(request, 'create_client.html', {
-                'erros': erros,
-                'dados': request.POST
-            })
+            return render(
+                request,
+                'create_client.html',
+                {
+                    'erros': erros,
+                    'dados': request.POST
+                }
+            )
 
         # ✅ CRIA USUÁRIO
+
         user = User.objects.create_user(
             username=email,
             email=email,
@@ -49,7 +62,9 @@ def create_client(request):
             first_name=first_name,
             last_name=last_name
         )
-        # CRIA ASSINATURA AUTOMÁTICA COM PLANO BRONZE
+
+        # 🧠 CRIA ASSINATURA AUTOMÁTICA (BRONZE)
+
         plan = Plan.objects.get(name="Bronze")
 
         Subscription.objects.create(
@@ -63,8 +78,12 @@ def create_client(request):
     return render(request, 'create_client.html')
 
 
+# ===============================
 # 🔐 LOGIN
+# ===============================
+
 def login_client(request):
+
     if request.method == 'POST':
 
         email = request.POST.get('email')
@@ -77,27 +96,76 @@ def login_client(request):
         )
 
         if user is not None:
+
             login(request, user)
+
             return redirect('home_client')
+
         else:
-            return render(request, 'login_client.html', {
-                'erro': 'Email ou senha inválidos'
-            })
+
+            return render(
+                request,
+                'login_client.html',
+                {
+                    'erro': 'Email ou senha inválidos'
+                }
+            )
 
     return render(request, 'login_client.html')
 
 
+# ===============================
 # 🏠 HOME
+# ===============================
+
 @login_required
 def home_client(request):
-    return render(request, 'home_client.html', {
-        'name': request.user.first_name
-    })
+
+    subscription = Subscription.objects.filter(
+        user=request.user
+    ).first()
+
+    total_clients = Client.objects.filter(
+        owner=request.user
+    ).count()
+
+    percentage = 0
+    max_clients = None
+
+    if subscription:
+
+        plan = subscription.plan
+        max_clients = plan.max_clients
+
+        if max_clients:
+
+            percentage = int(
+                (total_clients / max_clients) * 100
+            )
+
+            if percentage > 100:
+                percentage = 100
+
+    return render(
+        request,
+        'home_client.html',
+        {
+            'subscription': subscription,
+            'total_clients': total_clients,
+            'max_clients': max_clients,
+            'percentage': percentage
+        }
+    )
 
 
+# ===============================
 # 🚪 LOGOUT
+# ===============================
+
 def logout_client(request):
+
     logout(request)
+
     return redirect('login_client')
 
 
@@ -113,42 +181,104 @@ def list_clients(request):
     )
 
     today = date.today()
+
     clients_status = []
+
     for client in clients:
 
         if client.due_date < today:
+
             status = "vencido"
 
         elif client.due_date == today:
+
             status = "vence_hoje"
 
         elif client.due_date <= today + timedelta(days=3):
+
             status = "vence_breve"
 
         else:
+
             status = "em_dia"
 
         clients_status.append({
+
             'client': client,
             'status': status
+
         })
 
     return render(
+
         request,
+
         'list_client.html',
+
         {
             'clients_status': clients_status
         }
+
     )
 
+
 # ===============================
-# 📋 CADASTRO CLIENTE 
+# 📋 CADASTRO CLIENTE
 # ===============================
 
 @login_required
 def cadastro_client(request):
 
     if request.method == 'POST':
+
+        # 🔎 BUSCA ASSINATURA
+
+        subscription = Subscription.objects.filter(
+            user=request.user
+        ).first()
+
+        if not subscription:
+
+            return render(
+                request,
+                'cadastro_client.html',
+                {
+                    'erro': 'Usuário sem assinatura ativa.'
+                }
+            )
+
+        plan = subscription.plan
+
+        # 🔎 CONTAR CLIENTES
+
+        total_clients = Client.objects.filter(
+            owner=request.user
+        ).count()
+
+        # 🚫 VERIFICAR LIMITE
+
+        if plan.max_clients is not None:
+
+            if total_clients >= plan.max_clients:
+
+                return render(
+                    request,
+                    'cadastro_client.html',
+                    {
+                        'erro': 'Limite de clientes atingido para seu plano.'
+                    }
+                )
+
+        # 💰 TRATAR MENSALIDADE
+
+        monthly_fee_value = request.POST.get('monthly_fee')
+
+        if not monthly_fee_value:
+            monthly_fee_value = 0
+
+        monthly_fee = Decimal(monthly_fee_value)
+
+        # ✅ CRIAR CLIENTE
 
         Client.objects.create(
 
@@ -159,7 +289,7 @@ def cadastro_client(request):
             phone=request.POST.get('phone'),
             gender=request.POST.get('gender'),
             due_date=request.POST.get('due_date'),
-            monthly_fee=request.POST.get('monthly_fee')
+            monthly_fee=monthly_fee
 
         )
 
@@ -169,6 +299,7 @@ def cadastro_client(request):
         request,
         'cadastro_client.html'
     )
+
 
 # ===============================
 # ✏️ ALTERAÇÃO CLIENTE
@@ -190,7 +321,13 @@ def update_client(request, client_id):
         client.phone = request.POST.get('phone')
         client.gender = request.POST.get('gender')
         client.due_date = request.POST.get('due_date')
-        client.monthly_fee = request.POST.get('monthly_fee')
+
+        monthly_fee_value = request.POST.get('monthly_fee')
+
+        if not monthly_fee_value:
+            monthly_fee_value = 0
+
+        client.monthly_fee = Decimal(monthly_fee_value)
 
         client.save()
 
@@ -231,4 +368,3 @@ def delete_client(request, client_id):
             'client': client
         }
     )
-
