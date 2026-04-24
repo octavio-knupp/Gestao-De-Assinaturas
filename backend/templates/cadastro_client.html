@@ -4,89 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastro Cliente</title>
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/cadastro_client.css' %}">
-      <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
 <body>
 
-<div class="container">
-    <div class="left"></div>
+    <!-- BOTÃO HOME -->
+    <a href="/" class="btn-home-global">
+        <i class="fa-solid fa-house"></i>
+    </a>
 
-    <div class="right">
-        <h2>Cadastro Cliente</h2>
+    <div class="container">
 
-        <form method="POST">
+        <!-- LADO ESQUERDO (LOGO) -->
+        <div class="left">
+            <img src="{% static 'img/logosemfundo.png' %}" class="logo">
+        </div>
 
-            {% csrf_token %}
+        <!-- LADO DIREITO -->
+        <div class="right">
+            <h2>Cadastro Cliente</h2>
 
-            <div class="campo">
-                <input type="text"
-                       name="first_name"
-                       placeholder="Nome"
-                       required>
-            </div>
+            <form method="POST">
+                {% csrf_token %}
 
-            <div class="campo">
-                <input type="text"
-                       name="last_name"
-                       placeholder="Sobrenome"
-                       required>
-            </div>
+                <div class="campo">
+                    <input type="text" name="first_name" placeholder="Nome" required>
+                </div>
 
-            <div class="campo">
-                <input type="text"
-                       name="phone"
-                       placeholder="Telefone"
-                       required>
-            </div>
+                <div class="campo">
+                    <input type="text" name="last_name" placeholder="Sobrenome" required>
+                </div>
 
-            <!-- MENSALIDADE -->
-            <div class="campo">
-                <input type="number"
-                       name="monthly_fee"
-                       placeholder="Mensalidade"
-                       step="0.01"
-                       required>
-            </div>
+                <div class="campo">
+                    <input type="text" name="phone" placeholder="Telefone" required>
+                </div>
 
-            <!-- GÊNERO COM SELECT -->
-            <div class="campo">
-                <select name="gender" required>
+                <div class="campo">
+                    <input type="number" name="monthly_fee" placeholder="Mensalidade" step="0.01" required>
+                </div>
 
-                    <option value="">
-                        Selecione o gênero
-                    </option>
+                <div class="campo">
+                    <select name="gender" required>
+                        <option value="">Selecione o gênero</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="O">Outro</option>
+                    </select>
+                </div>
 
-                    <option value="M">
-                        Masculino
-                    </option>
+                <div class="campo">
+                    <input type="date" name="due_date" required>
+                </div>
 
-                    <option value="F">
-                        Feminino
-                    </option>
-
-                    <option value="O">
-                        Outro
-                    </option>
-
-                </select>
-            </div>
-
-            <!-- DATA DE VENCIMENTO -->
-            <div class="campo">
-                <input type="date"
-                       name="due_date"
-                       required>
-            </div>
-
-            <button type="submit">
-                Continuar
-            </button>
-
-        </form>
-
+                <button type="submit">Continuar</button>
+            </form>
+        </div>
     </div>
-</div>
 
 </body>
 </html>

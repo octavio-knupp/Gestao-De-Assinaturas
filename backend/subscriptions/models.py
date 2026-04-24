@@ -4,10 +4,7 @@ from plans.models import Plan
 
 class Subscription(models.Model):
 
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE
-    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     plan = models.ForeignKey(
         Plan,

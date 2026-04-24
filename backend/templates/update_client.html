@@ -5,90 +5,56 @@
     <meta charset="UTF-8">
     <title>Alterar Cliente</title>
     <link rel="stylesheet" href="{% static 'css/update_client.css' %}">
-      <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
 <body>
 
-    
+<a href="{% url 'list_clients' %}" class="btn-home" title="Voltar para lista">
+    <i class="fa-solid fa-arrow-left"></i>
+</a>
 
 <div class="container">
-    <div class="left"></div>
+
+    <div class="left">
+        <img src="{% static 'img/logosemfundo.png' %}" alt="Logo" class="logo">
+    </div>
 
     <div class="right">
-        <h2>Alterar Client</h2>
+        <h2>Alterar Cliente</h2>
 
         <form method="POST">
             {% csrf_token %}
 
             <div class="campo">
-                <input 
-                    type="text"
-                    name="first_name"
-                    placeholder="Nome"
-                    value="{{ client.first_name }}"
-                    required>
+                <input type="text" name="first_name" placeholder="Nome" value="{{ client.first_name }}" required>
             </div>
 
             <div class="campo">
-                <input 
-                    type="text"
-                    name="last_name"
-                    placeholder="Sobrenome"
-                    value="{{ client.last_name }}"
-                    required>
+                <input type="text" name="last_name" placeholder="Sobrenome" value="{{ client.last_name }}" required>
             </div>
 
             <div class="campo">
-                <input 
-                    type="tel"
-                    name="phone"
-                    placeholder="Telefone"
-                    value="{{ client.phone }}"
-                    required>
-            </div>
-
-            <div class ="campo">
-                <input type="number" 
-                name="monthly_fee"
-                placeholder="Mensalidade  (Ex: 79.99)">
-                step="0.01"
-                value="{{ client.monthly_fee}}"
-                required>
+                <input type="tel" name="phone" placeholder="Telefone" value="{{ client.phone }}" required>
             </div>
 
             <div class="campo">
-                <input 
-                    type="date"
-                    name="due_date"
-                    value="{{ client.due_date|date:'Y-m-d' }}"
-                    required>
+                <input type="number" name="monthly_fee" placeholder="Mensalidade (Ex: 79.99)" step="0.01" value="{{ client.monthly_fee }}" required>
+            </div>
+
+            <div class="campo">
+                <input type="date" name="due_date" value="{{ client.due_date|date:'Y-m-d' }}" required>
             </div>
 
             <div class="campo">
                 <select name="gender">
-
-                    <option value="M"
-                    {% if client.gender == 'M' %}selected{% endif %}>
-                    Masculino
-                    </option>
-
-                    <option value="F"
-                    {% if client.gender == 'F' %}selected{% endif %}>
-                    Feminino
-                    </option>
-
-                    <option value="O"
-                    {% if client.gender == 'O' %}selected{% endif %}>
-                    Outro
-                    </option>
-
+                    <option value="M" {% if client.gender == 'M' %}selected{% endif %}>Masculino</option>
+                    <option value="F" {% if client.gender == 'F' %}selected{% endif %}>Feminino</option>
+                    <option value="O" {% if client.gender == 'O' %}selected{% endif %}>Outro</option>
                 </select>
             </div>
 
-            <button type="submit">
-                Salvar Alterações
-            </button>
-
+            <button type="submit">Salvar Alterações</button>
         </form>
     </div>
 </div>

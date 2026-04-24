@@ -6,97 +6,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Clientes</title>
+
     <link rel="stylesheet" href="{% static 'css/list_client.css' %}">
+
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 </head>
 
 <body>
 
-    <h2>Lista de Clientes</h2>
+    <div class="container">
 
-    <a href="{% url 'home_client' %}" class="btn-home">
-        ⬅ Voltar para Home
-    </a>
+        <!-- BOTÃO HOME (CASINHA) -->
+        <a href="{% url 'home_client' %}" class="btn-home" title="Voltar para Home">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        <h2>Lista de Clientes</h2>
 
-    <table>
 
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Vencimento</th>
-            <th>Status</th>
-            <th>Mensalidade</th>
-            <th>Ações</th> <!-- NOVO -->
-        </tr>
+        <div class="table-container">
 
-        {% for item in clients_status %}
+            <table>
 
-        <tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Vencimento</th>
+                    <th>Status</th>
+                    <th>Mensalidade</th>
+                    <th>Ações</th>
+                </tr>
 
-            <td>
-                {{ item.client.id }}
-            </td>
+                {% for item in clients_status %}
+                <tr>
 
-            <td>
-                {{ item.client.first_name }}
-                {{ item.client.last_name }}
-            </td>
+                    <td>{{ item.client.id }}</td>
 
-            <td>
-                {{ item.client.phone }}
-            </td>
+                    <td>
+                        {{ item.client.first_name }} {{ item.client.last_name }}
+                    </td>
 
-            <td>
-                {{ item.client.due_date }}
-            </td>
+                    <td>{{ item.client.phone }}</td>
 
-            <td class="{{ item.status }}">
+                    <td>{{ item.client.due_date }}</td>
 
-                {% if item.status == "vencido" %}
-                🔴 Vencido
+                    <!-- STATUS -->
+                    <td class="status 
+                        {% if item.status == 'vencido' %}vencido
+                        {% elif item.status == 'vence_hoje' %}vence_hoje
+                        {% elif item.status == 'vence_breve' %}vence_breve
+                        {% else %}em_dia
+                        {% endif %}
+                    ">
 
-                {% elif item.status == "vence_hoje" %}
-                🟡 Vence hoje
+                        {% if item.status == "vencido" %}
+                        <span class="status-dot red"></span> Vencido
 
-                {% elif item.status == "vence_breve" %}
-                🟠 Vence em breve
+                        {% elif item.status == "vence_hoje" %}
+                        <span class="status-dot yellow"></span> Vence hoje
 
-                {% else %}
-                🟢 Em dia
+                        {% elif item.status == "vence_breve" %}
+                        <span class="status-dot orange"></span> Vence em breve
 
-                {% endif %}
+                        {% else %}
+                        <span class="status-dot green"></span> Em dia
+                        {% endif %}
 
-            </td>
+                    </td>
 
-            <td>
-                R$ {{ item.client.monthly_fee|floatformat:2}}
-            </td>
+                    <td>
+                        R$ {{ item.client.monthly_fee|floatformat:2 }}
+                    </td>
 
-            <!-- NOVA COLUNA -->
-            <td>
+                    <!-- AÇÕES -->
+                    <td class="acoes">
 
-                <a href="{% url 'update_client' item.client.id %}">
-                    ✏️ Editar
-                </a>
+                        <a href="{% url 'update_client' item.client.id %}" class="btn editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>
 
-                <br>
+                        <a href="{% url 'delete_client' item.client.id %}" class="btn excluir">
+                            <i class="fa-solid fa-trash"></i> Excluir
+                        </a>
 
-                <a href="{% url 'delete_client' item.client.id %}">
-                    🗑️ Excluir
-                </a>
-                <br>
-                <a href="{% url 'send_whatsapp_client' item.client.id %}" class="btn-whatsapp">
-                    📩 WhatsApp
-                </a>
+                        <a href="{% url 'send_whatsapp_client' item.client.id %}" class="btn whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
 
-            </td>
+                    </td>
 
-        </tr>
+                </tr>
+                {% endfor %}
 
-        {% endfor %}
+            </table>
 
-    </table>
+        </div>
+
+    </div>
 
 </body>
 

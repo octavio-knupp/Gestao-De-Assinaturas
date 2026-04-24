@@ -1,111 +1,142 @@
+/* RESET */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #15803d;
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(135deg, #0f172a, #020617);
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: 100vh;
 }
 
-/* Container principal */
+
+/* BOTÃO HOME */
+.btn-home-global {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    background: #1e293b;
+    color: #e5e7eb;
+
+    padding: 10px 12px;
+    border-radius: 50%;
+
+    text-decoration: none;
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.btn-home-global:hover {
+    background: #334155;
+}
+
+
+/* CONTAINER */
 .container {
     display: flex;
-    width: 700px;
-    background: #fff;
+    width: 750px;
+
+    background: #0f172a;
+
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 
-    /* ANIMAÇÃO DE ENTRADA */
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+
     opacity: 0;
     transform: translateY(20px);
     animation: aparecer 0.6s ease forwards;
 }
 
-/* Lado esquerdo (cinza) */
+
+/* LADO ESQUERDO */
 .left {
     width: 50%;
-    background: #ccc;
+
+    background: linear-gradient(135deg, #0a5c0a, #16a34a);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Lado direito (formulário) */
+
+/* LOGO */
+.logo {
+    width: 350px;
+}
+
+
+/* LADO DIREITO */
 .right {
     width: 50%;
     padding: 30px;
+
+    background: #020617;
 }
 
-/* Título */
+
+/* TÍTULO */
 h2 {
     margin-top: 0;
+    color: #e5e7eb;
 }
 
-/* Campos */
+
+/* CAMPOS */
 .campo {
-    width: 100%;
     margin-bottom: 15px;
-
-    /* ANIMAÇÃO DOS CAMPOS */
-    opacity: 0;
-    transform: translateY(10px);
-    animation: subir 0.5s ease forwards;
 }
 
-/* Delay (um após o outro) */
-.campo:nth-child(1) { animation-delay: 0.1s; }
-.campo:nth-child(2) { animation-delay: 0.2s; }
-.campo:nth-child(3) { animation-delay: 0.3s; }
-.campo:nth-child(4) { animation-delay: 0.4s; }
-
-/* Inputs */
-.campo input {
+.campo input,
+.campo select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
+
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #1e293b;
+
+    background: #0f172a;
+    color: #e5e7eb;
+
     outline: none;
-    transition: 0.3s;
 }
 
-/* Efeito ao clicar */
-.campo input:focus {
-    border-color: #0a5c0a;
-    box-shadow: 0 0 5px rgba(10, 92, 10, 0.3);
+.campo input::placeholder {
+    color: #94a3b8;
 }
 
-/* Botão */
+
+/* BOTÃO */
 button {
     width: 100%;
     padding: 12px;
-    background: #0a5c0a;
+
+    background: linear-gradient(135deg, #065f0a, #16a34a);
+
     color: white;
     border: none;
     border-radius: 6px;
-    cursor: pointer;
+
     font-weight: bold;
-    transition: 0.2s;
+    cursor: pointer;
+
+    transition: 0.3s;
 }
 
-/* Hover botão */
 button:hover {
-    background: #084a08;
     transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(22,163,74,0.4);
 }
 
-/* Clique */
-button:active {
-    transform: scale(0.97);
-}
 
-/* KEYFRAMES */
+/* ANIMAÇÃO */
 @keyframes aparecer {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes subir {
     to {
         opacity: 1;
         transform: translateY(0);
