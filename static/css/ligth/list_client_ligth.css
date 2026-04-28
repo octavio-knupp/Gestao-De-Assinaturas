@@ -83,13 +83,16 @@
    TÍTULOS (corrige gradient)
 ========================= */
 
-[data-theme="light"] h1,
 [data-theme="light"] h2 {
 
     color: #1a1a1a !important;
 
     background: none !important;
 
+    /* versão padrão */
+    background-clip: initial !important;
+
+    /* versão webkit */
     -webkit-background-clip: initial !important;
 
     -webkit-text-fill-color: initial !important;
