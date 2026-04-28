@@ -4,6 +4,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #0f172a, #020617);
     color: white;
+    padding-top: 30px;
 }
 
 /* CONTAINER */
@@ -84,16 +85,38 @@ tr:hover {
 }
 
 /* CORES DA BOLINHA */
-.green { background: #22c55e; }
-.red { background: #ef4444; }
-.yellow { background: #eab308; }
-.orange { background: #f97316; }
+.green {
+    background: #22c55e;
+}
+
+.red {
+    background: #ef4444;
+}
+
+.yellow {
+    background: #eab308;
+}
+
+.orange {
+    background: #f97316;
+}
 
 /* COR DO TEXTO */
-.status.vencido { color: #ef4444; }
-.status.vence_hoje { color: #eab308; }
-.status.vence_breve { color: #f97316; }
-.status.em_dia { color: #22c55e; }
+.status.vencido {
+    color: #ef4444;
+}
+
+.status.vence_hoje {
+    color: #eab308;
+}
+
+.status.vence_breve {
+    color: #f97316;
+}
+
+.status.em_dia {
+    color: #22c55e;
+}
 
 /* AÇÕES */
 .acoes {
@@ -159,5 +182,5 @@ tr:hover {
 /* HOVER GERAL */
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }

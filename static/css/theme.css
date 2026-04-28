@@ -1,0 +1,208 @@
+/* ================================================
+   TEMA CLARO GLOBAL — Next Pay
+   Adicione em todos os HTMLs dentro do <head>:
+   <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+   ================================================ */
+
+/* ========================
+   GERAL (todas as páginas)
+   ======================== */
+
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9) !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] p,
+[data-theme="light"] td,
+[data-theme="light"] th,
+[data-theme="light"] label {
+    color: #1a1a1a !important;
+}
+
+/* ========================
+   HOME (home.css)
+   ======================== */
+
+[data-theme="light"] .plan-card {
+    background: linear-gradient(145deg, #ffffff, #eeeeee) !important;
+    border-color: #cccccc !important;
+}
+
+[data-theme="light"] .usage-container {
+    background: linear-gradient(145deg, #ffffff, #eeeeee) !important;
+    border-color: #cccccc !important;
+}
+
+[data-theme="light"] .submenu-item {
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] h1 {
+    background: linear-gradient(to right, #1a1a1a, #00c86f) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] .description-grid {
+    color: #444444 !important;
+}
+
+[data-theme="light"] .progress-bar {
+    background-color: #cccccc !important;
+}
+
+[data-theme="light"] .main-content {
+    overflow-y: auto !important;
+}
+
+/* ========================
+   SIDEBAR — Home
+   ======================== */
+
+[data-theme="light"] .sidebar {
+    background-color: #2a2a2a !important;
+    border-right-color: #444 !important;
+}
+
+[data-theme="light"] .sidebar-item:hover {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .submenu {
+    background-color: #333333 !important;
+}
+
+/* ========================
+   CADASTRO CLIENTE (cadastro_client.css)
+   ======================== */
+
+[data-theme="light"] .container {
+    background: #f8fafc !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="light"] .right {
+    background: #ffffff !important;
+}
+
+[data-theme="light"] .campo input,
+[data-theme="light"] .campo select {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .campo input::placeholder {
+    color: #64748b !important;
+}
+
+[data-theme="light"] .btn-home-global {
+    background: #e2e8f0 !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .btn-home-global:hover {
+    background: #cbd5e1 !important;
+}
+
+/* ========================
+   DELETE CLIENTE (delete_client.css)
+   ======================== */
+
+[data-theme="light"] .client-box {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .cancel {
+    background: #e2e8f0 !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] .cancel:hover {
+    background: #cbd5e1 !important;
+}
+
+/* ========================
+   LIST CLIENTE (list_client.css)
+   ======================== */
+
+[data-theme="light"] .table-container {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] th {
+    background-color: #e2e8f0 !important;
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] td {
+    border-bottom-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] tr:hover {
+    background-color: #f1f5f9 !important;
+}
+
+[data-theme="light"] .btn-home {
+    background: #15803d !important;
+}
+
+/* ========================
+   LOGIN (login_client.css)
+   ======================== */
+
+[data-theme="light"] .right {
+    background-color: #ffffff !important;
+}
+
+[data-theme="light"] .right .sub {
+    color: #555555 !important;
+}
+
+[data-theme="light"] .input-box input {
+    background-color: #f1f5f9 !important;
+    color: #1a1a1a !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+[data-theme="light"] .input-box input::placeholder {
+    color: #64748b !important;
+}
+
+[data-theme="light"] .login a {
+    color: #15803d !important;
+}
+
+[data-theme="light"] .error-box {
+    background-color: #fef2f2 !important;
+    border-color: #fca5a5 !important;
+    color: #991b1b !important;
+}
+
+/* ========================
+   UPDATE CLIENTE (update_client.css)
+   ======================== */
+
+[data-theme="light"] input[type="date"] {
+    color: #1a1a1a !important;
+}
+
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: none !important;
+}
+
+/* ========================
+   LIST CLIENTE — fix topo
+   ======================== */
+
+[data-theme="light"] body {
+    padding-top: 30px !important;
+}

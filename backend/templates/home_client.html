@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+
     <script src="{% static 'js/home.js' %}" defer></script>
+
+    <script src="{% static 'js/theme.js' %}" defer></script>
 </head>
 
 <body>
@@ -63,6 +67,11 @@
     </div>
 
     <div class="nav-auth">
+
+        <button id="themeToggle" class="btn-theme" title="Alterar tema">
+            🌙
+        </button>
+
 
         {% if user.is_authenticated %}
 
