@@ -1,0 +1,149 @@
+/* =========================
+   LOGIN — LIGHT MODE
+========================= */
+
+
+/* =========================
+   FUNDO GERAL
+========================= */
+
+[data-theme="light"] body {
+
+    background: linear-gradient(
+        135deg,
+        #e2e8f0,
+        #f1f5f9
+    );
+
+    color: #1a1a1a;
+
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+[data-theme="light"] .container {
+
+    background: #f8fafc;
+
+    box-shadow: 0 8px 30px rgba(
+        0,
+        0,
+        0,
+        0.15
+    );
+
+}
+
+
+/* =========================
+   LADO DIREITO (FORM)
+========================= */
+
+[data-theme="light"] .right {
+
+    background: #ffffff;
+
+}
+
+
+/* =========================
+   TÍTULO PRINCIPAL (CORREÇÃO)
+========================= */
+
+[data-theme="light"] .right h2 {
+
+    color: #1a1a1a !important;
+
+    background: none !important;
+    background-image: none !important;
+
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+
+    -webkit-text-fill-color: #1a1a1a !important;
+
+}
+
+
+/* Subtítulo */
+
+[data-theme="light"] .right .sub {
+
+    color: #555555;
+
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+[data-theme="light"] .input-box input {
+
+    background-color: #f1f5f9;
+
+    color: #1a1a1a;
+
+    border: 1px solid #cbd5e1;
+
+}
+
+
+/* Placeholder */
+
+[data-theme="light"] .input-box input::placeholder {
+
+    color: #64748b;
+
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+[data-theme="light"] .login a {
+
+    color: #15803d;
+
+}
+
+
+/* =========================
+   CAIXA DE ERRO
+========================= */
+
+[data-theme="light"] .error-box {
+
+    background-color: #fef2f2;
+
+    border: 1px solid #fca5a5;
+
+    color: #991b1b;
+
+}
+
+
+/* =========================
+   BOTÃO LOGIN
+========================= */
+
+[data-theme="light"] .btn-login {
+
+    background: #00c86f;
+
+    color: #000;
+
+}
+
+
+/* Hover botão */
+
+[data-theme="light"] .btn-login:hover {
+
+    filter: brightness(1.1);
+
+}

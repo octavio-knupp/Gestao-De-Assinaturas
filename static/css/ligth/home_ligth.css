@@ -1,0 +1,181 @@
+/* =========================================
+   HOME — LIGHT THEME (CORRIGIDO)
+========================================= */
+
+/* FUNDO */
+
+[data-theme="light"] body {
+    background: linear-gradient(
+        135deg,
+        #e2e8f0,
+        #f1f5f9
+    ) !important;
+
+    color: #1a1a1a !important;
+}
+
+/* TEXTOS */
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] p {
+    color: #1a1a1a !important;
+}
+
+/* HERO TEXT */
+
+[data-theme="light"] .description-grid {
+    color: #444444 !important;
+}
+
+/* =========================
+   USAGE CONTAINER
+========================= */
+
+[data-theme="light"] .usage-container {
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #eeeeee
+    ) !important;
+
+    border: 1px solid #cccccc !important;
+}
+
+/* =========================
+   PLAN CARDS
+========================= */
+
+[data-theme="light"] .plan-card {
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #eeeeee
+    ) !important;
+
+    border: 1px solid #cccccc !important;
+}
+
+[data-theme="light"] .plan-card p {
+    color: #555555 !important;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+[data-theme="light"] .progress-bar {
+
+    background-color: #cccccc !important;
+}
+
+[data-theme="light"] .usage-percent {
+
+    color: #444444 !important;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+[data-theme="light"] .sidebar {
+
+    background-color: #e0e0e0 !important;
+
+    border-right: 1px solid #cccccc !important;
+}
+
+[data-theme="light"] .submenu {
+
+    background-color: #d6d6d6 !important;
+}
+
+[data-theme="light"] .sidebar-item:hover {
+
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.08
+    ) !important;
+}
+
+[data-theme="light"] .sidebar-text {
+
+    color: #1a1a1a !important;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+[data-theme="light"] .btn-theme {
+
+    color: #1a1a1a !important;
+}
+
+/* =========================
+   ÍCONES SIDEBAR — LIGHT
+========================= */
+
+[data-theme="light"] .sidebar-icon img {
+
+    filter: invert(1) brightness(0);
+
+}
+
+/* =========================
+   SUBMENU PERFIL — LIGHT
+========================= */
+
+[data-theme="light"] .submenu-item {
+
+    color: #1a1a1a !important;
+
+}
+
+/* Hover do submenu */
+
+[data-theme="light"] .submenu-item:hover {
+
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.08
+    ) !important;
+
+    color: #00c86f !important;
+
+}
+
+/* Fundo do submenu */
+
+[data-theme="light"] .submenu {
+
+    background-color: #dcdcdc !important;
+
+}
+
+/* =========================
+   TÍTULO HERO — LIGHT
+========================= */
+
+[data-theme="light"] .hero-section h1 {
+
+    background: linear-gradient(
+        to right,
+        #1a1a1a,
+        #00c86f
+    ) !important;
+
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+
+}

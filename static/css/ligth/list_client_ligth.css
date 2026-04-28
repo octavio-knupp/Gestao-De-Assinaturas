@@ -1,0 +1,206 @@
+/* =========================
+   LIST CLIENT — LIGHT MODE
+========================= */
+
+
+/* =========================
+   FUNDO GERAL
+========================= */
+
+[data-theme="light"] body {
+
+    background: linear-gradient(
+        135deg,
+        #e2e8f0,
+        #f1f5f9
+    );
+
+    color: #1a1a1a;
+
+}
+
+
+/* =========================
+   CONTAINER DA TABELA
+========================= */
+
+[data-theme="light"] .table-container {
+
+    background-color: #ffffff;
+
+    box-shadow: 0 4px 15px rgba(
+        0,
+        0,
+        0,
+        0.1
+    );
+
+    border: 1px solid #cbd5e1;
+
+}
+
+
+/* =========================
+   CABEÇALHO DA TABELA
+========================= */
+
+[data-theme="light"] th {
+
+    background-color: #e2e8f0;
+
+    color: #1a1a1a;
+
+    border-bottom: 1px solid #cbd5e1;
+
+}
+
+
+/* =========================
+   CÉLULAS
+========================= */
+
+[data-theme="light"] td {
+
+    color: #1a1a1a;
+
+    border-bottom: 1px solid #cbd5e1;
+
+}
+
+
+/* =========================
+   HOVER NAS LINHAS
+========================= */
+
+[data-theme="light"] tr:hover {
+
+    background-color: #f1f5f9;
+
+}
+
+
+/* =========================
+   TÍTULOS (corrige gradient)
+========================= */
+
+[data-theme="light"] h1,
+[data-theme="light"] h2 {
+
+    color: #1a1a1a !important;
+
+    background: none !important;
+
+    -webkit-background-clip: initial !important;
+
+    -webkit-text-fill-color: initial !important;
+
+}
+
+
+/* =========================
+   INPUT (caso tenha busca)
+========================= */
+
+[data-theme="light"] input {
+
+    background-color: #f1f5f9;
+
+    color: #1a1a1a;
+
+    border: 1px solid #cbd5e1;
+
+}
+
+[data-theme="light"] input::placeholder {
+
+    color: #64748b;
+
+}
+
+
+/* =========================
+   BOTÕES — MANTER ESTILO DARK
+========================= */
+
+/* Base */
+
+[data-theme="light"] .btn {
+
+    background: transparent !important;
+
+    border-width: 1px !important;
+
+    border-style: solid !important;
+
+}
+
+
+/* EDITAR (azul) */
+
+[data-theme="light"] .btn-edit {
+
+    color: #3b82f6 !important;
+
+    border-color: #3b82f6 !important;
+
+}
+
+
+/* EXCLUIR (vermelho) */
+
+[data-theme="light"] .btn-delete {
+
+    color: #ef4444 !important;
+
+    border-color: #ef4444 !important;
+
+}
+
+
+/* WHATSAPP (verde) */
+
+[data-theme="light"] .btn-whatsapp {
+
+    color: #22c55e !important;
+
+    border-color: #22c55e !important;
+
+}
+
+
+/* =========================
+   HOVER BOTÕES
+========================= */
+
+[data-theme="light"] .btn-edit:hover {
+
+    background-color: rgba(
+        59,
+        130,
+        246,
+        0.1
+    ) !important;
+
+}
+
+[data-theme="light"] .btn-delete:hover {
+
+    background-color: rgba(
+        239,
+        68,
+        68,
+        0.1
+    ) !important;
+
+}
+
+[data-theme="light"] .btn-whatsapp:hover {
+
+    background-color: rgba(
+        34,
+        197,
+        94,
+        0.1
+    ) !important;
+
+}
