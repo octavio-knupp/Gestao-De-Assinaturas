@@ -1,11 +1,9 @@
 /* ================================================
    TEMA CLARO GLOBAL — Next Pay
-   Adicione em todos os HTMLs dentro do <head>:
-   <link rel="stylesheet" href="{% static 'css/theme.css' %}">
    ================================================ */
 
 /* ========================
-   GERAL (todas as páginas)
+   GERAL
    ======================== */
 
 [data-theme="light"] body {
@@ -24,7 +22,7 @@
 }
 
 /* ========================
-   HOME (home.css)
+   HOME
    ======================== */
 
 [data-theme="light"] .plan-card {
@@ -78,7 +76,7 @@
 }
 
 /* ========================
-   CADASTRO CLIENTE (cadastro_client.css)
+   CADASTRO CLIENTE
    ======================== */
 
 [data-theme="light"] .container {
@@ -111,7 +109,7 @@
 }
 
 /* ========================
-   DELETE CLIENTE (delete_client.css)
+   DELETE CLIENTE
    ======================== */
 
 [data-theme="light"] .client-box {
@@ -130,7 +128,7 @@
 }
 
 /* ========================
-   LIST CLIENTE (list_client.css)
+   LIST CLIENTE
    ======================== */
 
 [data-theme="light"] .table-container {
@@ -156,7 +154,7 @@
 }
 
 /* ========================
-   LOGIN (login_client.css)
+   LOGIN
    ======================== */
 
 [data-theme="light"] .right {
@@ -188,7 +186,7 @@
 }
 
 /* ========================
-   UPDATE CLIENTE (update_client.css)
+   UPDATE CLIENTE
    ======================== */
 
 [data-theme="light"] input[type="date"] {
@@ -199,10 +197,10 @@
     filter: none !important;
 }
 
-/* ========================
-   LIST CLIENTE — fix topo
-   ======================== */
+/* ❌ REMOVIDO — era o causador do site descer */
 
+/*
 [data-theme="light"] body {
     padding-top: 30px !important;
 }
+*/
