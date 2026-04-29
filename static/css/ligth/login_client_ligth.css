@@ -9,11 +9,9 @@
 
 [data-theme="light"] body {
 
-    background: linear-gradient(
-        135deg,
-        #e2e8f0,
-        #f1f5f9
-    );
+    background: linear-gradient(135deg,
+            #e2e8f0,
+            #f1f5f9);
 
     color: #1a1a1a;
 
@@ -28,12 +26,10 @@
 
     background: #f8fafc;
 
-    box-shadow: 0 8px 30px rgba(
-        0,
-        0,
-        0,
-        0.15
-    );
+    box-shadow: 0 8px 30px rgba(0,
+            0,
+            0,
+            0.15);
 
 }
 

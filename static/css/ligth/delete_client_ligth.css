@@ -1,0 +1,148 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+}
+
+
+/* CONTAINER */
+.container {
+    display: flex;
+    width: 750px;
+
+    background: #f8fafc;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aparecer 0.6s ease forwards;
+}
+
+
+/* LADO ESQUERDO */
+.left {
+    width: 50%;
+
+    background: linear-gradient(135deg, #0a5c0a, #16a34a);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* LOGO */
+.logo {
+    width: 450px;
+    max-width: 700px;
+    object-fit: contain;
+}
+
+
+/* LADO DIREITO */
+.right {
+    width: 50%;
+    padding: 30px;
+
+    background: #ffffff;
+}
+
+
+/* TÍTULO */
+h2 {
+    margin-top: 0;
+    color: #1a1a1a;
+}
+
+
+/* TEXTO DE ALERTA */
+.warning {
+    color: #dc2626;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+
+/* BOX DO CLIENTE */
+.client-box {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+    padding: 15px;
+
+    color: #1a1a1a;
+
+    margin-bottom: 20px;
+}
+
+
+/* BOTÃO EXCLUIR */
+.delete {
+    width: 100%;
+    padding: 12px;
+
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+
+    color: white;
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+/* HOVER EXCLUIR */
+.delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+}
+
+
+/* BOTÃO CANCELAR */
+.cancel {
+    display: block;
+    text-align: center;
+
+    margin-top: 10px;
+    padding: 10px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+
+    background: #e2e8f0;
+    color: #1a1a1a;
+
+    transition: 0.3s;
+}
+
+
+/* HOVER CANCELAR */
+.cancel:hover {
+    background: #cbd5e1;
+}
+
+
+/* ANIMAÇÃO */
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
