@@ -1,0 +1,97 @@
+/* =========================
+   LOGIN — LIGHT MODE
+========================= */
+
+/* Fundo */
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    color: #1a1a1a;
+}
+
+/* Container */
+[data-theme="light"] .container {
+    background: #f8fafc;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Lado esquerdo */
+[data-theme="light"] .left {
+    background: #166534;
+    color: #ffffff;
+}
+
+/* Remove qualquer gradient do dark */
+[data-theme="light"] .left h1 {
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+/* Lado direito */
+[data-theme="light"] .right {
+    background: #ffffff;
+}
+
+/* Título */
+[data-theme="light"] .right h2 {
+    color: #1a1a1a !important;
+}
+
+/* Subtítulo */
+[data-theme="light"] .right .sub {
+    color: #555555 !important;
+}
+
+/* 🔥 CORREÇÃO PRINCIPAL (labels sumindo) */
+[data-theme="light"] .input-box label {
+    color: #1a1a1a !important;
+    font-weight: 500;
+}
+
+/* Inputs */
+[data-theme="light"] .input-box input {
+    background-color: #f1f5f9;
+    color: #1a1a1a;
+    border: 1px solid #cbd5e1;
+}
+
+/* Placeholder */
+[data-theme="light"] .input-box input::placeholder {
+    color: #64748b;
+}
+
+/* Botão */
+[data-theme="light"] .btn {
+    background: #00c86f;
+    color: #000;
+    border: none;
+}
+
+/* Hover */
+[data-theme="light"] .btn:hover {
+    filter: brightness(1.1);
+}
+
+/* 🔥 TEXTO "Não tem conta?" */
+[data-theme="light"] .login {
+    color: #444444 !important;
+}
+
+/* 🔥 LINK "Criar conta" */
+[data-theme="light"] .login a {
+    color: #15803d !important;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+[data-theme="light"] .login a:hover {
+    color: #166534 !important;
+    text-decoration: underline;
+}
+
+/* Caixa de erro */
+[data-theme="light"] .error-box {
+    background-color: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}

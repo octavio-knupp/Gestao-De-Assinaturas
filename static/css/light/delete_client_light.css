@@ -1,0 +1,60 @@
+/* =========================
+   DELETE CLIENT — LIGHT MODE
+========================= */
+
+/* Fundo geral */
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    color: #1a1a1a;
+}
+
+/* Container */
+[data-theme="light"] .container {
+    background: #f8fafc;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Lado direito */
+[data-theme="light"] .right {
+    background: #ffffff;
+}
+
+/* Título */
+[data-theme="light"] .right h2 {
+    color: #1a1a1a;
+}
+
+/* Texto de aviso */
+[data-theme="light"] .warning {
+    color: #444444;
+}
+
+/* Caixa do cliente */
+[data-theme="light"] .client-box {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #1a1a1a;
+}
+
+/* Botão deletar */
+[data-theme="light"] .delete {
+    background: #ef4444;
+    color: #ffffff;
+    border: none;
+}
+
+/* Hover deletar */
+[data-theme="light"] .delete:hover {
+    filter: brightness(1.1);
+}
+
+/* Botão cancelar */
+[data-theme="light"] .cancel {
+    background: #e2e8f0;
+    color: #1a1a1a;
+}
+
+/* Hover cancelar */
+[data-theme="light"] .cancel:hover {
+    background: #cbd5e1;
+}

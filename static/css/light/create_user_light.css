@@ -1,0 +1,127 @@
+/* =========================
+   CREATE CLIENT — LIGHT MODE
+========================= */
+
+/* Fundo */
+[data-theme="light"] body {
+    background: #f1f5f9;
+    color: #1a1a1a;
+}
+
+/* Container */
+[data-theme="light"] .container {
+    background: #ffffff;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   LADO ESQUERDO (IGUAL LOGIN)
+========================= */
+
+[data-theme="light"] .left {
+    background: #166534 !important;
+    color: #ffffff;
+}
+
+/* Remove qualquer efeito do dark */
+[data-theme="light"] .left h1 {
+    color: #ffffff !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+}
+
+[data-theme="light"] .left .sub {
+    color: #e5e7eb;
+}
+
+[data-theme="light"] .left ul {
+    color: #ffffff;
+}
+
+/* =========================
+   LADO DIREITO
+========================= */
+
+[data-theme="light"] .right {
+    background: #ffffff;
+}
+
+/* Título */
+[data-theme="light"] .right h2 {
+    color: #1a1a1a;
+}
+
+/* Sub */
+[data-theme="light"] .right .sub {
+    color: #555555;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+[data-theme="light"] .input-box label {
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .input-box input {
+    background: #f1f5f9;
+    color: #1a1a1a;
+    border: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] .input-box input::placeholder {
+    color: #64748b;
+}
+
+/* =========================
+   GÊNERO
+========================= */
+
+[data-theme="light"] .gender-label {
+    color: #1a1a1a;
+}
+
+[data-theme="light"] .gender {
+    color: #1a1a1a;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+[data-theme="light"] .btn {
+    background: #00c86f;
+    color: #000;
+    border: none;
+}
+
+[data-theme="light"] .btn:hover {
+    filter: brightness(1.1);
+}
+
+/* =========================
+   LINKS
+========================= */
+
+[data-theme="light"] .home {
+    color: #444;
+}
+
+[data-theme="light"] .home a {
+    color: #15803d;
+}
+
+[data-theme="light"] .home a:hover {
+    color: #166534;
+}
+
+/* =========================
+   ERRO
+========================= */
+
+[data-theme="light"] .error-box {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}

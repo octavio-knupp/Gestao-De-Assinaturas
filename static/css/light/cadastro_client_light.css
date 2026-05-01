@@ -1,0 +1,147 @@
+/* =========================
+   BASE
+========================= */
+
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+/* =========================
+   CONTAINER CENTRAL
+========================= */
+
+[data-theme="light"] .container {
+    width: 900px;
+    height: 520px;
+
+    margin: 60px auto;
+
+    display: flex;
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   LEFT (PADRÃO VERDE)
+========================= */
+
+[data-theme="light"] .left {
+    width: 40%;
+    background: linear-gradient(135deg, #166534, #16a34a);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme="light"] .left .logo {
+    width: 350px;
+}
+
+/* =========================
+   RIGHT (FORM)
+========================= */
+
+[data-theme="light"] .right {
+    width: 60%;
+    background: #ffffff;
+
+    padding: 40px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* TÍTULO */
+
+[data-theme="light"] .right h2 {
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* =========================
+   CAMPOS
+========================= */
+
+[data-theme="light"] .campo {
+    margin-bottom: 12px;
+}
+
+[data-theme="light"] .campo input,
+[data-theme="light"] .campo select {
+    width: 100%;
+    padding: 12px;
+
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+
+    background: #f1f5f9;
+    color: #1a1a1a;
+
+    outline: none;
+}
+
+/* Placeholder */
+
+[data-theme="light"] .campo input::placeholder {
+    color: #64748b;
+}
+
+/* Focus */
+
+[data-theme="light"] .campo input:focus,
+[data-theme="light"] .campo select:focus {
+    border-color: #16a34a;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+[data-theme="light"] button {
+    margin-top: 15px;
+
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #16a34a;
+    color: #000;
+
+    font-weight: 600;
+    cursor: pointer;
+}
+
+[data-theme="light"] button:hover {
+    filter: brightness(1.1);
+}
+
+/* =========================
+   BOTÃO HOME
+========================= */
+
+[data-theme="light"] .btn-home-global {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+
+    background: #ffffff;
+    color: #1a1a1a;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .btn-home-global:hover {
+    background: #f1f5f9;
+}

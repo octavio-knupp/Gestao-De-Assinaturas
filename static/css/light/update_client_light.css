@@ -1,0 +1,75 @@
+/* =========================
+   UPDATE CLIENT — LIGHT MODE
+========================= */
+
+/* Fundo geral */
+[data-theme="light"] body {
+    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+    color: #1a1a1a;
+}
+
+/* Container */
+[data-theme="light"] .container {
+    background: #f8fafc;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Lado direito (formulário) */
+[data-theme="light"] .right {
+    background: #ffffff;
+}
+
+/* Título */
+[data-theme="light"] .right h2 {
+    color: #1a1a1a;
+}
+
+/* Inputs */
+[data-theme="light"] .campo input,
+[data-theme="light"] .campo select {
+    background-color: #f1f5f9;
+    color: #1a1a1a;
+    border: 1px solid #cbd5e1;
+}
+
+/* Placeholder */
+[data-theme="light"] .campo input::placeholder {
+    color: #64748b;
+}
+
+/* Select */
+[data-theme="light"] .campo select {
+    cursor: pointer;
+}
+
+/* Input date (ícone claro) */
+[data-theme="light"] input[type="date"] {
+    color: #1a1a1a;
+}
+
+[data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: none;
+}
+
+/* Botão salvar */
+[data-theme="light"] button {
+    background: #00c86f;
+    color: #000;
+    border: none;
+}
+
+/* Hover botão */
+[data-theme="light"] button:hover {
+    filter: brightness(1.1);
+}
+
+/* Botão voltar (seta) */
+[data-theme="light"] .btn-home {
+    background: #e2e8f0;
+    color: #1a1a1a;
+}
+
+/* Hover botão voltar */
+[data-theme="light"] .btn-home:hover {
+    background: #cbd5e1;
+}
