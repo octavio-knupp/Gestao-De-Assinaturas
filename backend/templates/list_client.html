@@ -29,6 +29,18 @@
         </a>
         <h2>Lista de Clientes</h2>
 
+        <form method="GET">
+            <div id="status-filter">
+                <label for="status">Filtrar por status:</label>
+                <select name="status" id="status" onchange="this.form.submit()">
+                    <option value="todos" {% if status_selected == "todos" %}selected{% endif %}>Todos</option>
+                    <option value="vencido" {% if status_selected == "vencido" %}selected{% endif %}>Vencido</option>
+                    <option value="vence_hoje" {% if status_selected == "vence_hoje" %}selected{% endif %}>Vence hoje</option>
+                    <option value="vence_breve" {% if status_selected == "vence_breve" %}selected{% endif %}>Vence embreve</option>
+                    <option value="em_dia" {% if status_selected == "em_dia" %}selected{% endif %}>Em dia</option>
+                </select>
+            </div>
+        </form>
 
         <div class="table-container">
 

@@ -176,51 +176,63 @@ def logout_client(request):
 @login_required
 def list_clients(request):
 
+    status_filter = request.GET.get('status')
+
     clients = Client.objects.filter(
         owner=request.user
     )
 
     today = date.today()
+    breve = today + timedelta(days=3)
 
+    # 🔥 FILTRO NO BANCO (ANTES DO LOOP)
+    if status_filter == 'todos' or not status_filter:
+        pass  # não filtra nada
+
+    elif status_filter == 'vencido':
+        clients = clients.filter(due_date__lt=today)
+
+    elif status_filter == 'vence_hoje':
+        clients = clients.filter(due_date=today)
+
+    elif status_filter == 'vence_breve':
+        clients = clients.filter(due_date__gt=today, due_date__lte=breve)
+
+    elif status_filter == 'em_dia':
+        clients = clients.filter(due_date__gt=breve)
+    
+  
+
+    # 🧠 AGORA MONTA STATUS (SÓ PRA EXIBIÇÃO)
     clients_status = []
 
     for client in clients:
 
         if client.due_date < today:
-
             status = "vencido"
 
         elif client.due_date == today:
-
             status = "vence_hoje"
 
-        elif client.due_date <= today + timedelta(days=3):
-
+        elif client.due_date <= breve:
             status = "vence_breve"
 
         else:
-
             status = "em_dia"
 
         clients_status.append({
-
             'client': client,
             'status': status
-
         })
 
     return render(
-
         request,
-
         'list_client.html',
-
         {
-            'clients_status': clients_status
+            'clients_status': clients_status,
+            'status_selected': status_filter
         }
-
     )
-
 
 # ===============================
 # 📋 CADASTRO CLIENTE
