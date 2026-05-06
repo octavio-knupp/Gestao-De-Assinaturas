@@ -380,3 +380,5 @@ def delete_client(request, client_id):
             'client': client
         }
     )
+
+print = "opaaa"
