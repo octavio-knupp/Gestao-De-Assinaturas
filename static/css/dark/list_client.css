@@ -184,3 +184,68 @@ tr:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
+/* CONTAINER */
+.toggle-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 10px auto 0 auto;
+    padding-right: 10px;
+
+    box-sizing: border-box;
+}
+
+/* FILTRO */
+#status-filter {
+    margin-bottom: 0;
+}
+
+/* TABELA */
+.table-container {
+    margin-top: 5px;
+}
+
+/* BOTÃO BASE */
+.toggle-btn {
+    width: 60px;
+    height: 30px;
+    background: #ccc;
+    border-radius: 30px;
+    
+    border: 1px solid #ffffff; /* 🔥 borda adicionada */
+
+    cursor: pointer;
+    position: relative;
+    padding: 2px;
+    transition: background 0.3s;
+
+    flex-shrink: 0;
+}
+
+/* BOLINHA */
+.toggle-circle {
+    width: 26px;
+    height: 26px;
+    background: white;
+    border-radius: 50%;
+
+    position: relative; /* 🔥 evita overflow absoluto */
+    left: 0;
+
+    transition: transform 0.3s;
+}
+
+/* estado ativo */
+.toggle-btn.active {
+    background: #4CAF50;
+    border-color: #ffffff;
+}
+
+.toggle-btn.active .toggle-circle {
+    transform: translateX(100%); /* 🔥 nunca mais escapa */
+}

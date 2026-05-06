@@ -8,135 +8,131 @@
     <title>Lista de Clientes</title>
 
     <link rel="stylesheet" href="{% static 'css/dark/list_client.css' %}">
-
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <link rel="stylesheet" href="{% static 'css/light/list_client_light.css' %}">
 
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 
-    <script src="{% static 'js/theme.js' %}" defer></script>    
-    
-    <script src="{% static 'js/whatsapp_toggle.js' %}" defer></script>
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <script src="{% static 'js/theme.js' %}" defer></script>
+    <script src="{% static 'js/whatsapp_toggle.js' %}" defer></script>
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- BOTÃO HOME (CASINHA) -->
-        <a href="{% url 'home_client' %}" class="btn-home" title="Voltar para Home">
-            <i class="fa-solid fa-house"></i>
-        </a>
-        <h2>Lista de Clientes</h2>
+    <!-- HOME -->
+    <a href="{% url 'home_client' %}" class="btn-home">
+        <i class="fa-solid fa-house"></i>
+    </a>
 
-            <div class="toggle-container">
+    <h2>Lista de Clientes</h2>
+
+    <!-- ✅ TOGGLE CORRETO -->
+    <div class="toggle-container">
         <span>Envio automático WhatsApp</span>
 
-        <label class="switch">
-            <input type="checkbox" id="toggleWhats">
-            <span class="slider"></span>
-        </label>
+        <button id="toggleWhats" class="toggle-btn">
+            <span class="toggle-circle"></span>
+        </button>
     </div>
 
-    <div id="status-msg" class="status-msg"></div>
-    
-        <form method="GET">
-            <div id="status-filter">
-                <label for="status">Filtrar por status:</label>
-                <select name="status" id="status" onchange="this.form.submit()">
-                    <option value="todos" {% if status_selected == "todos" %}selected{% endif %}>Todos</option>
-                    <option value="vencido" {% if status_selected == "vencido" %}selected{% endif %}>Vencido</option>
-                    <option value="vence_hoje" {% if status_selected == "vence_hoje" %}selected{% endif %}>Vence hoje</option>
-                    <option value="vence_breve" {% if status_selected == "vence_breve" %}selected{% endif %}>Vence embreve</option>
-                    <option value="em_dia" {% if status_selected == "em_dia" %}selected{% endif %}>Em dia</option>
-                </select>
-            </div>
-        </form>
+    <!-- FILTRO -->
+    <form method="GET">
+        <div id="status-filter">
+            <label for="status">Filtrar por status:</label>
 
-        <div class="table-container">
-
-            <table>
-
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Vencimento</th>
-                    <th>Status</th>
-                    <th>Mensalidade</th>
-                    <th>Ações</th>
-                </tr>
-
-                {% for item in clients_status %}
-                <tr>
-
-                    <td>{{ item.client.id }}</td>
-
-                    <td>
-                        {{ item.client.first_name }} {{ item.client.last_name }}
-                    </td>
-
-                    <td>{{ item.client.phone }}</td>
-
-                    <td>{{ item.client.due_date }}</td>
-
-                    <!-- STATUS -->
-                    <td class="status 
-                        {% if item.status == 'vencido' %}vencido
-                        {% elif item.status == 'vence_hoje' %}vence_hoje
-                        {% elif item.status == 'vence_breve' %}vence_breve
-                        {% else %}em_dia
-                        {% endif %}
-                    ">
-
-                        {% if item.status == "vencido" %}
-                        <span class="status-dot red"></span> Vencido
-
-                        {% elif item.status == "vence_hoje" %}
-                        <span class="status-dot yellow"></span> Vence hoje
-
-                        {% elif item.status == "vence_breve" %}
-                        <span class="status-dot orange"></span> Vence em breve
-
-                        {% else %}
-                        <span class="status-dot green"></span> Em dia
-                        {% endif %}
-
-                    </td>
-
-                    <td>
-                        R$ {{ item.client.monthly_fee|floatformat:2 }}
-                    </td>
-
-                    <!-- AÇÕES -->
-                    <td class="acoes">
-
-                        <a href="{% url 'update_client' item.client.id %}" class="btn editar">
-                            <i class="fa-solid fa-pen"></i> Editar
-                        </a>
-
-                        <a href="{% url 'delete_client' item.client.id %}" class="btn excluir">
-                            <i class="fa-solid fa-trash"></i> Excluir
-                        </a>
-
-                        <a href="{% url 'send_whatsapp_client' item.client.id %}" class="btn whatsapp">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                        </a>
-
-                    </td>
-
-                </tr>
-                {% endfor %}
-
-            </table>
-
+            <select name="status" id="status" onchange="this.form.submit()">
+                <option value="todos" {% if status_selected == "todos" %}selected{% endif %}>Todos</option>
+                <option value="vencido" {% if status_selected == "vencido" %}selected{% endif %}>Vencido</option>
+                <option value="vence_hoje" {% if status_selected == "vence_hoje" %}selected{% endif %}>Vence hoje</option>
+                <option value="vence_breve" {% if status_selected == "vence_breve" %}selected{% endif %}>Vence em breve</option>
+                <option value="em_dia" {% if status_selected == "em_dia" %}selected{% endif %}>Em dia</option>
+            </select>
         </div>
+    </form>
+
+    <!-- TABELA -->
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Vencimento</th>
+                <th>Status</th>
+                <th>Mensalidade</th>
+                <th>Ações</th>
+            </tr>
+
+            {% for item in clients_status %}
+            <tr>
+
+                <td>{{ item.client.id }}</td>
+
+                <td>
+                    {{ item.client.first_name }} {{ item.client.last_name }}
+                </td>
+
+                <td>{{ item.client.phone }}</td>
+
+                <td>{{ item.client.due_date }}</td>
+
+                <!-- STATUS -->
+                <td class="status 
+                    {% if item.status == 'vencido' %}vencido
+                    {% elif item.status == 'vence_hoje' %}vence_hoje
+                    {% elif item.status == 'vence_breve' %}vence_breve
+                    {% else %}em_dia
+                    {% endif %}
+                ">
+
+                    {% if item.status == "vencido" %}
+                        <span class="status-dot red"></span> Vencido
+                    {% elif item.status == "vence_hoje" %}
+                        <span class="status-dot yellow"></span> Vence hoje
+                    {% elif item.status == "vence_breve" %}
+                        <span class="status-dot orange"></span> Vence em breve
+                    {% else %}
+                        <span class="status-dot green"></span> Em dia
+                    {% endif %}
+
+                </td>
+
+                <td>
+                    R$ {{ item.client.monthly_fee|floatformat:2 }}
+                </td>
+
+                <!-- AÇÕES -->
+                <td class="acoes">
+
+                    <a href="{% url 'update_client' item.client.id %}" class="btn editar">
+                        <i class="fa-solid fa-pen"></i> Editar
+                    </a>
+
+                    <a href="{% url 'delete_client' item.client.id %}" class="btn excluir">
+                        <i class="fa-solid fa-trash"></i> Excluir
+                    </a>
+
+                    <!-- ✅ botão controlado pelo toggle -->
+                    <a href="{% url 'send_whatsapp_client' item.client.id %}" class="btn whatsapp btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
 
     </div>
+
+</div>
 
 </body>
-
 </html>

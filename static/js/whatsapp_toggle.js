@@ -1,40 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("toggleWhats");
+    const btnsWhatsapp = document.querySelectorAll(".btn-whatsapp");
 
-    const toggle = document.getElementById('toggleWhats');
+    if (!toggle) return; // evita erro se não existir
 
-    // Estado padrão: DESLIGADO
-    let ativo = false;
+    let ativo = localStorage.getItem("whatsAuto") === "true";
 
-    // Carrega do localStorage
-    if (localStorage.getItem('whatsAtivo') !== null) {
-        ativo = localStorage.getItem('whatsAtivo') === 'true';
-    }
+    aplicarEstado();
 
-    // Atualiza checkbox
-    if (toggle) {
-        toggle.checked = ativo;
+    toggle.addEventListener("click", () => {
+        ativo = !ativo;
+        localStorage.setItem("whatsAuto", ativo);
+        aplicarEstado();
+    });
 
-        toggle.addEventListener('change', () => {
-            localStorage.setItem('whatsAtivo', toggle.checked);
-        });
-    }
+    function aplicarEstado() {
 
-    // INTERCEPTADOR FORTE (captura antes do link executar)
-    document.addEventListener('click', function (e) {
-
-        const btn = e.target.closest('.whatsapp');
-
-        if (!btn) return;
-
-        const ativo = localStorage.getItem('whatsAtivo') === 'true';
-
-        if (!ativo) {
-            e.preventDefault();
-            e.stopPropagation(); // 🔥 garante que NÃO navega
-
-            alert("🚫 Envio automático está DESATIVADO.");
+        // botão verde
+        if (ativo) {
+            toggle.classList.add("active");
+        } else {
+            toggle.classList.remove("active");
         }
 
-    }, true); // 🔥 TRUE = captura antes do navegador agir
-
+        // esconder/mostrar botões WhatsApp
+        btnsWhatsapp.forEach(btn => {
+            btn.style.display = ativo ? "none" : "inline-block";
+        });
+    }
 });
