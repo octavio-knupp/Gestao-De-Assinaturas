@@ -16,7 +16,10 @@
 
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 
-    <script src="{% static 'js/theme.js' %}" defer></script>
+    <script src="{% static 'js/theme.js' %}" defer></script>    
+    
+    <script src="{% static 'js/whatsapp_toggle.js' %}" defer></script>
+
 </head>
 
 <body>
@@ -29,6 +32,17 @@
         </a>
         <h2>Lista de Clientes</h2>
 
+            <div class="toggle-container">
+        <span>Envio automático WhatsApp</span>
+
+        <label class="switch">
+            <input type="checkbox" id="toggleWhats">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div id="status-msg" class="status-msg"></div>
+    
         <form method="GET">
             <div id="status-filter">
                 <label for="status">Filtrar por status:</label>
