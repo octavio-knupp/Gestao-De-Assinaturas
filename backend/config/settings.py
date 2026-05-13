@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'plans',
     'subscriptions',
     'payments',
-    'whatsapp',
+    'whatsapp.apps.WhatsappConfig',
 ]
 
 MIDDLEWARE = [

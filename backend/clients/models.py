@@ -16,6 +16,7 @@ class Client(models.Model):
         max_length=100
     )
 
+
     phone = models.CharField(
         max_length=20
     )
@@ -43,6 +44,11 @@ class Client(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True
+    )
+
+    last_whatsapp_sent = models.DateField(
+        null=True,
+        blank=True
     )
 
     def __str__(self):

@@ -6,6 +6,10 @@ import pyautogui
 from datetime import date, timedelta
 
 
+# =====================================
+# STATUS + MENSAGEM
+# =====================================
+
 def get_status_and_message(client):
 
     today = date.today()
@@ -43,10 +47,15 @@ def get_status_and_message(client):
     else:
 
         status = "em_dia"
+
         message = None
 
     return status, message
 
+
+# =====================================
+# ENVIO WHATSAPP
+# =====================================
 
 def send_whatsapp_message(phone, message):
 
@@ -55,33 +64,54 @@ def send_whatsapp_message(phone, message):
 
     phone = phone.strip()
 
-    if not phone.startswith("+"):
+    # adiciona +55 automaticamente
+    if not phone.startswith("+55"):
+
         phone = "+55" + phone
 
     try:
 
         now = datetime.datetime.now()
 
-        send_time = now + datetime.timedelta(minutes=1)
+        # tempo para abrir WhatsApp
+        send_time = now + datetime.timedelta(minutes=2)
 
         hour = send_time.hour
         minute = send_time.minute
 
+        print(f"Abrindo WhatsApp para {phone}")
+
         kit.sendwhatmsg(
+
             phone,
             message,
+
             hour,
             minute,
-            wait_time=25,
+
+            wait_time=40,
+
             tab_close=False
         )
 
-        # Espera carregar o WhatsApp
-        time.sleep(35)
+        # espera WhatsApp carregar totalmente
+        time.sleep(20)
 
-        # Força envio
+        print("Tentando enviar ENTER...")
+
+        # garante foco na janela
+        pyautogui.click()
+
+        time.sleep(2)
+
+        # envia mensagem
         pyautogui.press("enter")
+
+        print(f"Mensagem enviada para {phone}")
 
     except Exception as e:
 
-        print("Erro ao enviar WhatsApp:", e)
+        print(
+            "Erro ao enviar WhatsApp:",
+            e
+        )
