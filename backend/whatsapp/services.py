@@ -1,3 +1,4 @@
+import traceback
 import pywhatkit as kit
 import datetime
 import time
@@ -66,7 +67,6 @@ def send_whatsapp_message(phone, message):
 
     # adiciona +55 automaticamente
     if not phone.startswith("+55"):
-
         phone = "+55" + phone
 
     try:
@@ -82,15 +82,11 @@ def send_whatsapp_message(phone, message):
         print(f"Abrindo WhatsApp para {phone}")
 
         kit.sendwhatmsg(
-
             phone,
             message,
-
             hour,
             minute,
-
             wait_time=40,
-
             tab_close=False
         )
 
@@ -110,8 +106,5 @@ def send_whatsapp_message(phone, message):
         print(f"Mensagem enviada para {phone}")
 
     except Exception as e:
-
-        print(
-            "Erro ao enviar WhatsApp:",
-            e
-        )
+        traceback.print_exc()
+        print("Erro ao enviar WhatsApp:", e)
