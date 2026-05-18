@@ -3,7 +3,8 @@ from django.urls import path
 from .views import (
     send_whatsapp_client,
     toggle_whatsapp_automation,
-    get_whatsapp_automation_status
+    get_whatsapp_automation_status,
+    pagamentos
 )
 
 urlpatterns = [
@@ -25,4 +26,11 @@ urlpatterns = [
         get_whatsapp_automation_status,
         name='get_whatsapp_automation_status'
     ),
+
+    path(
+        'pagamentos/',
+        pagamentos,
+        name='pagamentos'
+    ),
+
 ]

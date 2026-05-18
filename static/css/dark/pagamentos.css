@@ -1,0 +1,539 @@
+/* ============================================================
+   pagamentos.css — Tela de Finalizar Pagamento (Dark Theme)
+   Caminho: static/dark/pagamentos.css
+   ============================================================ */
+
+/* ---------- RESET BORDAS ---------- */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0f1117;
+}
+
+/* ---------- VARIÁVEIS ---------- */
+:root {
+  --bg-page:      #0f1117;
+  --bg-card:      #1a1d27;
+  --bg-card-alt:  #1e2130;
+  --bg-input:     #12151f;
+  --border:       #2a2d3a;
+  --border-focus: #22c55e;
+  --text-primary: #e8eaf0;
+  --text-muted:   #6b7280;
+  --text-label:   #9ca3af;
+  --green:        #22c55e;
+  --green-dim:    #16a34a;
+  --gold:         #f59e0b;
+  --purple:       #a78bfa;
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+  --shadow:       0 4px 24px rgba(0,0,0,0.35);
+}
+
+/* ---------- CONTAINER GERAL ---------- */
+.pagamento-container {
+  padding: 28px 32px 40px;
+  min-height: 100vh;
+  background: var(--bg-page);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+
+/* ---------- CABEÇALHO ---------- */
+.pagamento-header {
+  margin-bottom: 28px;
+}
+
+.pagamento-titulo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+  letter-spacing: -0.3px;
+}
+
+.pagamento-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb-item { color: var(--text-muted); }
+.breadcrumb-item.active { color: var(--green); font-weight: 500; }
+.breadcrumb-sep { color: var(--text-muted); }
+
+/* ---------- LAYOUT PRINCIPAL ---------- */
+.pagamento-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ---------- COLUNA ESQUERDA ---------- */
+.pagamento-col-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---------- SEÇÃO TÍTULOS ---------- */
+.secao-titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.secao-subtitulo {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 20px;
+}
+
+/* ---------- SEÇÃO PLANOS ---------- */
+.secao-planos {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+/* ---------- CARD DE PLANO ---------- */
+.plano-card {
+  position: relative;
+  background: var(--bg-card-alt);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.plano-card:hover {
+  border-color: #3a3f52;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.plano-card.selecionado {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(34,197,94,0.15), var(--shadow);
+  background: rgba(34,197,94,0.04);
+}
+
+.plano-check {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  line-height: 0;
+}
+
+.plano-nome {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.plano-nome.bronze { color: var(--green); }
+.plano-nome.gold   { color: var(--gold); }
+.plano-nome.black  { color: var(--purple); }
+
+.plano-preco {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+.preco-valor {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.preco-periodo {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.plano-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.plano-features li {
+  font-size: 0.8rem;
+  color: var(--text-label);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.feature-icon {
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ---------- SEÇÃO DADOS DE PAGAMENTO ---------- */
+.secao-dados {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+/* ---------- FORMULÁRIO ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.campo-nome    { grid-column: 1; }
+.campo-numero  { grid-column: 2; }
+.campo-validade{ grid-column: 1; }
+.campo-cvv     { grid-column: 2; }
+.campo-cpf     { grid-column: 1 / -1; }
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo-label {
+  font-size: 0.8rem;
+  color: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.campo-input {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.campo-input::placeholder { color: var(--text-muted); font-size: 0.85rem; }
+
+.campo-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+}
+
+.input-icone {
+  position: relative;
+}
+
+.input-icone .campo-input {
+  padding-right: 42px;
+}
+
+.input-icon-svg {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ---------- MÉTODOS DE PAGAMENTO ---------- */
+.metodo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.metodos-lista {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.metodo-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.87rem;
+  font-family: inherit;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.metodo-btn:hover {
+  border-color: #3a3f52;
+  color: var(--text-primary);
+}
+
+.metodo-btn.ativo {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(34,197,94,0.07);
+}
+
+/* ---------- BOTÃO FINALIZAR ---------- */
+.btn-finalizar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: var(--green);
+  color: #0a0e14;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  letter-spacing: 0.2px;
+  margin-bottom: 12px;
+}
+
+.btn-finalizar:hover {
+  background: #16a34a;
+  box-shadow: 0 4px 18px rgba(34,197,94,0.3);
+  transform: translateY(-1px);
+}
+
+.btn-finalizar:active { transform: translateY(0); }
+
+.btn-finalizar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- TERMOS ---------- */
+.termos-texto {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.termos-link {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
+.termos-link:hover { text-decoration: underline; }
+
+/* ---------- COLUNA DIREITA ---------- */
+.pagamento-col-direita {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 24px;
+}
+
+/* ---------- CARD RESUMO ---------- */
+.resumo-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.resumo-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resumo-titulo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.resumo-corpo {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resumo-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.resumo-plano-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.resumo-plano-nome {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.resumo-plano-nome.bronze { color: var(--green); }
+.resumo-plano-nome.gold   { color: var(--gold); }
+.resumo-plano-nome.black  { color: var(--purple); }
+
+.resumo-plano-preco {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.resumo-plano-preco small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.resumo-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+.resumo-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.84rem;
+}
+
+.resumo-chave { color: var(--text-muted); }
+.resumo-valor { color: var(--text-primary); font-weight: 500; }
+.resumo-valor.verde { color: var(--green); }
+
+.resumo-linha.total {
+  margin-top: 4px;
+}
+
+.resumo-linha.total .resumo-chave {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.total-valor {
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  color: var(--green) !important;
+  letter-spacing: -0.5px;
+}
+
+/* ---------- CARD PAGAMENTO SEGURO ---------- */
+.seguro-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+}
+
+.seguro-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.seguro-titulo {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.seguro-texto {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.seguro-badge {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.seguro-badge-texto {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.seguro-marca {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.marca-dot {
+  color: var(--green);
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 1100px) {
+  .pagamento-layout {
+    grid-template-columns: 1fr;
+  }
+  .pagamento-col-direita {
+    position: static;
+  }
+}
+
+@media (max-width: 700px) {
+  .pagamento-container { padding: 16px; }
+  .planos-grid { grid-template-columns: 1fr; }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .campo-nome, .campo-numero,
+  .campo-validade, .campo-cvv, .campo-cpf {
+    grid-column: 1;
+  }
+  .metodos-lista { flex-direction: column; }
+}

@@ -1,0 +1,310 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/dark/pagamentos.css' %}">
+
+<!-- CONTEÚDO PRINCIPAL DA TELA DE PAGAMENTO -->
+<div class="pagamento-container">
+
+  <!-- CABEÇALHO DA SEÇÃO -->
+  <div class="pagamento-header">
+    <h1 class="pagamento-titulo">Pagamento</h1>
+    <nav class="pagamento-breadcrumb">
+      <span class="breadcrumb-item">Dashboard</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item active">Pagamentos</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-item">Finalizar pagamento</span>
+    </nav>
+  </div>
+
+  <!-- LAYOUT PRINCIPAL: ESQUERDA + DIREITA -->
+  <div class="pagamento-layout">
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="pagamento-col-esquerda">
+
+      <!-- SEÇÃO: ESCOLHA O PLANO -->
+      <section class="secao-planos">
+        <h2 class="secao-titulo">Escolha o seu plano</h2>
+        <p class="secao-subtitulo">Selecione o plano ideal para o crescimento do seu negócio.</p>
+
+        <div class="planos-grid">
+
+          <!-- PLANO BRONZE (selecionado) -->
+          <div class="plano-card selecionado" data-plano="bronze" onclick="selecionarPlano(this, 'bronze', 'R$ 29,90')">
+            <div class="plano-check">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#22c55e"/>
+                <path d="M7 12l3.5 3.5L17 8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="plano-nome bronze">Bronze</h3>
+            <div class="plano-preco">
+              <span class="preco-valor">R$ 29,90</span>
+              <span class="preco-periodo">/mês</span>
+            </div>
+            <ul class="plano-features">
+              <li><span class="feature-icon">✓</span> Até 50 clientes</li>
+              <li><span class="feature-icon">✓</span> Suporte por e-mail</li>
+              <li><span class="feature-icon">✓</span> Relatórios básicos</li>
+              <li><span class="feature-icon">✓</span> Controle de assinaturas</li>
+            </ul>
+          </div>
+
+          <!-- PLANO GOLD -->
+          <div class="plano-card" data-plano="gold" onclick="selecionarPlano(this, 'gold', 'R$ 59,90')">
+            <h3 class="plano-nome gold">Gold</h3>
+            <div class="plano-preco">
+              <span class="preco-valor">R$ 59,90</span>
+              <span class="preco-periodo">/mês</span>
+            </div>
+            <ul class="plano-features">
+              <li><span class="feature-icon">✓</span> Até 200 clientes</li>
+              <li><span class="feature-icon">✓</span> Suporte prioritário</li>
+              <li><span class="feature-icon">✓</span> Relatórios completos</li>
+              <li><span class="feature-icon">✓</span> Controle de assinaturas</li>
+              <li><span class="feature-icon">✓</span> Exportação de dados</li>
+            </ul>
+          </div>
+
+          <!-- PLANO BLACK -->
+          <div class="plano-card" data-plano="black" onclick="selecionarPlano(this, 'black', 'R$ 99,90')">
+            <h3 class="plano-nome black">Black</h3>
+            <div class="plano-preco">
+              <span class="preco-valor">R$ 99,90</span>
+              <span class="preco-periodo">/mês</span>
+            </div>
+            <ul class="plano-features">
+              <li><span class="feature-icon">✓</span> Clientes ilimitados</li>
+              <li><span class="feature-icon">✓</span> Suporte 24/7</li>
+              <li><span class="feature-icon">✓</span> Relatórios completos</li>
+              <li><span class="feature-icon">✓</span> Controle de assinaturas</li>
+              <li><span class="feature-icon">✓</span> Exportação de dados</li>
+              <li><span class="feature-icon">✓</span> Multiusuários</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEÇÃO: DADOS DE PAGAMENTO -->
+      <section class="secao-dados">
+        <h2 class="secao-titulo">Dados de pagamento</h2>
+        <p class="secao-subtitulo">Preencha os dados do seu cartão.</p>
+
+        <div class="form-grid">
+          <div class="campo-grupo campo-nome">
+            <label class="campo-label">Nome no cartão</label>
+            <input type="text" class="campo-input" placeholder="Como está no cartão" id="nome-cartao">
+          </div>
+          <div class="campo-grupo campo-numero">
+            <label class="campo-label">Número do cartão</label>
+            <div class="input-icone">
+              <input type="text" class="campo-input" placeholder="1234 5678 9012 3456" id="numero-cartao" maxlength="19">
+              <svg class="input-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="5" width="20" height="14" rx="2" stroke="#6b7280" stroke-width="1.5"/>
+                <path d="M2 10h20" stroke="#6b7280" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="campo-grupo campo-validade">
+            <label class="campo-label">Validade</label>
+            <input type="text" class="campo-input" placeholder="MM / AA" id="validade" maxlength="7">
+          </div>
+          <div class="campo-grupo campo-cvv">
+            <label class="campo-label">CVV</label>
+            <div class="input-icone">
+              <input type="text" class="campo-input" placeholder="123" id="cvv" maxlength="4">
+              <svg class="input-icon-svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="#6b7280" stroke-width="1.5"/>
+                <path d="M12 8v1m0 6v-5" stroke="#6b7280" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="campo-grupo campo-cpf">
+            <label class="campo-label">CPF do titular</label>
+            <input type="text" class="campo-input" placeholder="000.000.000-00" id="cpf" maxlength="14">
+          </div>
+        </div>
+
+        <!-- MÉTODO DE PAGAMENTO -->
+        <div class="metodo-grupo">
+          <label class="campo-label">Método de pagamento</label>
+          <div class="metodos-lista">
+
+            <button class="metodo-btn ativo" onclick="selecionarMetodo(this)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 10h20" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Cartão de crédito
+            </button>
+
+            <button class="metodo-btn" onclick="selecionarMetodo(this)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M3 9h18M3 15h18M9 9v6M15 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Boleto bancário
+            </button>
+
+            <button class="metodo-btn" onclick="selecionarMetodo(this)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3l3.5 3.5-7 7L12 17l7-7L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M5 10l-2 2 9 9 9-9-2-2" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              PIX
+            </button>
+
+          </div>
+        </div>
+
+        <!-- BOTÃO FINALIZAR -->
+        <button class="btn-finalizar" onclick="finalizarPagamento()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Finalizar pagamento
+        </button>
+
+        <p class="termos-texto">
+          Ao finalizar, você concorda com os nossos
+          <a href="#" class="termos-link">Termos de Uso</a> e
+          <a href="#" class="termos-link">Política de Privacidade</a>.
+        </p>
+      </section>
+
+    </div><!-- fim col-esquerda -->
+
+    <!-- COLUNA DIREITA: RESUMO DO PEDIDO -->
+    <aside class="pagamento-col-direita">
+
+      <div class="resumo-card">
+        <div class="resumo-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <h3 class="resumo-titulo">Resumo do pedido</h3>
+        </div>
+
+        <div class="resumo-corpo">
+          <p class="resumo-label">Plano selecionado</p>
+          <div class="resumo-plano-linha">
+            <span class="resumo-plano-nome" id="resumo-plano-nome">Bronze</span>
+            <span class="resumo-plano-preco" id="resumo-plano-preco">R$ 29,90 <small>/mês</small></span>
+          </div>
+
+          <div class="resumo-divider"></div>
+
+          <div class="resumo-linha">
+            <span class="resumo-chave">Cobrança</span>
+            <span class="resumo-valor">Mensal</span>
+          </div>
+          <div class="resumo-linha">
+            <span class="resumo-chave">Clientes incluídos</span>
+            <span class="resumo-valor" id="resumo-clientes">Até 50</span>
+          </div>
+
+          <div class="resumo-divider"></div>
+
+          <div class="resumo-linha">
+            <span class="resumo-chave">Subtotal</span>
+            <span class="resumo-valor" id="resumo-subtotal">R$ 29,90</span>
+          </div>
+          <div class="resumo-linha">
+            <span class="resumo-chave">Desconto</span>
+            <span class="resumo-valor verde">R$ 0,00</span>
+          </div>
+
+          <div class="resumo-divider"></div>
+
+          <div class="resumo-linha total">
+            <span class="resumo-chave">Total</span>
+            <span class="resumo-valor total-valor" id="resumo-total">R$ 29,90</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGAMENTO SEGURO -->
+      <div class="seguro-card">
+        <div class="seguro-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 3v5c0 4.4-3 8.5-7 9.9C8 19.5 5 15.4 5 11V6l7-3z" stroke="#22c55e" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="seguro-titulo">Pagamento seguro</span>
+        </div>
+        <p class="seguro-texto">Seus dados estão protegidos com criptografia de ponta a ponta.</p>
+        <div class="seguro-badge">
+          <span class="seguro-badge-texto">Pagamento 100% seguro via</span>
+          <span class="seguro-marca">pagar.me <span class="marca-dot">●</span></span>
+        </div>
+      </div>
+
+    </aside>
+
+  </div><!-- fim layout -->
+
+</div><!-- fim container -->
+
+<script>
+  const planoInfo = {
+    bronze: { nome: 'Bronze', preco: 'R$ 29,90', clientes: 'Até 50' },
+    gold:   { nome: 'Gold',   preco: 'R$ 59,90', clientes: 'Até 200' },
+    black:  { nome: 'Black',  preco: 'R$ 99,90', clientes: 'Ilimitados' },
+  };
+
+  function selecionarPlano(el, plano, preco) {
+    document.querySelectorAll('.plano-card').forEach(c => {
+      c.classList.remove('selecionado');
+      c.querySelector('.plano-check')?.remove();
+    });
+    el.classList.add('selecionado');
+    const check = document.createElement('div');
+    check.className = 'plano-check';
+    check.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#22c55e"/><path d="M7 12l3.5 3.5L17 8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    el.prepend(check);
+
+    const info = planoInfo[plano];
+    document.getElementById('resumo-plano-nome').textContent = info.nome;
+    document.getElementById('resumo-plano-nome').className = 'resumo-plano-nome ' + plano;
+    document.getElementById('resumo-plano-preco').innerHTML = info.preco + ' <small>/mês</small>';
+    document.getElementById('resumo-clientes').textContent = info.clientes;
+    document.getElementById('resumo-subtotal').textContent = info.preco;
+    document.getElementById('resumo-total').textContent = info.preco;
+  }
+
+  function selecionarMetodo(el) {
+    document.querySelectorAll('.metodo-btn').forEach(b => b.classList.remove('ativo'));
+    el.classList.add('ativo');
+  }
+
+  function finalizarPagamento() {
+    const btn = document.querySelector('.btn-finalizar');
+    btn.textContent = 'Processando...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 11V7a4 4 0 018 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Finalizar pagamento`;
+      btn.disabled = false;
+    }, 2000);
+  }
+
+  // Máscara simples para cartão
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartao = document.getElementById('numero-cartao');
+    if (cartao) {
+      cartao.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '').substring(0, 16);
+        e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+      });
+    }
+    const val = document.getElementById('validade');
+    if (val) {
+      val.addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length >= 3) v = v.substring(0,2) + ' / ' + v.substring(2);
+        e.target.value = v;
+      });
+    }
+  });
+</script>

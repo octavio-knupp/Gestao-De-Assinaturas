@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.shortcuts import (
     get_object_or_404,
     redirect
@@ -91,3 +92,6 @@ def get_whatsapp_automation_status(request):
     return JsonResponse({
         "active": active
     })
+
+def pagamentos(request):
+    return render(request, 'pagamentos.html')
