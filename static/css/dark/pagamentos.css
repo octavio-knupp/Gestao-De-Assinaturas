@@ -871,3 +871,28 @@ html, body {
   }
 
 }
+
+/* ---------- BOTÃO HOME ---------- */
+.btn-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.83rem;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 7px 14px 7px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.btn-home:hover {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(34, 197, 94, 0.07);
+}
