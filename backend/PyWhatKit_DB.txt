@@ -250,3 +250,13 @@ Phone Number: +5541997571136
 Message: Olá Nicolas,Sua assinatura irá vencer em breve.Renove antecipadamente para evitar interrupções.
 >>>>>>> Stashed changes
 --------------------
+Date: 25/5/2026
+Time: 19:55
+Phone Number: +5541985213225
+Message: Olá Octavio,Sua assinatura irá vencer em breve.Renove antecipadamente para evitar interrupções.
+--------------------
+Date: 25/5/2026
+Time: 19:58
+Phone Number: +5541985213225
+Message: Olá Octavio,Sua assinatura irá vencer em breve.Renove antecipadamente para evitar interrupções.
+--------------------
