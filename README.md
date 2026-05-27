@@ -25,12 +25,12 @@
 | ✅ | Botão ligar / desligar modo automático de mensagens |
 | ✅ | Filtro de status do cliente |
 | ✅ | Reformular banco de dados — mensalidade, plano por cliente (bronze, gold, black) |
+| ✅ | Sistema de pagamento integrado com mensagem automática e autenticação |
 | ⏳ | Dashboard |
-| ⏳ | Sistema de pagamento integrado com mensagem automática e autenticação |
 | ⏳ | Otimizar tela home — barra lateral e planos só para clientes cadastrados |
 | ⏳ | Mover plano ativo para dentro de configurações — dados do usuário e método de pagamento |
 
-**Progresso: 7 / 11 tarefas concluídas (64%)**
+**Progresso: 8 / 11 tarefas concluídas (64%)**
 
 ---
 
