@@ -1,40 +1,47 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Cadastro Cliente</title>
 
     <!-- Fonte -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/dark/cadastro_client.css' %}">
-    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
     <link rel="stylesheet" href="{% static 'css/light/cadastro_client_light.css' %}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
 
     <!-- JS -->
     <script src="{% static 'js/theme.js' %}" defer></script>
 </head>
+
 <body>
 
-    <!-- BOTÃO HOME -->
-    <a href="/" class="btn-home-global">
+    <!-- HOME -->
+    <a href="{% url 'home_client' %}" class="btn-home">
         <i class="fa-solid fa-house"></i>
+        Home
     </a>
 
+    <!-- CONTAINER -->
     <div class="container">
 
-        <!-- LADO ESQUERDO (LOGO) -->
+        <!-- LADO ESQUERDO -->
         <div class="left">
             <img src="{% static 'img/logosemfundo.png' %}" class="logo">
         </div>
 
         <!-- LADO DIREITO -->
         <div class="right">
+
             <h2>Cadastro Cliente</h2>
 
             <form method="POST">
@@ -69,9 +76,14 @@
                     <input type="date" name="due_date" required>
                 </div>
 
-                <button type="submit">Continuar</button>
+                <button type="submit">
+                    Continuar
+                </button>
+
             </form>
+
         </div>
+
     </div>
 
 </body>

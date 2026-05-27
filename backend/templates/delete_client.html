@@ -5,18 +5,29 @@
     <meta charset="UTF-8">
     <title>Excluir Cliente</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+
     <link rel="stylesheet" href="{% static 'css/dark/delete_client.css' %}">
     <link rel="stylesheet" href="{% static 'css/light/delete_client_light.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <script src="{% static 'js/theme.js' %}" defer></script>
 </head>
 
 <body>
 
+<!-- BOTÃO HOME -->
+<a href="{% url 'home_client' %}" class="btn-home">
+    <i class="fa-solid fa-house"></i>
+    Home
+</a>
+
 <div class="container">
 
-    <!-- LADO ESQUERDO COM LOGO -->
+    <!-- LADO ESQUERDO -->
     <div class="left">
         <img src="{% static 'img/logosemfundo.png' %}" class="logo">
     </div>
@@ -27,13 +38,14 @@
         <h2>Confirmar Exclusão</h2>
 
         <p class="warning">
-            Tem certeza que deseja excluir o cliente:
+            Tem certeza que deseja excluir este cliente?
         </p>
 
         <div class="client-box">
             <strong>
                 {{ client.first_name }} {{ client.last_name }}
             </strong>
+
             <p>ID: {{ client.id }}</p>
         </div>
 
@@ -41,10 +53,12 @@
             {% csrf_token %}
 
             <button type="submit" class="delete">
+                <i class="fa-solid fa-trash"></i>
                 Confirmar Exclusão
             </button>
 
             <a href="{% url 'list_clients' %}" class="cancel">
+                <i class="fa-solid fa-xmark"></i>
                 Cancelar
             </a>
         </form>

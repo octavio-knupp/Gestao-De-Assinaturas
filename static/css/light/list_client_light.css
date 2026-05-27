@@ -1,133 +1,298 @@
-/* =========================
-   LIST CLIENT — LIGHT MODE
-========================= */
+/* =========================================
+   LIST CLIENT — LIGHT THEME
+========================================= */
 
+/* =========================================
+   BODY
+========================================= */
 
-/* =========================
-   FUNDO GERAL
-========================= */
+html[data-theme="light"] body {
 
-[data-theme="light"] body {
+    background:
+        linear-gradient(
+            135deg,
+            #eef2f7,
+            #f8fafc
+        ) !important;
 
-    background: linear-gradient(
-        135deg,
-        #e2e8f0,
-        #f1f5f9
-    );
-
-    color: #1a1a1a;
-
+    color: #111827 !important;
 }
 
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
 
-/* =========================
-   CONTAINER DA TABELA
-========================= */
+html[data-theme="light"] .container {
 
-[data-theme="light"] .table-container {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
 
-    background-color: #ffffff;
+    border: 1px solid #dbe3ec !important;
 
-    box-shadow: 0 4px 15px rgba(
-        0,
-        0,
-        0,
-        0.1
-    );
+    border-radius: 26px;
 
-    border: 1px solid #cbd5e1;
-
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.08) !important;
 }
 
+/* =========================================
+   TÍTULOS
+========================================= */
 
-/* =========================
-   CABEÇALHO DA TABELA
-========================= */
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3 {
 
-[data-theme="light"] th {
-
-    background-color: #e2e8f0;
-
-    color: #1a1a1a;
-
-    border-bottom: 1px solid #cbd5e1;
-
-}
-
-
-/* =========================
-   CÉLULAS
-========================= */
-
-[data-theme="light"] td {
-
-    color: #1a1a1a;
-
-    border-bottom: 1px solid #cbd5e1;
-
-}
-
-
-/* =========================
-   HOVER NAS LINHAS
-========================= */
-
-[data-theme="light"] tr:hover {
-
-    background-color: #f1f5f9;
-
-}
-
-
-/* =========================
-   TÍTULOS (corrige gradient)
-========================= */
-
-[data-theme="light"] h2 {
-
-    color: #1a1a1a !important;
+    color: #111827 !important;
 
     background: none !important;
 
-    /* versão padrão */
-    background-clip: initial !important;
-
-    /* versão webkit */
-    -webkit-background-clip: initial !important;
-
     -webkit-text-fill-color: initial !important;
 
+    background-clip: initial !important;
+    -webkit-background-clip: initial !important;
 }
 
+/* =========================================
+   HOME BUTTON
+========================================= */
 
-/* =========================
-   INPUT (caso tenha busca)
-========================= */
+html[data-theme="light"] .btn-home {
 
-[data-theme="light"] input {
+    background: #ffffff !important;
 
-    background-color: #f1f5f9;
+    border: 1px solid #dbe3ec !important;
 
-    color: #1a1a1a;
-
-    border: 1px solid #cbd5e1;
-
+    color: #111827 !important;
 }
 
-[data-theme="light"] input::placeholder {
+html[data-theme="light"] .btn-home:hover {
 
-    color: #64748b;
+    border-color: #22c55e !important;
 
+    color: #22c55e !important;
+
+    background:
+        rgba(34,197,94,.06) !important;
 }
 
+/* =========================================
+   TOGGLE CONTAINER
+========================================= */
 
-/* =========================
-   BOTÕES — MANTER ESTILO DARK
-========================= */
+html[data-theme="light"] .toggle-container {
 
-/* Base */
+    background: #ffffff;
 
-[data-theme="light"] .btn {
+    border: 1px solid #dbe3ec;
+
+    border-radius: 16px;
+
+    padding: 14px 18px;
+
+    width: fit-content;
+
+    margin-bottom: 16px;
+}
+
+/* =========================================
+   TOGGLE BUTTON
+========================================= */
+
+html[data-theme="light"] .toggle-btn {
+
+    width: 50px;
+
+    height: 26px;
+
+    background: #d1d5db;
+
+    border-radius: 999px;
+
+    border: none;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+/* =========================================
+   TOGGLE CIRCLE
+========================================= */
+
+html[data-theme="light"] .toggle-circle {
+
+    width: 20px;
+
+    height: 20px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 3px;
+
+    right: 3px;
+
+    transition: .25s;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.12);
+}
+
+/* =========================================
+   TOGGLE ACTIVE
+========================================= */
+
+html[data-theme="light"] .toggle-btn.active {
+
+    background: #22c55e;
+}
+
+html[data-theme="light"] .toggle-btn.active .toggle-circle {
+
+    left: 3px;
+
+    right: auto;
+}
+
+/* =========================================
+   SELECT
+========================================= */
+
+html[data-theme="light"] select {
+
+    background: #ffffff !important;
+
+    color: #111827 !important;
+
+    border: 1px solid #d1d5db !important;
+
+    border-radius: 10px;
+
+    padding: 10px 14px;
+}
+
+html[data-theme="light"] select:focus {
+
+    border-color: #22c55e !important;
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(34,197,94,.12);
+}
+
+/* =========================================
+   TABLE CONTAINER
+========================================= */
+
+html[data-theme="light"] .table-container {
+
+    background: #ffffff !important;
+
+    border: 1px solid #e5e7eb !important;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.05);
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+html[data-theme="light"] table {
+
+    background: #ffffff !important;
+}
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+html[data-theme="light"] th {
+
+    background:
+        linear-gradient(
+            180deg,
+            #f9fafb,
+            #f3f4f6
+        ) !important;
+
+    color: #374151 !important;
+
+    border-bottom:
+        1px solid #e5e7eb !important;
+}
+
+/* =========================================
+   TABLE CELLS
+========================================= */
+
+html[data-theme="light"] td {
+
+    color: #111827 !important;
+
+    border-bottom:
+        1px solid #eef2f7 !important;
+}
+
+/* =========================================
+   ROW HOVER
+========================================= */
+
+html[data-theme="light"] tbody tr:hover {
+
+    background:
+        rgba(34,197,94,.04) !important;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+html[data-theme="light"] .status {
+
+    font-weight: 600;
+}
+
+html[data-theme="light"] .vencido {
+
+    color: #ef4444 !important;
+}
+
+html[data-theme="light"] .vence_hoje {
+
+    color: #f59e0b !important;
+}
+
+html[data-theme="light"] .vence_breve {
+
+    color: #fb923c !important;
+}
+
+html[data-theme="light"] .em_dia {
+
+    color: #22c55e !important;
+}
+
+/* =========================================
+   BOTÕES BASE
+========================================= */
+
+html[data-theme="light"] .btn {
 
     background: transparent !important;
 
@@ -135,128 +300,84 @@
 
     border-style: solid !important;
 
+    border-radius: 10px;
+
+    transition: .2s;
 }
 
+/* =========================================
+   EDITAR
+========================================= */
 
-/* EDITAR (azul) */
-
-[data-theme="light"] .btn-edit {
+html[data-theme="light"] .editar {
 
     color: #3b82f6 !important;
 
     border-color: #3b82f6 !important;
-
 }
 
+html[data-theme="light"] .editar:hover {
 
-/* EXCLUIR (vermelho) */
+    background:
+        rgba(59,130,246,.10) !important;
+}
 
-[data-theme="light"] .btn-delete {
+/* =========================================
+   EXCLUIR
+========================================= */
+
+html[data-theme="light"] .excluir {
 
     color: #ef4444 !important;
 
     border-color: #ef4444 !important;
-
 }
 
+html[data-theme="light"] .excluir:hover {
 
-/* WHATSAPP (verde) */
+    background:
+        rgba(239,68,68,.10) !important;
+}
 
-[data-theme="light"] .btn-whatsapp {
+/* =========================================
+   WHATSAPP
+========================================= */
+
+html[data-theme="light"] .btn-whatsapp {
 
     color: #22c55e !important;
 
     border-color: #22c55e !important;
-
 }
 
+html[data-theme="light"] .btn-whatsapp:hover {
 
-/* =========================
-   HOVER BOTÕES
-========================= */
-
-[data-theme="light"] .btn-edit:hover {
-
-    background-color: rgba(
-        59,
-        130,
-        246,
-        0.1
-    ) !important;
-
+    background:
+        rgba(34,197,94,.10) !important;
 }
 
-[data-theme="light"] .btn-delete:hover {
+/* =========================================
+   SCROLLBAR
+========================================= */
 
-    background-color: rgba(
-        239,
-        68,
-        68,
-        0.1
-    ) !important;
+html[data-theme="light"] ::-webkit-scrollbar {
 
+    width: 10px;
 }
 
-[data-theme="light"] .btn-whatsapp:hover {
+html[data-theme="light"] ::-webkit-scrollbar-track {
 
-    background-color: rgba(
-        34,
-        197,
-        94,
-        0.1
-    ) !important;
-
+    background: #eef2f7;
 }
 
-/* CONTAINER */
-.toggle-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
 
-    margin-top: 20px;
-    margin-bottom: 0; /* remove espaço abaixo */
-}
+    background: #cbd5e1;
 
-#status-filter {
-    margin-bottom: 0; /* remove espaço do filtro */
-}
-
-.table-container {
-    margin-top: 5px; /* bem próximo */
-}
-
-/* BOTÃO BASE */
-.toggle-btn {
-    width: 50px;
-    height: 26px;
-    background: black;
     border-radius: 20px;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    padding: 0;
 }
 
-/* BOLINHA */
-.toggle-circle {
-    width: 20px;
-    height: 20px;
-    background: #ddd;
-    border-radius: 50%;
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    transition: 0.3s;
-}
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
 
-/* ESTADO ATIVO */
-.toggle-btn.active {
-    background: #25D366;
-}
-
-.toggle-btn.active .toggle-circle {
-    left: 3px;
-    right: auto;
+    background: #94a3b8;
 }

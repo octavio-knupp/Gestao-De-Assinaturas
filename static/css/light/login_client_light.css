@@ -1,97 +1,464 @@
-/* =========================
-   LOGIN — LIGHT MODE
-========================= */
+/* =========================================
+   LOGIN CLIENT — LIGHT PREMIUM
+========================================= */
 
-/* Fundo */
-[data-theme="light"] body {
-    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
-    color: #1a1a1a;
+/* =========================================
+   BODY
+========================================= */
+
+html[data-theme="light"] body {
+
+    margin: 0;
+
+    font-family:
+        'Poppins',
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2f7,
+            #f8fafc
+        ) !important;
+
+    color:
+        #111827 !important;
 }
 
-/* Container */
-[data-theme="light"] .container {
-    background: #f8fafc;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+/* =========================================
+   CONTAINER
+========================================= */
+
+html[data-theme="light"] .container {
+
+    width: 950px;
+
+    height: 560px;
+
+    margin: 60px auto;
+
+    display: flex;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #e5e7eb;
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.08);
 }
 
-/* Lado esquerdo */
-[data-theme="light"] .left {
-    background: #166534;
-    color: #ffffff;
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+html[data-theme="light"] .left {
+
+    width: 45%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 50px;
+
+    position: relative;
+
+    border-right:
+        1px solid #e5e7eb;
 }
 
-/* Remove qualquer gradient do dark */
-[data-theme="light"] .left h1 {
-    color: #ffffff !important;
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
+/* EFEITO VERDE */
+
+html[data-theme="light"] .left::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.18),
+            rgba(34,197,94,.05),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    filter: blur(12px);
 }
 
-/* Lado direito */
-[data-theme="light"] .right {
-    background: #ffffff;
+/* =========================================
+   TEXTOS LEFT
+========================================= */
+
+html[data-theme="light"] .left h1 {
+
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    font-size: 38px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111827,
+            #16a34a
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
 }
 
-/* Título */
-[data-theme="light"] .right h2 {
-    color: #1a1a1a !important;
+html[data-theme="light"] .left .sub {
+
+    position: relative;
+    z-index: 2;
+
+    margin-top: 18px;
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+    line-height: 1.6;
 }
 
-/* Subtítulo */
-[data-theme="light"] .right .sub {
-    color: #555555 !important;
+/* =========================================
+   LISTA
+========================================= */
+
+html[data-theme="light"] .left ul {
+
+    position: relative;
+    z-index: 2;
+
+    margin-top: 25px;
+
+    padding-left: 20px;
 }
 
-/* 🔥 CORREÇÃO PRINCIPAL (labels sumindo) */
-[data-theme="light"] .input-box label {
-    color: #1a1a1a !important;
+html[data-theme="light"] .left ul li {
+
+    color: #374151;
+
+    margin-bottom: 12px;
+
+    font-size: 15px;
+}
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+html[data-theme="light"] .right {
+
+    width: 55%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
+
+    padding: 50px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+html[data-theme="light"] .right h2 {
+
+    margin: 0;
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111827,
+            #16a34a
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+html[data-theme="light"] .right .sub {
+
+    text-align: center;
+
+    color: #6b7280;
+
+    margin-top: 10px;
+
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+html[data-theme="light"] .input-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* =========================================
+   INPUT BOX
+========================================= */
+
+html[data-theme="light"] .input-box {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+/* =========================================
+   LABEL
+========================================= */
+
+html[data-theme="light"] .input-box label {
+
+    color: #374151;
+
+    font-size: 14px;
+
     font-weight: 500;
 }
 
-/* Inputs */
-[data-theme="light"] .input-box input {
-    background-color: #f1f5f9;
-    color: #1a1a1a;
-    border: 1px solid #cbd5e1;
+/* =========================================
+   INPUTS
+========================================= */
+
+html[data-theme="light"] .input-box input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid #d1d5db;
+
+    background:
+        #ffffff;
+
+    color:
+        #111827;
+
+    outline: none;
+
+    transition: .25s;
+
+    box-sizing: border-box;
 }
 
-/* Placeholder */
-[data-theme="light"] .input-box input::placeholder {
-    color: #64748b;
+/* PLACEHOLDER */
+
+html[data-theme="light"] .input-box input::placeholder {
+
+    color: #94a3b8;
 }
 
-/* Botão */
-[data-theme="light"] .btn {
-    background: #00c86f;
-    color: #000;
+/* FOCUS */
+
+html[data-theme="light"] .input-box input:focus {
+
+    border-color:
+        #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,.12);
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+html[data-theme="light"] .btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 24px;
+
     border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    box-shadow:
+        0 10px 24px rgba(34,197,94,.22);
 }
 
-/* Hover */
-[data-theme="light"] .btn:hover {
-    filter: brightness(1.1);
+/* HOVER BUTTON */
+
+html[data-theme="light"] .btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(34,197,94,.28);
 }
 
-/* 🔥 TEXTO "Não tem conta?" */
-[data-theme="light"] .login {
-    color: #444444 !important;
+/* =========================================
+   LOGIN TEXT
+========================================= */
+
+html[data-theme="light"] .login {
+
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: #6b7280;
 }
 
-/* 🔥 LINK "Criar conta" */
-[data-theme="light"] .login a {
-    color: #15803d !important;
-    font-weight: 500;
+/* LINK */
+
+html[data-theme="light"] .login a {
+
+    color: #16a34a;
+
+    font-weight: 600;
+
     text-decoration: none;
 }
 
-[data-theme="light"] .login a:hover {
-    color: #166534 !important;
+html[data-theme="light"] .login a:hover {
+
     text-decoration: underline;
 }
 
-/* Caixa de erro */
-[data-theme="light"] .error-box {
-    background-color: #fef2f2;
-    border: 1px solid #fca5a5;
-    color: #991b1b;
+/* =========================================
+   ERROR BOX
+========================================= */
+
+html[data-theme="light"] .error-box {
+
+    background:
+        rgba(239,68,68,.10);
+
+    border:
+        1px solid rgba(239,68,68,.20);
+
+    color:
+        #dc2626;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+html[data-theme="light"] ::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-track {
+
+    background:
+        #eef2f7;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+
+    background:
+        #cbd5e1;
+
+    border-radius:
+        20px;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #94a3b8;
 }

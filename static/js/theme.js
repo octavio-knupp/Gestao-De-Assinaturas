@@ -1,22 +1,70 @@
-const themeToggle = document.getElementById("themeToggle");
+// static/js/theme.js
 
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "light") {
-    document.documentElement.setAttribute("data-theme", "light");
-    if (themeToggle) themeToggle.textContent = "☀️";
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        const isLight = document.documentElement.getAttribute("data-theme") === "light";
-        if (isLight) {
-            document.documentElement.removeAttribute("data-theme");
-            themeToggle.textContent = "🌙";
-            localStorage.setItem("theme", "dark");
-        } else {
-            document.documentElement.setAttribute("data-theme", "light");
+    const themeToggle =
+        document.getElementById("themeToggle");
+
+    // PEGA TEMA SALVO
+    const savedTheme =
+        localStorage.getItem("theme");
+
+    // APLICA TEMA
+    if (savedTheme === "light") {
+
+        document.documentElement
+            .setAttribute("data-theme", "light");
+
+        if (themeToggle) {
+
             themeToggle.textContent = "☀️";
-            localStorage.setItem("theme", "light");
+
         }
-    });
-}
+
+    } else {
+
+        document.documentElement
+            .removeAttribute("data-theme");
+
+        if (themeToggle) {
+
+            themeToggle.textContent = "🌙";
+
+        }
+
+    }
+
+    // BOTÃO TROCAR TEMA
+    if (themeToggle) {
+
+        themeToggle.addEventListener("click", () => {
+
+            const isLight =
+                document.documentElement
+                .getAttribute("data-theme") === "light";
+
+            if (isLight) {
+
+                document.documentElement
+                    .removeAttribute("data-theme");
+
+                localStorage.setItem("theme", "dark");
+
+                themeToggle.textContent = "🌙";
+
+            } else {
+
+                document.documentElement
+                    .setAttribute("data-theme", "light");
+
+                localStorage.setItem("theme", "light");
+
+                themeToggle.textContent = "☀️";
+
+            }
+
+        });
+
+    }
+
+});

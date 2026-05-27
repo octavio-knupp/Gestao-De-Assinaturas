@@ -1,181 +1,467 @@
 /* =========================================
-   HOME — LIGHT THEME (CORRIGIDO)
+   HOME — LIGHT THEME PREMIUM
 ========================================= */
 
-/* FUNDO */
+/* =========================================
+   BODY
+========================================= */
 
-[data-theme="light"] body {
-    background: linear-gradient(
-        135deg,
-        #e2e8f0,
-        #f1f5f9
-    ) !important;
+html[data-theme="light"] body {
 
-    color: #1a1a1a !important;
+    background:
+        linear-gradient(
+            135deg,
+            #eef2f7,
+            #f8fafc
+        ) !important;
+
+    color: #111827 !important;
 }
 
-/* TEXTOS */
+/* =========================================
+   MAIN CONTENT
+========================================= */
 
-[data-theme="light"] h1,
-[data-theme="light"] h2,
-[data-theme="light"] h3,
-[data-theme="light"] p {
-    color: #1a1a1a !important;
+html[data-theme="light"] .main-content {
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0%,
+            #f3f4f6 70%
+        );
 }
 
-/* HERO TEXT */
-
-[data-theme="light"] .description-grid {
-    color: #444444 !important;
-}
-
-/* =========================
-   USAGE CONTAINER
-========================= */
-
-[data-theme="light"] .usage-container {
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #eeeeee
-    ) !important;
-
-    border: 1px solid #cccccc !important;
-}
-
-/* =========================
-   PLAN CARDS
-========================= */
-
-[data-theme="light"] .plan-card {
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #eeeeee
-    ) !important;
-
-    border: 1px solid #cccccc !important;
-}
-
-[data-theme="light"] .plan-card p {
-    color: #555555 !important;
-}
-
-/* =========================
-   PROGRESS BAR
-========================= */
-
-[data-theme="light"] .progress-bar {
-
-    background-color: #cccccc !important;
-}
-
-[data-theme="light"] .usage-percent {
-
-    color: #444444 !important;
-}
-
-/* =========================
+/* =========================================
    SIDEBAR
-========================= */
+========================================= */
 
-[data-theme="light"] .sidebar {
+html[data-theme="light"] .sidebar {
 
-    background-color: #e0e0e0 !important;
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f3f4f6
+        ) !important;
 
-    border-right: 1px solid #cccccc !important;
+    border-right:
+        1px solid #e5e7eb !important;
+
+    box-shadow:
+        4px 0 20px rgba(0,0,0,.04);
 }
 
-[data-theme="light"] .submenu {
+/* LOGO */
 
-    background-color: #d6d6d6 !important;
+html[data-theme="light"] .sidebar-logo {
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    color: white;
 }
 
-[data-theme="light"] .sidebar-item:hover {
+/* ITENS */
 
-    background-color: rgba(
-        0,
-        0,
-        0,
-        0.08
-    ) !important;
+html[data-theme="light"] .sidebar-item {
+
+    color: #374151 !important;
 }
 
-[data-theme="light"] .sidebar-text {
+html[data-theme="light"] .sidebar-item:hover {
 
-    color: #1a1a1a !important;
+    background:
+        rgba(34,197,94,.08) !important;
 }
 
-/* =========================
+/* TEXT */
+
+html[data-theme="light"] .sidebar-text {
+
+    color: #374151 !important;
+}
+
+/* ÍCONES */
+
+html[data-theme="light"] .sidebar-icon img {
+
+    filter:
+        invert(15%)
+        sepia(10%)
+        saturate(500%)
+        hue-rotate(180deg)
+        brightness(90%);
+}
+
+/* SUBMENU */
+
+html[data-theme="light"] .submenu {
+
+    background: #f9fafb !important;
+
+    border:
+        1px solid #e5e7eb;
+}
+
+html[data-theme="light"] .submenu-item {
+
+    color: #374151 !important;
+}
+
+html[data-theme="light"] .submenu-item:hover {
+
+    background:
+        rgba(34,197,94,.08) !important;
+
+    color: #16a34a !important;
+}
+
+/* =========================================
    HEADER
-========================= */
+========================================= */
 
-[data-theme="light"] .btn-theme {
+html[data-theme="light"] header {
 
-    color: #1a1a1a !important;
+    background:
+        rgba(255,255,255,.75);
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+    backdrop-filter:
+        blur(10px);
 }
 
-/* =========================
-   ÍCONES SIDEBAR — LIGHT
-========================= */
+/* =========================================
+   BOTÃO TEMA
+========================================= */
 
-[data-theme="light"] .sidebar-icon img {
+html[data-theme="light"] .btn-theme {
 
-    filter: invert(1) brightness(0);
+    background: #ffffff;
 
+    border:
+        1px solid #d1d5db;
+
+    color: #111827 !important;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.05);
 }
 
-/* =========================
-   SUBMENU PERFIL — LIGHT
-========================= */
+html[data-theme="light"] .btn-theme:hover {
 
-[data-theme="light"] .submenu-item {
+    border-color: #22c55e;
 
-    color: #1a1a1a !important;
-
+    transform: translateY(-1px);
 }
 
-/* Hover do submenu */
+/* =========================================
+   HERO
+========================================= */
 
-[data-theme="light"] .submenu-item:hover {
+html[data-theme="light"] .hero-section {
 
-    background-color: rgba(
-        0,
-        0,
-        0,
-        0.08
-    ) !important;
-
-    color: #00c86f !important;
-
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff 0%,
+            #f3f4f6 75%
+        );
 }
 
-/* Fundo do submenu */
+/* GRID */
 
-[data-theme="light"] .submenu {
+html[data-theme="light"] .hero-bg-grid {
 
-    background-color: #dcdcdc !important;
-
+    opacity: .08;
 }
 
-/* =========================
-   TÍTULO HERO — LIGHT
-========================= */
+/* DOTS */
 
-[data-theme="light"] .hero-section h1 {
+html[data-theme="light"] .bdot {
 
-    background: linear-gradient(
-        to right,
-        #1a1a1a,
-        #00c86f
-    ) !important;
+    background:
+        rgba(34,197,94,.18);
+}
+
+/* =========================================
+   TITULO HERO
+========================================= */
+
+html[data-theme="light"] .hero-section h1 {
+
+    background:
+        linear-gradient(
+            to right,
+            #111827,
+            #22c55e
+        ) !important;
 
     background-clip: text !important;
     -webkit-background-clip: text !important;
 
     color: transparent !important;
     -webkit-text-fill-color: transparent !important;
+}
 
+/* ACCENT */
+
+html[data-theme="light"] .accent {
+
+    color: #22c55e !important;
+}
+
+/* =========================================
+   HERO DESCRIPTION
+========================================= */
+
+html[data-theme="light"] .hero-desc {
+
+    color: #6b7280 !important;
+}
+
+/* =========================================
+   PILL
+========================================= */
+
+html[data-theme="light"] .hero-pill {
+
+    background:
+        rgba(34,197,94,.08);
+
+    border:
+        1px solid rgba(34,197,94,.18);
+
+    color: #166534;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+html[data-theme="light"] .hero-stat-num {
+
+    color: #111827 !important;
+}
+
+html[data-theme="light"] .hero-stat-label {
+
+    color: #6b7280 !important;
+}
+
+/* =========================================
+   BENEFITS
+========================================= */
+
+html[data-theme="light"] .hero-benefit {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e5e7eb;
+
+    color: #374151;
+}
+
+html[data-theme="light"] .hero-benefit-icon {
+
+    color: #22c55e;
+}
+
+/* =========================================
+   BOTÃO HERO
+========================================= */
+
+html[data-theme="light"] .btn-ver-planos {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e
+        );
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(34,197,94,.25);
+}
+
+html[data-theme="light"] .btn-ver-planos:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(34,197,94,.35);
+}
+
+/* =========================================
+   PLANOS
+========================================= */
+
+html[data-theme="light"] .plans-title {
+
+    color: #111827 !important;
+}
+
+html[data-theme="light"] .plans-sub {
+
+    color: #6b7280 !important;
+}
+
+/* =========================================
+   PLAN CARDS
+========================================= */
+
+html[data-theme="light"] .plan-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fafc
+        ) !important;
+
+    border:
+        1px solid #e5e7eb !important;
+
+    box-shadow:
+        0 4px 20px rgba(0,0,0,.05);
+
+    transition: .25s;
+}
+
+html[data-theme="light"] .plan-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        #d1d5db !important;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.08);
+}
+
+/* FEATURED */
+
+html[data-theme="light"] .plan-card.featured {
+
+    border:
+        1px solid rgba(34,197,94,.35) !important;
+}
+
+/* BADGE */
+
+html[data-theme="light"] .plan-badge {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e
+        );
+
+    color: white;
+}
+
+/* TEXTOS PLANO */
+
+html[data-theme="light"] .plan-card h2,
+html[data-theme="light"] .plan-card h3 {
+
+    color: #111827 !important;
+}
+
+html[data-theme="light"] .plan-card p,
+html[data-theme="light"] .plan-feature {
+
+    color: #6b7280 !important;
+}
+
+/* DIVIDER */
+
+html[data-theme="light"] .plan-divider {
+
+    background: #e5e7eb;
+}
+
+/* BOTÃO PLANO */
+
+html[data-theme="light"] .btn-plan {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e
+        );
+
+    color: white;
+
+    border: none;
+}
+
+html[data-theme="light"] .btn-plan:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+/* =========================================
+   USER NAME
+========================================= */
+
+html[data-theme="light"] .user-name {
+
+    color: #374151 !important;
+}
+
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+
+html[data-theme="light"] .btn-register {
+
+    background: #111827;
+
+    color: white;
+}
+
+html[data-theme="light"] .btn-register:hover {
+
+    background: #1f2937;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+html[data-theme="light"] ::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-track {
+
+    background: #eef2f7;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+
+    background: #cbd5e1;
+
+    border-radius: 20px;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+
+    background: #94a3b8;
 }

@@ -1,60 +1,321 @@
-/* =========================
-   DELETE CLIENT — LIGHT MODE
-========================= */
+/* =========================================
+   DELETE CLIENT — LIGHT THEME PREMIUM
+========================================= */
 
-/* Fundo geral */
-[data-theme="light"] body {
-    background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
-    color: #1a1a1a;
+/* =========================================
+   BODY
+========================================= */
+
+html[data-theme="light"] body {
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2f7,
+            #f8fafc
+        );
+
+    color:
+        #111827;
 }
 
-/* Container */
-[data-theme="light"] .container {
-    background: #f8fafc;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+/* =========================================
+   CONTAINER
+========================================= */
+
+html[data-theme="light"] .container {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(248,250,252,.96)
+        );
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        0 12px 40px rgba(0,0,0,.08);
+
+    backdrop-filter:
+        blur(10px);
 }
 
-/* Lado direito */
-[data-theme="light"] .right {
-    background: #ffffff;
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+html[data-theme="light"] .left {
+
+    background:
+        radial-gradient(
+            circle at top,
+            #ffffff,
+            #f3f4f6
+        );
+
+    border-right:
+        1px solid #e5e7eb;
 }
 
-/* Título */
-[data-theme="light"] .right h2 {
-    color: #1a1a1a;
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+html[data-theme="light"] .right {
+
+    background:
+        transparent;
 }
 
-/* Texto de aviso */
-[data-theme="light"] .warning {
-    color: #444444;
+/* =========================================
+   TITLES
+========================================= */
+
+html[data-theme="light"] .right h2,
+html[data-theme="light"] h1,
+html[data-theme="light"] h2 {
+
+    color:
+        #111827 !important;
+
+    background:
+        none !important;
+
+    background-clip:
+        initial !important;
+
+    -webkit-background-clip:
+        initial !important;
+
+    -webkit-text-fill-color:
+        initial !important;
 }
 
-/* Caixa do cliente */
-[data-theme="light"] .client-box {
-    background: #f1f5f9;
-    border: 1px solid #cbd5e1;
-    color: #1a1a1a;
+/* =========================================
+   WARNING TEXT
+========================================= */
+
+html[data-theme="light"] .warning {
+
+    color:
+        #6b7280;
+
+    line-height:
+        1.6;
 }
 
-/* Botão deletar */
-[data-theme="light"] .delete {
-    background: #ef4444;
-    color: #ffffff;
-    border: none;
+/* =========================================
+   CLIENT BOX
+========================================= */
+
+html[data-theme="light"] .client-box {
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #f8fafc
+        );
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius:
+        18px;
+
+    color:
+        #111827;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.05);
 }
 
-/* Hover deletar */
-[data-theme="light"] .delete:hover {
-    filter: brightness(1.1);
+/* =========================================
+   CLIENT INFO
+========================================= */
+
+html[data-theme="light"] .client-box span,
+html[data-theme="light"] .client-box p {
+
+    color:
+        #374151;
 }
 
-/* Botão cancelar */
-[data-theme="light"] .cancel {
-    background: #e2e8f0;
-    color: #1a1a1a;
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+html[data-theme="light"] .delete {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    color:
+        #ffffff;
+
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    box-shadow:
+        0 8px 20px rgba(239,68,68,.22);
+
+    transition:
+        .25s ease;
 }
 
-/* Hover cancelar */
-[data-theme="light"] .cancel:hover {
-    background: #cbd5e1;
+/* =========================================
+   DELETE HOVER
+========================================= */
+
+html[data-theme="light"] .delete:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(239,68,68,.28);
+
+    filter:
+        brightness(1.03);
+}
+
+/* =========================================
+   CANCEL BUTTON
+========================================= */
+
+html[data-theme="light"] .cancel {
+
+    background:
+        #ffffff;
+
+    color:
+        #111827;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius:
+        12px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.04);
+
+    transition:
+        .25s ease;
+}
+
+/* =========================================
+   CANCEL HOVER
+========================================= */
+
+html[data-theme="light"] .cancel:hover {
+
+    border-color:
+        #22c55e;
+
+    color:
+        #22c55e;
+
+    background:
+        rgba(34,197,94,.06);
+
+    transform:
+        translateY(-1px);
+}
+
+/* =========================================
+   HOME BUTTON
+========================================= */
+
+html[data-theme="light"] .btn-home {
+
+    background:
+        #ffffff;
+
+    color:
+        #111827;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius:
+        12px;
+
+    transition:
+        .25s ease;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.04);
+}
+
+/* =========================================
+   HOME BUTTON HOVER
+========================================= */
+
+html[data-theme="light"] .btn-home:hover {
+
+    border-color:
+        #22c55e;
+
+    color:
+        #22c55e;
+
+    background:
+        rgba(34,197,94,.06);
+
+    transform:
+        translateY(-1px);
+}
+
+/* =========================================
+   ICONS
+========================================= */
+
+html[data-theme="light"] i {
+
+    color:
+        inherit;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+html[data-theme="light"] ::-webkit-scrollbar {
+
+    width:
+        10px;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-track {
+
+    background:
+        #eef2f7;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+
+    background:
+        #cbd5e1;
+
+    border-radius:
+        20px;
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #94a3b8;
 }

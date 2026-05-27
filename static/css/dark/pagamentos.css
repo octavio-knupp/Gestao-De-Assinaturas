@@ -1,72 +1,84 @@
 /* ============================================================
-   pagamentos.css — Tela de Finalizar Pagamento (Dark Theme)
-   Caminho: static/dark/pagamentos.css
+   pagamentos.css — DARK BLACK THEME
    ============================================================ */
 
-/* ---------- RESET BORDAS ---------- */
-html, body {
+/* ---------- RESET ---------- */
+html,
+body {
   margin: 0;
   padding: 0;
-  background: #0f1117;
+  background: #000000;
 }
 
 /* ---------- VARIÁVEIS ---------- */
 :root {
-  --bg-page:      #0f1117;
-  --bg-card:      #1a1d27;
-  --bg-card-alt:  #1e2130;
-  --bg-input:     #12151f;
-  --border:       #2a2d3a;
+  --bg-page: #000000;
+
+  --bg-card: #0b0b0b;
+  --bg-card-alt: #121212;
+  --bg-input: #0f0f0f;
+
+  --border: #1f1f1f;
+  --border-hover: #2b2b2b;
+
   --border-focus: #22c55e;
-  --text-primary: #e8eaf0;
-  --text-muted:   #6b7280;
-  --text-label:   #9ca3af;
-  --green:        #22c55e;
-  --green-dim:    #16a34a;
-  --gold:         #f59e0b;
-  --purple:       #a78bfa;
-  --radius-sm:    8px;
-  --radius-md:    12px;
-  --radius-lg:    16px;
-  --shadow:       0 4px 24px rgba(0,0,0,0.35);
+
+  --text-primary: #f5f5f5;
+  --text-muted: #8b8b8b;
+  --text-label: #b3b3b3;
+
+  --green: #22c55e;
+  --green-dim: #16a34a;
+
+  --gold: #f59e0b;
+  --purple: #a78bfa;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
 }
 
-/* ---------- CONTAINER GERAL ---------- */
+/* ---------- CONTAINER ---------- */
 .pagamento-container {
   padding: 28px 32px 40px;
   min-height: 100vh;
-  background: var(--bg-page);
+
+  background:
+    radial-gradient(circle at top, #111111 0%, #000000 45%);
+
   font-family: 'Inter', 'Segoe UI', sans-serif;
   color: var(--text-primary);
   box-sizing: border-box;
 }
 
-/* ---------- CABEÇALHO ---------- */
+/* ---------- HEADER ---------- */
 .pagamento-header {
   margin-bottom: 28px;
 }
 
 .pagamento-titulo {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0 0 6px;
-  letter-spacing: -0.3px;
 }
 
 .pagamento-breadcrumb {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.82rem;
+
+  font-size: .82rem;
   color: var(--text-muted);
 }
 
-.breadcrumb-item { color: var(--text-muted); }
-.breadcrumb-item.active { color: var(--green); font-weight: 500; }
-.breadcrumb-sep { color: var(--text-muted); }
+.breadcrumb-item.active {
+  color: var(--green);
+}
 
-/* ---------- LAYOUT PRINCIPAL ---------- */
+/* ---------- LAYOUT ---------- */
 .pagamento-layout {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -74,144 +86,168 @@ html, body {
   align-items: start;
 }
 
-/* ---------- COLUNA ESQUERDA ---------- */
 .pagamento-col-esquerda {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-/* ---------- SEÇÃO TÍTULOS ---------- */
+/* ---------- SEÇÕES ---------- */
+.secao-planos,
+.secao-dados,
+.resumo-card,
+.seguro-card,
+.pix-box,
+.boleto-box {
+  background: rgba(10, 10, 10, 0.96);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- TITULOS ---------- */
 .secao-titulo {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 4px;
+  margin-bottom: 4px;
 }
 
 .secao-subtitulo {
-  font-size: 0.85rem;
+  font-size: .85rem;
   color: var(--text-muted);
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 }
 
-/* ---------- SEÇÃO PLANOS ---------- */
+/* ---------- PLANOS ---------- */
 .secao-planos {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
   padding: 24px;
 }
 
 .planos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 16px;
 }
 
-/* ---------- CARD DE PLANO ---------- */
 .plano-card {
   position: relative;
-  background: var(--bg-card-alt);
-  border: 1.5px solid var(--border);
+
+  background: #101010;
+
+  border: 1px solid var(--border);
+
   border-radius: var(--radius-md);
-  padding: 18px 16px;
+
+  padding: 20px 18px;
+
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+
+  transition: .25s;
 }
 
 .plano-card:hover {
-  border-color: #3a3f52;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow);
+  transform: translateY(-4px);
+
+  border-color: #303030;
+
+  background: #151515;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.55);
 }
 
 .plano-card.selecionado {
   border-color: var(--green);
-  box-shadow: 0 0 0 2px rgba(34,197,94,0.15), var(--shadow);
-  background: rgba(34,197,94,0.04);
-}
 
-.plano-check {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  line-height: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34,197,94,.10),
+      rgba(0,0,0,0)
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(34,197,94,.25),
+    0 8px 24px rgba(0,0,0,.5);
 }
 
 .plano-nome {
   font-size: 1.05rem;
   font-weight: 700;
-  margin: 0 0 10px;
+  margin-bottom: 10px;
 }
-.plano-nome.bronze { color: var(--green); }
-.plano-nome.gold   { color: var(--gold); }
-.plano-nome.black  { color: var(--purple); }
+
+.plano-nome.bronze {
+  color: #22c55e;
+}
+
+.plano-nome.gold {
+  color: #f59e0b;
+}
+
+.plano-nome.black {
+  color: #c084fc;
+}
 
 .plano-preco {
   display: flex;
   align-items: baseline;
-  gap: 3px;
+  gap: 4px;
+
   margin-bottom: 14px;
 }
 
 .preco-valor {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
 }
 
 .preco-periodo {
-  font-size: 0.78rem;
   color: var(--text-muted);
+  font-size: .78rem;
 }
 
 .plano-features {
   list-style: none;
   padding: 0;
   margin: 0;
+
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
 }
 
 .plano-features li {
-  font-size: 0.8rem;
+  font-size: .82rem;
   color: var(--text-label);
-  display: flex;
-  align-items: center;
-  gap: 7px;
 }
 
 .feature-icon {
   color: var(--green);
-  font-size: 0.75rem;
-  font-weight: 700;
-  flex-shrink: 0;
 }
 
-/* ---------- SEÇÃO DADOS DE PAGAMENTO ---------- */
+/* ---------- DADOS ---------- */
 .secao-dados {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
   padding: 24px;
 }
 
-/* ---------- FORMULÁRIO ---------- */
+/* ---------- FORM ---------- */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-bottom: 20px;
+
+  margin-bottom: 22px;
 }
 
-.campo-nome    { grid-column: 1; }
-.campo-numero  { grid-column: 2; }
-.campo-validade{ grid-column: 1; }
-.campo-cvv     { grid-column: 2; }
-.campo-cpf     { grid-column: 1 / -1; }
+.campo-cpf {
+  grid-column: 1 / -1;
+}
 
 .campo-grupo {
   display: flex;
@@ -220,679 +256,363 @@ html, body {
 }
 
 .campo-label {
-  font-size: 0.8rem;
+  font-size: .8rem;
   color: var(--text-label);
-  font-weight: 500;
-  letter-spacing: 0.2px;
 }
 
 .campo-input {
-  background: var(--bg-input);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  padding: 10px 14px;
   width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
+
+  background: #0d0d0d;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-sm);
+
+  color: white;
+
+  padding: 13px 14px;
+
   outline: none;
-  font-family: inherit;
+
+  transition: .2s;
 }
 
-.campo-input::placeholder { color: var(--text-muted); font-size: 0.85rem; }
+.campo-input::placeholder {
+  color: #666;
+}
 
 .campo-input:focus {
-  border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+  border-color: var(--green);
+
+  box-shadow:
+    0 0 0 3px rgba(34,197,94,.15);
 }
 
-.input-icone {
-  position: relative;
-}
-
-.input-icone .campo-input {
-  padding-right: 42px;
-}
-
-.input-icon-svg {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  opacity: 0.6;
-}
-
-/* ---------- MÉTODOS DE PAGAMENTO ---------- */
+/* ---------- MÉTODOS ---------- */
 .metodo-grupo {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
   margin-bottom: 24px;
 }
 
 .metodos-lista {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
 .metodo-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg-input);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
+  background: #101010;
+
+  border: 1px solid var(--border);
+
   color: var(--text-muted);
-  font-size: 0.87rem;
-  font-family: inherit;
-  padding: 10px 18px;
+
+  border-radius: var(--radius-sm);
+
+  padding: 11px 18px;
+
   cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  transition: .2s;
 }
 
 .metodo-btn:hover {
-  border-color: #3a3f52;
-  color: var(--text-primary);
+  border-color: #303030;
+  color: white;
 }
 
 .metodo-btn.ativo {
+  background: rgba(34,197,94,.08);
+
   border-color: var(--green);
+
   color: var(--green);
-  background: rgba(34,197,94,0.07);
 }
 
-/* ---------- BOTÃO FINALIZAR ---------- */
+/* ---------- BOTÃO ---------- */
 .btn-finalizar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
   width: 100%;
-  background: var(--green);
-  color: #0a0e14;
+
+  border: none;
+
+  border-radius: var(--radius-md);
+
+  background:
+    linear-gradient(
+      135deg,
+      #16a34a,
+      #22c55e
+    );
+
+  color: black;
+
   font-size: 1rem;
   font-weight: 700;
-  font-family: inherit;
-  border: none;
-  border-radius: var(--radius-sm);
+
   padding: 15px;
+
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  letter-spacing: 0.2px;
-  margin-bottom: 12px;
+
+  transition: .25s;
 }
 
 .btn-finalizar:hover {
-  background: #16a34a;
-  box-shadow: 0 4px 18px rgba(34,197,94,0.3);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 24px rgba(34,197,94,.35);
 }
 
-.btn-finalizar:active { transform: translateY(0); }
-
-.btn-finalizar:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* ---------- TERMOS ---------- */
-.termos-texto {
-  text-align: center;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.termos-link {
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 500;
-}
-.termos-link:hover { text-decoration: underline; }
-
-/* ---------- COLUNA DIREITA ---------- */
+/* ---------- RESUMO ---------- */
 .pagamento-col-direita {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
   position: sticky;
   top: 24px;
 }
 
-/* ---------- CARD RESUMO ---------- */
-.resumo-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
 .resumo-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 18px 20px 14px;
+  padding: 18px 20px;
   border-bottom: 1px solid var(--border);
 }
 
-.resumo-titulo {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0;
-}
-
 .resumo-corpo {
-  padding: 16px 20px 20px;
+  padding: 20px;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.resumo-label {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.resumo-plano-linha {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.resumo-plano-nome {
-  font-size: 1rem;
-  font-weight: 700;
-}
-.resumo-plano-nome.bronze { color: var(--green); }
-.resumo-plano-nome.gold   { color: var(--gold); }
-.resumo-plano-nome.black  { color: var(--purple); }
-
-.resumo-plano-preco {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.resumo-plano-preco small {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 400;
+  gap: 12px;
 }
 
 .resumo-divider {
   height: 1px;
   background: var(--border);
-  margin: 4px 0;
 }
 
 .resumo-linha {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 0.84rem;
 }
 
-.resumo-chave { color: var(--text-muted); }
-.resumo-valor { color: var(--text-primary); font-weight: 500; }
-.resumo-valor.verde { color: var(--green); }
-
-.resumo-linha.total {
-  margin-top: 4px;
+.resumo-chave {
+  color: var(--text-muted);
 }
 
-.resumo-linha.total .resumo-chave {
-  font-size: 0.95rem;
+.resumo-valor {
   font-weight: 600;
-  color: var(--text-primary);
 }
 
 .total-valor {
-  font-size: 1.25rem !important;
-  font-weight: 800 !important;
-  color: var(--green) !important;
-  letter-spacing: -0.5px;
+  color: var(--green);
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
-/* ---------- CARD PAGAMENTO SEGURO ---------- */
+/* ---------- SEGURO ---------- */
 .seguro-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 18px 20px;
-}
-
-.seguro-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  padding: 20px;
 }
 
 .seguro-titulo {
-  font-size: 0.9rem;
-  font-weight: 700;
   color: var(--green);
+  font-weight: 700;
 }
 
 .seguro-texto {
-  font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin: 0 0 12px;
 }
 
 .seguro-badge {
-  background: var(--bg-card-alt);
+  background: #101010;
+
   border: 1px solid var(--border);
+
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+
+  padding: 14px;
 }
 
-.seguro-badge-texto {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.seguro-marca {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.3px;
-}
-
-.marca-dot {
-  color: var(--green);
-  font-size: 0.5rem;
-  vertical-align: middle;
-}
-
-/* ---------- RESPONSIVO ---------- */
-@media (max-width: 1100px) {
-  .pagamento-layout {
-    grid-template-columns: 1fr;
-  }
-  .pagamento-col-direita {
-    position: static;
-  }
-}
-
-@media (max-width: 700px) {
-  .pagamento-container { padding: 16px; }
-  .planos-grid { grid-template-columns: 1fr; }
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-  .campo-nome, .campo-numero,
-  .campo-validade, .campo-cvv, .campo-cpf {
-    grid-column: 1;
-  }
-  .metodos-lista { flex-direction: column; }
-}
-
-/* ============================================================
-   PIX
-============================================================ */
-
-.pix-area{
-  margin-top: 24px;
-}
-
-.pix-box{
-  background: var(--bg-card-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+/* ---------- PIX ---------- */
+.pix-box {
   padding: 30px;
   text-align: center;
-  animation: fadePix .25s ease;
 }
 
-@keyframes fadePix{
-  from{
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to{
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.pix-titulo{
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-}
-
-.pix-subtitulo{
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
-.pix-qrcode{
+.pix-qrcode {
   width: 220px;
   height: 220px;
+
   background: white;
-  padding: 10px;
+
   border-radius: 18px;
-  margin-bottom: 24px;
-  object-fit: cover;
+
+  padding: 10px;
 }
 
-.pix-code-box{
+.pix-code-box {
   display: flex;
   gap: 12px;
-  margin-bottom: 18px;
+
+  margin-top: 20px;
 }
 
-.pix-code-box input{
+.pix-code-box input {
   flex: 1;
-  background: var(--bg-input);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px;
-  color: var(--text-primary);
-  font-size: 0.8rem;
-  outline: none;
-}
 
-.pix-code-box input:focus{
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
-}
+  background: #0d0d0d;
 
-.pix-code-box button{
-  background: var(--green);
-  border: none;
-  border-radius: var(--radius-sm);
-  color: #0a0e14;
-  font-weight: 700;
-  padding: 0 20px;
-  cursor: pointer;
-  transition: .2s;
-  font-family: inherit;
-}
-
-.pix-code-box button:hover{
-  background: var(--green-dim);
-  transform: translateY(-1px);
-}
-
-.pix-status{
-  color: #facc15;
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.pix-timer{
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-bottom: 20px;
-}
-
-.btn-pix-pago{
-  width: 100%;
-  background: var(--green);
-  color: #0a0e14;
-  border: none;
-  border-radius: var(--radius-md);
-  padding: 15px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: .2s;
-  font-family: inherit;
-}
-
-.btn-pix-pago:hover{
-  background: var(--green-dim);
-  transform: translateY(-1px);
-}
-
-.btn-pix-pago:disabled{
-  opacity: .7;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* ============================================================
-   RESPONSIVO PIX
-============================================================ */
-
-@media (max-width: 700px){
-
-  .pix-code-box{
-    flex-direction: column;
-  }
-
-  .pix-code-box button{
-    height: 48px;
-  }
-
-  .pix-qrcode{
-    width: 180px;
-    height: 180px;
-  }
-
-}
-
-/* ============================================================
-   BOLETO BANCÁRIO
-============================================================ */
-
-.boleto-area{
-  margin-top: 24px;
-}
-
-.boleto-box{
-  background: var(--bg-card-alt);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 30px;
-  animation: fadePix .25s ease;
+
+  color: white;
+
+  border-radius: var(--radius-sm);
+
+  padding: 14px;
 }
 
-.boleto-header{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
+.pix-code-box button {
+  background: var(--green);
 
-.boleto-icon{
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background: rgba(34,197,94,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  flex-shrink: 0;
-}
+  border: none;
 
-.boleto-titulo{
-  font-size: 1.2rem;
+  border-radius: var(--radius-sm);
+
+  padding: 0 20px;
+
   font-weight: 700;
-  color: var(--text-primary);
-  margin: 0;
+
+  cursor: pointer;
 }
 
-.boleto-subtitulo{
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  margin-top: 4px;
-  line-height: 1.5;
+/* ---------- BOLETO ---------- */
+.boleto-box {
+  padding: 30px;
 }
 
-.boleto-info{
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.boleto-linha{
+.boleto-linha {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+
   padding-bottom: 14px;
+
   border-bottom: 1px solid var(--border);
 }
 
-.boleto-label{
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.boleto-valor{
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-align: right;
-}
-
-.boleto-codigo-box{
-  margin-top: 24px;
-}
-
-.boleto-codigo-label{
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  display: block;
-}
-
-.boleto-codigo{
+.boleto-codigo {
   width: 100%;
-  background: var(--bg-input);
-  border: 1.5px solid var(--border);
+
+  background: #0d0d0d;
+
+  border: 1px solid var(--border);
+
+  color: white;
+
   border-radius: var(--radius-sm);
-  color: var(--text-primary);
+
   padding: 14px;
-  font-size: 0.82rem;
-  box-sizing: border-box;
-  outline: none;
-  margin-bottom: 14px;
 }
 
-.boleto-codigo:focus{
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
-}
-
-.boleto-acoes{
-  display: flex;
-  gap: 12px;
-}
-
-.btn-boleto{
+.btn-boleto {
   flex: 1;
   height: 48px;
-  border-radius: var(--radius-sm);
+
   border: none;
-  font-size: 0.9rem;
-  font-weight: 700;
-  font-family: inherit;
+
+  border-radius: var(--radius-sm);
+
   cursor: pointer;
-  transition: .2s;
+
+  font-weight: 700;
 }
 
-.btn-boleto.primario{
+.btn-boleto.primario {
   background: var(--green);
-  color: #0a0e14;
+  color: black;
 }
 
-.btn-boleto.primario:hover{
-  background: var(--green-dim);
-  transform: translateY(-1px);
+.btn-boleto.secundario {
+  background: #101010;
+
+  border: 1px solid var(--border);
+
+  color: white;
 }
 
-.btn-boleto.secundario{
-  background: var(--bg-input);
-  border: 1.5px solid var(--border);
-  color: var(--text-primary);
-}
-
-.btn-boleto.secundario:hover{
-  border-color: var(--green);
-  color: var(--green);
-}
-
-.boleto-status{
-  margin-top: 22px;
-  background: rgba(250,204,21,0.08);
-  border: 1px solid rgba(250,204,21,0.15);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  color: #facc15;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-.boleto-status.aprovado{
-  background: rgba(34,197,94,0.08);
-  border-color: rgba(34,197,94,0.18);
-  color: var(--green);
-}
-
-/* ============================================================
-   RESPONSIVO BOLETO
-============================================================ */
-
-@media (max-width: 700px){
-
-  .boleto-acoes{
-    flex-direction: column;
-  }
-
-  .boleto-linha{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .boleto-valor{
-    text-align: left;
-  }
-
-}
-
-/* ---------- BOTÃO HOME ---------- */
+/* ---------- HOME ---------- */
 .btn-home {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background: transparent;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
+  gap: 8px;
+
+  background: #0d0d0d;
+
+  border: 1px solid var(--border);
+
   color: var(--text-muted);
-  font-size: 0.83rem;
-  font-family: inherit;
-  font-weight: 500;
-  padding: 7px 14px 7px 10px;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  padding: 9px 14px;
+
+  border-radius: var(--radius-sm);
+
   text-decoration: none;
-  margin-bottom: 16px;
+
+  transition: .2s;
+
+  margin-bottom: 18px;
 }
 
 .btn-home:hover {
   border-color: var(--green);
+
   color: var(--green);
-  background: rgba(34, 197, 94, 0.07);
+
+  background: rgba(34,197,94,.06);
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media (max-width: 1100px) {
+
+  .pagamento-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pagamento-col-direita {
+    position: static;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .pagamento-container {
+    padding: 16px;
+  }
+
+  .planos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .campo-cpf {
+    grid-column: 1;
+  }
+
+  .metodos-lista {
+    flex-direction: column;
+  }
+
+  .pix-code-box {
+    flex-direction: column;
+  }
+
 }

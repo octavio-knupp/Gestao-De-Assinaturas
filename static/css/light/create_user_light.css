@@ -1,127 +1,680 @@
-/* =========================
-   CREATE CLIENT — LIGHT MODE
-========================= */
+/* =========================================
+   CREATE CLIENT — LIGHT PREMIUM
+========================================= */
 
-/* Fundo */
-[data-theme="light"] body {
-    background: #f1f5f9;
-    color: #1a1a1a;
+/* RESET */
+
+html[data-theme="light"] * {
+
+    box-sizing: border-box;
+
+    font-family:
+        'Poppins',
+        sans-serif;
 }
 
-/* Container */
-[data-theme="light"] .container {
-    background: #ffffff;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+/* =========================================
+   BODY
+========================================= */
+
+html[data-theme="light"] body {
+
+    margin: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2f7,
+            #f8fafc
+        );
+
+    color:
+        #111827;
+
+    min-height:
+        100vh;
 }
 
-/* =========================
-   LADO ESQUERDO (IGUAL LOGIN)
-========================= */
+/* =========================================
+   CONTAINER
+========================================= */
 
-[data-theme="light"] .left {
-    background: #166534 !important;
-    color: #ffffff;
+html[data-theme="light"] .container {
+
+    width:
+        100%;
+
+    min-height:
+        100vh;
+
+    display:
+        flex;
+
+    background:
+        #ffffff;
 }
 
-/* Remove qualquer efeito do dark */
-[data-theme="light"] .left h1 {
-    color: #ffffff !important;
-    background: none !important;
-    -webkit-text-fill-color: initial !important;
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+html[data-theme="light"] .left {
+
+    width:
+        50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #16a34a
+        ) !important;
+
+    color:
+        #ffffff;
+
+    padding:
+        70px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
 }
 
-[data-theme="light"] .left .sub {
-    color: #e5e7eb;
+/* EFEITO DE FUNDO */
+
+html[data-theme="light"] .left::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        420px;
+
+    height:
+        420px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.05),
+            transparent 70%
+        );
+
+    border-radius:
+        50%;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    filter:
+        blur(10px);
 }
 
-[data-theme="light"] .left ul {
-    color: #ffffff;
+/* =========================================
+   LOGO
+========================================= */
+
+html[data-theme="light"] .logo {
+
+    width:
+        130px;
+
+    margin-bottom:
+        40px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
 }
 
-/* =========================
-   LADO DIREITO
-========================= */
+/* =========================================
+   TITLES
+========================================= */
 
-[data-theme="light"] .right {
-    background: #ffffff;
+html[data-theme="light"] .left h1 {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    font-size:
+        42px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        18px;
+
+    line-height:
+        1.2;
+
+    color:
+        #ffffff !important;
+
+    background:
+        none !important;
+
+    -webkit-text-fill-color:
+        initial !important;
 }
 
-/* Título */
-[data-theme="light"] .right h2 {
-    color: #1a1a1a;
+/* =========================================
+   SUBTEXT
+========================================= */
+
+html[data-theme="light"] .left .sub {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    color:
+        #dcfce7;
+
+    margin-bottom:
+        30px;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.7;
 }
 
-/* Sub */
-[data-theme="light"] .right .sub {
-    color: #555555;
+/* =========================================
+   LIST
+========================================= */
+
+html[data-theme="light"] .left ul {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin-top:
+        10px;
+
+    list-style:
+        none;
+
+    padding:
+        0;
 }
 
-/* =========================
+html[data-theme="light"] .left ul li {
+
+    margin-bottom:
+        16px;
+
+    font-size:
+        16px;
+
+    color:
+        #ffffff;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+}
+
+/* BOLINHA */
+
+html[data-theme="light"] .left ul li::before {
+
+    content:
+        "";
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #ffffff;
+
+    display:
+        block;
+}
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+html[data-theme="light"] .right {
+
+    width:
+        50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #f8fafc
+        );
+
+    padding:
+        70px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    overflow-y:
+        auto;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+html[data-theme="light"] .right h2 {
+
+    font-size:
+        34px;
+
+    margin-bottom:
+        12px;
+
+    text-align:
+        center;
+
+    font-weight:
+        700;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111827,
+            #16a34a
+        );
+
+    background-clip:
+        text;
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
+}
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+html[data-theme="light"] .right .sub {
+
+    font-size:
+        15px;
+
+    color:
+        #6b7280;
+
+    margin-bottom:
+        30px;
+
+    text-align:
+        center;
+}
+
+/* =========================================
+   INPUT GROUP
+========================================= */
+
+html[data-theme="light"] .input-group {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        20px;
+
+    margin-bottom:
+        20px;
+}
+
+/* =========================================
+   INPUT BOX
+========================================= */
+
+html[data-theme="light"] .input-box {
+
+    width:
+        48%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+}
+
+/* =========================================
+   LABEL
+========================================= */
+
+html[data-theme="light"] .input-box label {
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #111827;
+
+    font-weight:
+        500;
+}
+
+/* =========================================
    INPUTS
-========================= */
+========================================= */
 
-[data-theme="light"] .input-box label {
-    color: #1a1a1a;
+html[data-theme="light"] .input-box input {
+
+    padding:
+        14px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid #d1d5db;
+
+    background:
+        #f8fafc;
+
+    color:
+        #111827;
+
+    transition:
+        .25s;
 }
 
-[data-theme="light"] .input-box input {
-    background: #f1f5f9;
-    color: #1a1a1a;
-    border: 1px solid #cbd5e1;
+/* PLACEHOLDER */
+
+html[data-theme="light"] .input-box input::placeholder {
+
+    color:
+        #94a3b8;
 }
 
-[data-theme="light"] .input-box input::placeholder {
-    color: #64748b;
+/* FOCUS */
+
+html[data-theme="light"] .input-box input:focus {
+
+    outline:
+        none;
+
+    border-color:
+        #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,.12);
+
+    background:
+        #ffffff;
 }
 
-/* =========================
-   GÊNERO
-========================= */
+/* =========================================
+   GENDER
+========================================= */
 
-[data-theme="light"] .gender-label {
-    color: #1a1a1a;
+html[data-theme="light"] .gender-label {
+
+    margin-top:
+        10px;
+
+    margin-bottom:
+        10px;
+
+    display:
+        block;
+
+    color:
+        #111827;
+
+    font-weight:
+        500;
 }
 
-[data-theme="light"] .gender {
-    color: #1a1a1a;
+html[data-theme="light"] .gender {
+
+    display:
+        flex;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        25px;
+
+    color:
+        #111827;
 }
 
-/* =========================
-   BOTÃO
-========================= */
+/* =========================================
+   BUTTON
+========================================= */
 
-[data-theme="light"] .btn {
-    background: #00c86f;
-    color: #000;
-    border: none;
+html[data-theme="light"] .btn {
+
+    width:
+        100%;
+
+    padding:
+        14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    color:
+        #ffffff;
+
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    margin-top:
+        10px;
+
+    margin-bottom:
+        20px;
+
+    transition:
+        .25s;
+
+    box-shadow:
+        0 10px 24px rgba(34,197,94,.18);
 }
 
-[data-theme="light"] .btn:hover {
-    filter: brightness(1.1);
+/* HOVER */
+
+html[data-theme="light"] .btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(34,197,94,.24);
 }
 
-/* =========================
-   LINKS
-========================= */
+/* =========================================
+   HOME / LOGIN
+========================================= */
 
-[data-theme="light"] .home {
-    color: #444;
+html[data-theme="light"] .home {
+
+    text-align:
+        center;
+
+    color:
+        #6b7280;
 }
 
-[data-theme="light"] .home a {
-    color: #15803d;
+html[data-theme="light"] .home a {
+
+    color:
+        #16a34a;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        600;
 }
 
-[data-theme="light"] .home a:hover {
-    color: #166534;
+html[data-theme="light"] .home a:hover {
+
+    text-decoration:
+        underline;
 }
 
-/* =========================
-   ERRO
-========================= */
+/* =========================================
+   ERROR BOX
+========================================= */
 
-[data-theme="light"] .error-box {
-    background: #fef2f2;
-    border: 1px solid #fca5a5;
-    color: #991b1b;
+html[data-theme="light"] .error-box {
+
+    background:
+        #fef2f2;
+
+    border:
+        1px solid #fca5a5;
+
+    color:
+        #991b1b;
+
+    padding:
+        14px;
+
+    border-radius:
+        12px;
+
+    margin-bottom:
+        22px;
+
+    font-size:
+        14px;
+}
+
+html[data-theme="light"] .error-box p {
+
+    margin:
+        4px 0;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 900px) {
+
+    html[data-theme="light"] .container {
+
+        flex-direction:
+            column;
+    }
+
+    html[data-theme="light"] .left,
+    html[data-theme="light"] .right {
+
+        width:
+            100%;
+    }
+
+    html[data-theme="light"] .left {
+
+        padding:
+            50px 30px;
+    }
+
+    html[data-theme="light"] .right {
+
+        padding:
+            40px 30px;
+    }
+
+    html[data-theme="light"] .input-box {
+
+        width:
+            100%;
+    }
+
+    html[data-theme="light"] .left h1 {
+
+        font-size:
+            34px;
+    }
+
+    html[data-theme="light"] .right h2 {
+
+        font-size:
+            28px;
+    }
 }

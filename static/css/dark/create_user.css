@@ -1,177 +1,658 @@
+/* =========================================
+   LOGIN CLIENT — DARK PREMIUM
+========================================= */
+
+/* RESET */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        'Poppins',
+        sans-serif;
 }
+
+/* =========================================
+   BODY
+========================================= */
 
 body {
-    background: #f5f5f5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #050505,
+            #0b0b0b
+        );
+
+    color:
+        #ffffff;
+
+    min-height:
+        100vh;
 }
 
-/* CONTAINER */
+/* =========================================
+   CONTAINER
+========================================= */
+
 .container {
+
     width: 100%;
-    min-height: 100vh; /* corrigido */
+
+    min-height: 100vh;
+
     display: flex;
 }
 
-/* LADO ESQUERDO */
+/* =========================================
+   LEFT SIDE
+========================================= */
+
 .left {
+
     width: 50%;
-    background: #0e5f38;
-    color: white;
-    padding: 60px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a0a0a,
+            #101010
+        );
+
+    color:
+        white;
+
+    padding:
+        70px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    border-right:
+        1px solid rgba(34,197,94,.08);
 }
+
+/* EFEITO VERDE */
+
+.left::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(34,197,94,.20),
+            rgba(34,197,94,.06),
+            transparent 70%
+        );
+
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    filter:
+        blur(14px);
+}
+
+/* =========================================
+   LOGO
+========================================= */
 
 .logo {
+
     width: 130px;
-    margin-bottom: 40px;
+
+    margin-bottom:
+        40px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    filter:
+        drop-shadow(
+            0 8px 20px rgba(0,0,0,.25)
+        );
 }
+
+/* =========================================
+   LEFT TITLE
+========================================= */
 
 .left h1 {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 20px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    font-size:
+        42px;
+
+    font-weight:
+        700;
+
+    margin-bottom:
+        18px;
+
+    line-height:
+        1.2;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #22c55e
+        );
+
+    background-clip:
+        text;
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
 }
+
+/* =========================================
+   SUBTEXT
+========================================= */
 
 .left .sub {
-    color: #d4e9db;
-    margin-bottom: 30px;
-    font-size: 18px;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    color:
+        #9ca3af;
+
+    margin-bottom:
+        30px;
+
+    font-size:
+        17px;
+
+    line-height:
+        1.7;
 }
 
+/* =========================================
+   LIST
+========================================= */
+
 .left ul {
-    margin-top: 20px;
-    list-style-position: inside;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    margin-top:
+        10px;
+
+    list-style:
+        none;
 }
 
 .left ul li {
-    margin-bottom: 15px;
-    font-size: 18px;
+
+    margin-bottom:
+        16px;
+
+    font-size:
+        16px;
+
+    color:
+        #d1d5db;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
 }
 
-.left img{
-    width: 10%;
-    margin-top: 6px;
+/* BOLINHA VERDE */
+
+.left ul li::before {
+
+    content:
+        "";
+
+    width:
+        8px;
+
+    height:
+        8px;
+
+    border-radius:
+        50%;
+
+    background:
+        #22c55e;
+
+    display:
+        block;
 }
 
-/* LADO DIREITO */
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
 .right {
-    width: 50%;
-    background: #1c1c1c;
-    color: white;
-    padding: 60px;
-    overflow-y: auto; /* corrigido */
+
+    width:
+        50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0d0d0d,
+            #121212
+        );
+
+    color:
+        white;
+
+    padding:
+        70px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    overflow-y:
+        auto;
 }
+
+/* =========================================
+   RIGHT TITLE
+========================================= */
 
 .right h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
+
+    font-size:
+        34px;
+
+    margin-bottom:
+        12px;
+
+    text-align:
+        center;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #22c55e
+        );
+
+    background-clip:
+        text;
+
+    -webkit-background-clip:
+        text;
+
+    -webkit-text-fill-color:
+        transparent;
 }
+
+/* =========================================
+   RIGHT SUBTEXT
+========================================= */
 
 .right .sub {
-    font-size: 16px;
-    color: #bbbbbb;
-    margin-bottom: 30px;
+
+    font-size:
+        15px;
+
+    color:
+        #9ca3af;
+
+    margin-bottom:
+        30px;
+
+    text-align:
+        center;
 }
 
-/* INPUTS */
+/* =========================================
+   INPUT GROUP
+========================================= */
+
 .input-group {
-    display: flex;
-    flex-wrap: wrap; /* corrigido */
-    gap: 20px;
-    margin-bottom: 20px;
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        20px;
+
+    margin-bottom:
+        20px;
 }
+
+/* =========================================
+   INPUT BOX
+========================================= */
 
 .input-box {
-    width: 48%; /* melhor ajuste */
-    display: flex;
-    flex-direction: column;
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
 }
+
+/* =========================================
+   LABEL
+========================================= */
 
 label {
-    font-size: 14px;
-    margin-bottom: 5px;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        8px;
+
+    color:
+        #d1d5db;
 }
+
+/* =========================================
+   INPUT
+========================================= */
 
 input {
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #2b2b2b;
-    color: white;
+
+    padding:
+        14px;
+
+    border-radius:
+        12px;
+
+    border:
+        1px solid #1f2937;
+
+    background:
+        #111111;
+
+    color:
+        white;
+
+    transition:
+        .25s;
 }
+
+/* PLACEHOLDER */
+
+input::placeholder {
+
+    color:
+        #6b7280;
+}
+
+/* FOCUS */
 
 input:focus {
-    outline: 2px solid #3ab57d;
+
+    outline:
+        none;
+
+    border-color:
+        #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,.12);
 }
 
-/* GÊNERO */
-.gender-label {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: block;
-}
+/* =========================================
+   BUTTON
+========================================= */
 
-.gender {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-/* BOTÃO */
 .btn {
-    width: 100%;
-    padding: 12px;
-    background: #0e5f38;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-bottom: 20px;
+
+    width:
+        100%;
+
+    padding:
+        14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+
+    color:
+        white;
+
+    border:
+        none;
+
+    border-radius:
+        12px;
+
+    font-size:
+        16px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    margin-top:
+        10px;
+
+    margin-bottom:
+        20px;
+
+    transition:
+        .25s;
+
+    box-shadow:
+        0 10px 24px rgba(34,197,94,.18);
 }
+
+/* HOVER BUTTON */
 
 .btn:hover {
-    background: #0b4a2b;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(34,197,94,.24);
 }
 
-/* LOGIN */
+/* =========================================
+   LOGIN
+========================================= */
+
 .login {
-    text-align: center;
+
+    text-align:
+        center;
+
+    color:
+        #9ca3af;
 }
+
+/* LINK */
 
 .login a {
-    color: #3ab57d;
+
+    color:
+        #22c55e;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        600;
 }
 
-/* RESPONSIVO (BONUS 🔥) */
+.login a:hover {
+
+    text-decoration:
+        underline;
+}
+
+/* =========================================
+   ERROR BOX
+========================================= */
+
+.error-box {
+
+    background:
+        rgba(239,68,68,.10);
+
+    border:
+        1px solid rgba(239,68,68,.20);
+
+    color:
+        #f87171;
+
+    padding:
+        14px;
+
+    border-radius:
+        12px;
+
+    margin-bottom:
+        22px;
+
+    font-size:
+        14px;
+}
+
+.error-box p {
+
+    margin:
+        4px 0;
+}
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
 @media (max-width: 900px) {
+
     .container {
-        flex-direction: column;
+
+        flex-direction:
+            column;
     }
 
     .left,
     .right {
-        width: 100%;
+
+        width:
+            100%;
     }
 
-    .input-box {
-        width: 100%;
+    .left {
+
+        padding:
+            50px 30px;
+    }
+
+    .right {
+
+        padding:
+            40px 30px;
+    }
+
+    .left h1 {
+
+        font-size:
+            34px;
+    }
+
+    .right h2 {
+
+        font-size:
+            28px;
     }
 }
 
-.error-box {
-    background: #2a0f0f;          /* fundo escuro */
-    border: 1px solid #ff4d4d;    /* borda vermelha */
-    color: #ffffff;               /* texto vermelho */
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+
+    width:
+        10px;
 }
 
-.error-box p {
-    margin: 5px 0;
+::-webkit-scrollbar-track {
+
+    background:
+        #0b0b0b;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background:
+        #1f2937;
+
+    border-radius:
+        20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background:
+        #374151;
 }

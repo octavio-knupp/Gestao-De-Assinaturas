@@ -1,251 +1,422 @@
-/* RESET */
-body {
+/* =========================================================
+   RESET
+========================================================= */
+*{
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #020617);
-    color: white;
-    padding-top: 30px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* CONTAINER */
-.container {
-    width: 90%;
+/* =========================================================
+   BODY
+========================================================= */
+body{
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        radial-gradient(circle at top left, rgba(34,197,94,0.08), transparent 25%),
+        linear-gradient(135deg, #050505, #000000);
+
+    min-height: 100vh;
+
+    padding: 40px 20px;
+
+    color: white;
+
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+.container{
+    width: 95%;
+    max-width: 1450px;
+
     margin: auto;
-    padding-top: 30px;
+
+    background: #0b0b0b;
+
+    border: 1px solid rgba(34,197,94,0.15);
+
+    border-radius: 24px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.65),
+        0 0 0 1px rgba(34,197,94,0.04);
+
+    animation: aparecer .5s ease;
 }
 
-/* TÍTULO */
-h2 {
-    margin-bottom: 10px;
-}
-
-/* BOTÃO HOME (CASINHA) */
-.btn-home {
+/* =========================================================
+   BOTÃO HOME
+========================================================= */
+/* =========================================================
+   BOTÃO HOME
+========================================================= */
+.btn-home{
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 45px;
-    height: 45px;
-
-    background: #15803d;
-    color: white;
-
-    text-decoration: none;
-    border-radius: 10px;
-
-    font-size: 18px;
-
-    transition: 0.3s;
-}
-
-.btn-home:hover {
-    background: #16a34a;
-    transform: translateY(-2px);
-}
-
-/* TABELA */
-.table-container {
-    background-color: #1e293b;
-    border-radius: 12px;
-    padding: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th {
-    background-color: #334155;
-    padding: 14px;
-    text-align: left;
-}
-
-td {
-    padding: 14px;
-    border-bottom: 1px solid #475569;
-}
-
-tr:hover {
-    background-color: #334155;
-}
-
-/* STATUS */
-.status {
-    display: flex;
     align-items: center;
     gap: 8px;
-}
 
-.status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
+    background: #0d0d0d;
 
-/* CORES DA BOLINHA */
-.green {
-    background: #22c55e;
-}
+    border: 1px solid rgba(34,197,94,0.15);
 
-.red {
-    background: #ef4444;
-}
+    color: #d1d5db;
 
-.yellow {
-    background: #eab308;
-}
+    padding: 10px 16px;
 
-.orange {
-    background: #f97316;
-}
+    border-radius: 12px;
 
-/* COR DO TEXTO */
-.status.vencido {
-    color: #ef4444;
-}
-
-.status.vence_hoje {
-    color: #eab308;
-}
-
-.status.vence_breve {
-    color: #f97316;
-}
-
-.status.em_dia {
-    color: #22c55e;
-}
-
-/* AÇÕES */
-.acoes {
-    display: flex;
-    gap: 10px;
-}
-
-/* REMOVE LINK ROXO */
-.acoes a {
     text-decoration: none;
-}
-
-/* BOTÕES */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-
-    padding: 6px 12px;
 
     font-size: 14px;
     font-weight: 500;
 
-    border-radius: 6px;
+    transition: .25s ease;
 
-    border: 1px solid;
-    transition: 0.25s ease;
+    margin-bottom: 25px;
+}
+
+.btn-home i{
+    font-size: 15px;
+}
+
+.btn-home:hover{
+    border-color: #22c55e;
+
+    color: #22c55e;
+
+    background: rgba(34,197,94,0.06);
+
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   TITULO
+========================================================= */
+h2{
+    font-size: 34px;
+    font-weight: 700;
+
+    margin-bottom: 28px;
+
+    color: white;
+}
+
+/* =========================================================
+   TOGGLE
+========================================================= */
+.toggle-container{
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    background: #050505;
+
+    border: 1px solid rgba(34,197,94,0.20);
+
+    padding: 14px 18px;
+
+    border-radius: 16px;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 0 15px rgba(34,197,94,0.05);
+}
+
+.toggle-container span{
+    font-size: 14px;
+    color: #d1d5db;
+}
+
+.toggle-btn{
+    width: 58px;
+    height: 30px;
+
+    background: #181818;
+
+    border: 1px solid rgba(34,197,94,0.25);
+
+    border-radius: 999px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.toggle-circle{
+    width: 22px;
+    height: 22px;
+
+    background: #22c55e;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 3px;
+    left: 4px;
+
+    transition: .25s ease;
+}
+
+/* =========================================================
+   FILTRO
+========================================================= */
+#status-filter{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 30px;
+}
+
+#status-filter label{
+    color: #d1d5db;
+    font-size: 15px;
+}
+
+#status-filter select{
+    background: #050505;
+
+    border: 1px solid rgba(34,197,94,0.30);
+
+    color: white;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: .25s ease;
+}
+
+#status-filter select:focus{
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,0.15);
+}
+
+/* =========================================================
+   TABELA
+========================================================= */
+.table-container{
+    overflow-x: auto;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(34,197,94,0.12);
+
+    background: #050505;
+}
+
+table{
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 1100px;
+}
+
+/* CABEÇALHO */
+th{
+    background: #0f0f0f;
+
+    color: #22c55e;
+
+    text-align: left;
+
+    padding: 18px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* LINHAS */
+td{
+    padding: 18px;
+
+    font-size: 14px;
+
+    color: #f3f4f6;
+
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+tr{
+    transition: .2s ease;
+}
+
+tr:hover{
+    background: rgba(34,197,94,0.03);
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+.status{
+    font-weight: 600;
+}
+
+.status-dot{
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+    margin-right: 8px;
+}
+
+.red{
+    background: #ef4444;
+}
+
+.yellow{
+    background: #facc15;
+}
+
+.orange{
+    background: #fb923c;
+}
+
+.green{
+    background: #22c55e;
+}
+
+/* =========================================================
+   AÇÕES
+========================================================= */
+.acoes{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+.btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: .25s ease;
 }
 
 /* EDITAR */
-.btn.editar {
-    color: #60a5fa;
-    border-color: #60a5fa;
+.editar{
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+
+    box-shadow:
+        0 8px 18px rgba(34,197,94,0.18);
 }
 
-.btn.editar:hover {
-    background: #60a5fa;
-    color: #0f172a;
+.editar:hover{
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(34,197,94,0.28);
 }
 
 /* EXCLUIR */
-.btn.excluir {
-    color: #f87171;
-    border-color: #f87171;
+.excluir{
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+
+    box-shadow:
+        0 8px 18px rgba(239,68,68,0.18);
 }
 
-.btn.excluir:hover {
-    background: #f87171;
-    color: #1e1e1e;
-}
-
-/* WHATSAPP */
-.btn.whatsapp {
-    color: #22c55e;
-    border-color: #22c55e;
-}
-
-.btn.whatsapp:hover {
-    background: #22c55e;
-    color: #022c22;
-}
-
-/* HOVER GERAL */
-.btn:hover {
+.excluir:hover{
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-/* CONTAINER */
-.toggle-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-
-    width: 100%;
-    max-width: 1100px;
-
-    margin: 10px auto 0 auto;
-    padding-right: 10px;
-
-    box-sizing: border-box;
 }
 
-/* FILTRO */
-#status-filter {
-    margin-bottom: 0;
+/* WHATS */
+.whatsapp{
+    background: linear-gradient(135deg, #16a34a, #15803d);
+
+    box-shadow:
+        0 8px 18px rgba(34,197,94,0.18);
 }
 
-/* TABELA */
-.table-container {
-    margin-top: 5px;
+.whatsapp:hover{
+    transform: translateY(-2px);
 }
 
-/* BOTÃO BASE */
-.toggle-btn {
-    width: 60px;
-    height: 30px;
-    background: #ccc;
-    border-radius: 30px;
-    
-    border: 1px solid #ffffff; /* 🔥 borda adicionada */
+/* =========================================================
+   ANIMAÇÃO
+========================================================= */
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-    cursor: pointer;
-    position: relative;
-    padding: 2px;
-    transition: background 0.3s;
-
-    flex-shrink: 0;
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* BOLINHA */
-.toggle-circle {
-    width: 26px;
-    height: 26px;
-    background: white;
-    border-radius: 50%;
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+@media (max-width: 900px){
 
-    position: relative; /* 🔥 evita overflow absoluto */
-    left: 0;
+    .container{
+        padding: 22px;
+    }
 
-    transition: transform 0.3s;
+    h2{
+        font-size: 28px;
+    }
+
+    #status-filter{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 }
 
-/* estado ativo */
-.toggle-btn.active {
-    background: #4CAF50;
-    border-color: #ffffff;
-}
+@media (max-width: 600px){
 
-.toggle-btn.active .toggle-circle {
-    transform: translateX(100%); /* 🔥 nunca mais escapa */
+    body{
+        padding: 40px 10px 20px;
+    }
+
+    .container{
+        padding: 18px;
+    }
+
+    h2{
+        font-size: 24px;
+    }
+
 }
