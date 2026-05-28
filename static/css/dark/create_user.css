@@ -1,112 +1,118 @@
 /* =========================================
-   LOGIN CLIENT — DARK PREMIUM
+   RESET
 ========================================= */
 
-/* RESET */
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    font-family:
-        'Poppins',
-        sans-serif;
 }
 
 /* =========================================
    BODY
 ========================================= */
 
-body {
+body{
+
+    font-family: 'Poppins', sans-serif;
 
     background:
         linear-gradient(
             135deg,
-            #050505,
-            #0b0b0b
+            #000000,
+            #0a0a0a
         );
 
-    color:
-        #ffffff;
+    min-height: 100vh;
 
-    min-height:
-        100vh;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    padding: 30px;
 }
 
 /* =========================================
    CONTAINER
 ========================================= */
 
-.container {
+.container{
 
-    width: 100%;
+    width: 1100px;
 
-    min-height: 100vh;
+    min-height: 700px;
 
     display: flex;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background:
+        rgba(10,10,10,.96);
+
+    border:
+        1px solid rgba(255,255,255,.05);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.65);
+
+    backdrop-filter:
+        blur(12px);
 }
 
 /* =========================================
    LEFT SIDE
 ========================================= */
 
-.left {
+.left{
 
-    width: 50%;
+    width: 42%;
+
+    padding: 60px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    position: relative;
 
     background:
         linear-gradient(
-            135deg,
-            #0a0a0a,
-            #101010
+            180deg,
+            #050505,
+            #0d0d0d
         );
 
-    color:
-        white;
-
-    padding:
-        70px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    justify-content:
-        center;
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
     border-right:
-        1px solid rgba(34,197,94,.08);
+        1px solid rgba(255,255,255,.04);
 }
 
 /* EFEITO VERDE */
 
-.left::before {
+.left::before{
 
     content: "";
 
     position: absolute;
 
-    width: 420px;
-    height: 420px;
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(34,197,94,.20),
-            rgba(34,197,94,.06),
+            rgba(34,197,94,.22),
             transparent 70%
         );
-
-    border-radius: 50%;
 
     top: 50%;
     left: 50%;
@@ -114,56 +120,24 @@ body {
     transform:
         translate(-50%, -50%);
 
-    filter:
-        blur(14px);
+    filter: blur(30px);
 }
 
 /* =========================================
-   LOGO
+   TITLES
 ========================================= */
 
-.logo {
+.left h1{
 
-    width: 130px;
+    position: relative;
 
-    margin-bottom:
-        40px;
+    z-index: 2;
 
-    position:
-        relative;
+    font-size: 42px;
 
-    z-index:
-        2;
+    font-weight: 700;
 
-    filter:
-        drop-shadow(
-            0 8px 20px rgba(0,0,0,.25)
-        );
-}
-
-/* =========================================
-   LEFT TITLE
-========================================= */
-
-.left h1 {
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-    font-size:
-        42px;
-
-    font-weight:
-        700;
-
-    margin-bottom:
-        18px;
-
-    line-height:
-        1.2;
+    line-height: 1.2;
 
     background:
         linear-gradient(
@@ -172,153 +146,89 @@ body {
             #22c55e
         );
 
-    background-clip:
-        text;
+    -webkit-background-clip: text;
 
-    -webkit-background-clip:
-        text;
-
-    -webkit-text-fill-color:
-        transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 /* =========================================
    SUBTEXT
 ========================================= */
 
-.left .sub {
+.left .sub{
 
-    position:
-        relative;
+    position: relative;
 
-    z-index:
-        2;
+    z-index: 2;
 
-    color:
-        #9ca3af;
+    margin-top: 10px;
 
-    margin-bottom:
-        30px;
+    color: #b5b5b5;
 
-    font-size:
-        17px;
+    line-height: 1.8;
 
-    line-height:
-        1.7;
+    font-size: 15px;
 }
 
 /* =========================================
    LIST
 ========================================= */
 
-.left ul {
+.left ul{
 
-    position:
-        relative;
+    position: relative;
 
-    z-index:
-        2;
+    z-index: 2;
 
-    margin-top:
-        10px;
+    margin-top: 30px;
 
-    list-style:
-        none;
+    padding-left: 18px;
 }
 
-.left ul li {
+.left ul li{
 
-    margin-bottom:
-        16px;
+    color: #d4d4d4;
 
-    font-size:
-        16px;
+    margin-bottom: 10px;
 
-    color:
-        #d1d5db;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        10px;
-}
-
-/* BOLINHA VERDE */
-
-.left ul li::before {
-
-    content:
-        "";
-
-    width:
-        8px;
-
-    height:
-        8px;
-
-    border-radius:
-        50%;
-
-    background:
-        #22c55e;
-
-    display:
-        block;
+    font-size: 15px;
 }
 
 /* =========================================
    RIGHT SIDE
 ========================================= */
 
-.right {
+.right{
 
-    width:
-        50%;
+    width: 58%;
+
+    padding: 55px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
 
     background:
         linear-gradient(
             180deg,
-            #0d0d0d,
-            #121212
+            #050505,
+            #111111
         );
-
-    color:
-        white;
-
-    padding:
-        70px;
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    justify-content:
-        center;
-
-    overflow-y:
-        auto;
 }
 
 /* =========================================
-   RIGHT TITLE
+   TITLE
 ========================================= */
 
-.right h2 {
+.right h2{
 
-    font-size:
-        34px;
+    text-align: center;
 
-    margin-bottom:
-        12px;
+    font-size: 34px;
 
-    text-align:
-        center;
+    font-weight: 700;
 
     background:
         linear-gradient(
@@ -327,144 +237,170 @@ body {
             #22c55e
         );
 
-    background-clip:
-        text;
+    -webkit-background-clip: text;
 
-    -webkit-background-clip:
-        text;
-
-    -webkit-text-fill-color:
-        transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 /* =========================================
-   RIGHT SUBTEXT
+   SUBTITLE
 ========================================= */
 
-.right .sub {
+.right .sub{
 
-    font-size:
-        15px;
+    text-align: center;
 
-    color:
-        #9ca3af;
+    margin-top: 10px;
 
-    margin-bottom:
-        30px;
+    margin-bottom: 30px;
 
-    text-align:
-        center;
+    color: #9ca3af;
+
+    font-size: 15px;
 }
 
 /* =========================================
    INPUT GROUP
 ========================================= */
 
-.input-group {
+.input-group{
 
-    display:
-        flex;
+    display: grid;
 
-    flex-wrap:
-        wrap;
+    grid-template-columns: 1fr 1fr;
 
-    gap:
-        20px;
-
-    margin-bottom:
-        20px;
+    gap: 18px;
 }
 
 /* =========================================
    INPUT BOX
 ========================================= */
 
-.input-box {
+.input-box{
 
-    width:
-        100%;
+    display: flex;
 
-    display:
-        flex;
+    flex-direction: column;
 
-    flex-direction:
-        column;
+    gap: 8px;
 }
 
 /* =========================================
    LABEL
 ========================================= */
 
-label {
+.input-box label{
 
-    font-size:
-        14px;
+    color: #f1f1f1;
 
-    margin-bottom:
-        8px;
-
-    color:
-        #d1d5db;
+    font-size: 14px;
 }
 
 /* =========================================
    INPUT
 ========================================= */
 
-input {
+.input-box input{
 
-    padding:
-        14px;
+    width: 100%;
 
-    border-radius:
-        12px;
+    padding: 15px;
+
+    border-radius: 14px;
 
     border:
-        1px solid #1f2937;
+        1px solid rgba(255,255,255,.06);
 
     background:
-        #111111;
+        rgba(255,255,255,.03);
 
-    color:
-        white;
+    color: white;
 
-    transition:
-        .25s;
+    outline: none;
+
+    transition: .25s;
 }
 
 /* PLACEHOLDER */
 
-input::placeholder {
+.input-box input::placeholder{
 
-    color:
-        #6b7280;
+    color: #6b7280;
 }
 
 /* FOCUS */
 
-input:focus {
-
-    outline:
-        none;
+.input-box input:focus{
 
     border-color:
         #22c55e;
 
     box-shadow:
-        0 0 0 4px rgba(34,197,94,.12);
+        0 0 0 4px rgba(34,197,94,.15);
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+/* =========================================
+   GENDER
+========================================= */
+
+.gender-label{
+
+    display: block;
+
+    margin-top: 25px;
+
+    margin-bottom: 12px;
+
+    color: #f1f1f1;
+
+    font-size: 14px;
+}
+
+.gender{
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    color: #d4d4d4;
+}
+
+.gender label{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+}
+
+.gender input{
+
+    accent-color: #22c55e;
 }
 
 /* =========================================
    BUTTON
 ========================================= */
 
-.btn {
+.btn{
 
-    width:
-        100%;
+    width: 100%;
 
-    padding:
-        14px;
+    margin-top: 30px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 14px;
 
     background:
         linear-gradient(
@@ -473,186 +409,110 @@ input:focus {
             #16a34a
         );
 
-    color:
-        white;
+    color: white;
 
-    border:
-        none;
+    font-size: 15px;
 
-    border-radius:
-        12px;
+    font-weight: 600;
 
-    font-size:
-        16px;
+    cursor: pointer;
 
-    font-weight:
-        600;
-
-    cursor:
-        pointer;
-
-    margin-top:
-        10px;
-
-    margin-bottom:
-        20px;
-
-    transition:
-        .25s;
+    transition: .25s;
 
     box-shadow:
-        0 10px 24px rgba(34,197,94,.18);
+        0 10px 24px rgba(34,197,94,.25);
 }
 
-/* HOVER BUTTON */
+/* HOVER */
 
-.btn:hover {
+.btn:hover{
 
     transform:
         translateY(-2px);
 
     box-shadow:
-        0 14px 28px rgba(34,197,94,.24);
+        0 14px 30px rgba(34,197,94,.35);
 }
 
 /* =========================================
-   LOGIN
+   LOGIN TEXT
 ========================================= */
 
-.login {
+.home{
 
-    text-align:
-        center;
+    margin-top: 22px;
 
-    color:
-        #9ca3af;
+    text-align: center;
+
+    color: #9ca3af;
 }
 
 /* LINK */
 
-.login a {
+.home a{
 
-    color:
-        #22c55e;
+    color: #22c55e;
 
-    text-decoration:
-        none;
+    text-decoration: none;
 
-    font-weight:
-        600;
+    font-weight: 600;
 }
 
-.login a:hover {
+.home a:hover{
 
-    text-decoration:
-        underline;
+    text-decoration: underline;
 }
 
 /* =========================================
    ERROR BOX
 ========================================= */
 
-.error-box {
+.error-box{
+
+    margin-bottom: 20px;
+
+    padding: 14px;
+
+    border-radius: 12px;
 
     background:
         rgba(239,68,68,.10);
 
     border:
-        1px solid rgba(239,68,68,.20);
+        1px solid rgba(239,68,68,.18);
 
     color:
         #f87171;
 
-    padding:
-        14px;
-
-    border-radius:
-        12px;
-
-    margin-bottom:
-        22px;
-
-    font-size:
-        14px;
+    font-size: 14px;
 }
 
-.error-box p {
+.error-box p{
 
-    margin:
-        4px 0;
+    margin-bottom: 6px;
 }
 
 /* =========================================
    RESPONSIVO
 ========================================= */
 
-@media (max-width: 900px) {
+@media(max-width: 1000px){
 
-    .container {
+    .container{
 
-        flex-direction:
-            column;
+        flex-direction: column;
+
+        width: 100%;
     }
 
     .left,
-    .right {
+    .right{
 
-        width:
-            100%;
+        width: 100%;
     }
 
-    .left {
+    .input-group{
 
-        padding:
-            50px 30px;
+        grid-template-columns: 1fr;
     }
-
-    .right {
-
-        padding:
-            40px 30px;
-    }
-
-    .left h1 {
-
-        font-size:
-            34px;
-    }
-
-    .right h2 {
-
-        font-size:
-            28px;
-    }
-}
-
-/* =========================================
-   SCROLLBAR
-========================================= */
-
-::-webkit-scrollbar {
-
-    width:
-        10px;
-}
-
-::-webkit-scrollbar-track {
-
-    background:
-        #0b0b0b;
-}
-
-::-webkit-scrollbar-thumb {
-
-    background:
-        #1f2937;
-
-    border-radius:
-        20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-
-    background:
-        #374151;
 }

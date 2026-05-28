@@ -3,72 +3,140 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>NextPay - Login</title>
 
-    <link rel="stylesheet" href="{% static 'css/dark/login_client.css' %}">
-    <link rel="stylesheet" href="{% static 'css/light/login_client_light.css' %}">
+    <link rel="icon"
+          href="{% static 'img/favicon.ico' %}"
+          type="image/png">
+
+    <!-- FONT -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/dark/login_client.css' %}">
+
+    <link rel="stylesheet"
+          href="{% static 'css/light/login_client_light.css' %}">
+
+    <!-- JS -->
 
     <script src="{% static 'js/theme.js' %}" defer></script>
+
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- LADO ESQUERDO (igual cadastro) -->
+        <!-- LEFT -->
+
         <div class="left">
+
             <h1>NextPay</h1>
 
-            <h1>Bem-vindo de volta!</h1>
+            <h2>Bem-vindo de volta!</h2>
 
             <p class="sub">
-                Acesse sua conta e gerencie suas cobranças com facilidade.
+                Acesse sua conta e gerencie suas cobranças
+                com facilidade.
             </p>
 
             <ul>
+
                 <li>Controle total dos seus clientes</li>
+
                 <li>Acompanhe pagamentos</li>
+
                 <li>Evite inadimplência</li>
+
             </ul>
+
         </div>
 
-        <!-- LADO DIREITO -->
+        <!-- RIGHT -->
+
         <div class="right">
+
             <h2>Entrar na sua conta</h2>
-            <p class="sub">Digite seus dados para acessar</p>
+
+            <p class="sub">
+                Digite seus dados para acessar
+            </p>
+
             {% if erro %}
             <div class="error-box">
+
                 ⚠️ {{ erro }}
+
             </div>
             {% endif %}
+
             <form method="POST">
+
                 {% csrf_token %}
 
                 <div class="input-group">
 
                     <div class="input-box">
+
                         <label>E-mail</label>
-                        <input type="email" name="email" placeholder="Digite seu email" required>
+
+                        <input type="email"
+                               name="email"
+                               placeholder="Digite seu email"
+                               required>
+
                     </div>
 
                     <div class="input-box">
+
                         <label>Senha</label>
-                        <input type="password" name="password" placeholder="Digite sua senha" required>
+
+                        <input type="password"
+                               name="password"
+                               placeholder="Digite sua senha"
+                               required>
+
                     </div>
 
                 </div>
 
-                <button type="submit" class="btn">Entrar</button>
+                <button type="submit"
+                        class="btn">
+
+                    Entrar
+
+                </button>
 
                 <p class="login">
-                    Não tem conta? <a href="{% url 'create_client' %}">Criar conta</a>
+
+                    Não tem conta?
+
+                    <a href="{% url 'create_client' %}">
+                        Criar conta
+                    </a>
+
                 </p>
 
             </form>
+
         </div>
 
     </div>

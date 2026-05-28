@@ -1,41 +1,48 @@
 /* =========================================
-   LOGIN CLIENT — DARK PREMIUM
+   RESET
 ========================================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /* =========================================
    BODY
 ========================================= */
 
-body {
+body{
 
-    margin: 0;
-
-    font-family:
-        'Poppins',
-        sans-serif;
+    font-family: 'Poppins', sans-serif;
 
     background:
         linear-gradient(
             135deg,
-            #050505,
-            #0b0b0b
+            #000000,
+            #0a0a0a
         );
 
-    color:
-        #ffffff;
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
 }
 
 /* =========================================
    CONTAINER
 ========================================= */
 
-.container {
+.container{
 
     width: 950px;
 
     height: 560px;
-
-    margin: 60px auto;
 
     display: flex;
 
@@ -47,26 +54,24 @@ body {
         rgba(10,10,10,.96);
 
     border:
-        1px solid rgba(34,197,94,.10);
+        1px solid rgba(255,255,255,.05);
 
     box-shadow:
-        0 12px 40px rgba(0,0,0,.45);
+        0 20px 60px rgba(0,0,0,.65);
+
+    backdrop-filter:
+        blur(12px);
 }
 
 /* =========================================
    LEFT SIDE
 ========================================= */
 
-.left {
+.left{
 
     width: 45%;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0a0a0a,
-            #101010
-        );
+    padding: 55px;
 
     display: flex;
 
@@ -74,17 +79,22 @@ body {
 
     justify-content: center;
 
-    padding: 50px;
-
     position: relative;
 
+    background:
+        linear-gradient(
+            180deg,
+            #050505,
+            #0d0d0d
+        );
+
     border-right:
-        1px solid rgba(34,197,94,.08);
+        1px solid rgba(255,255,255,.04);
 }
 
 /* EFEITO VERDE */
 
-.left::before {
+.left::before{
 
     content: "";
 
@@ -93,15 +103,14 @@ body {
     width: 320px;
     height: 320px;
 
+    border-radius: 50%;
+
     background:
         radial-gradient(
             circle,
-            rgba(34,197,94,.20),
-            rgba(34,197,94,.06),
+            rgba(34,197,94,.22),
             transparent 70%
         );
-
-    border-radius: 50%;
 
     top: 50%;
     left: 50%;
@@ -109,25 +118,22 @@ body {
     transform:
         translate(-50%, -50%);
 
-    filter: blur(14px);
+    filter: blur(28px);
 }
 
 /* =========================================
-   TEXTOS LEFT
+   TITLES
 ========================================= */
 
-.left h1 {
+.left h1{
 
     position: relative;
+
     z-index: 2;
 
-    margin: 0;
-
-    font-size: 38px;
+    font-size: 42px;
 
     font-weight: 700;
-
-    line-height: 1.2;
 
     background:
         linear-gradient(
@@ -136,45 +142,65 @@ body {
             #22c55e
         );
 
-    background-clip: text;
     -webkit-background-clip: text;
 
     -webkit-text-fill-color: transparent;
 }
 
-.left .sub {
+.left h2{
 
     position: relative;
+
     z-index: 2;
 
     margin-top: 18px;
 
-    color: #9ca3af;
+    font-size: 32px;
 
-    font-size: 15px;
+    line-height: 1.2;
 
-    line-height: 1.6;
+    color: #ffffff;
 }
 
 /* =========================================
-   LISTA
+   SUBTEXT
 ========================================= */
 
-.left ul {
+.sub{
 
     position: relative;
+
     z-index: 2;
 
-    margin-top: 25px;
+    margin-top: 18px;
 
-    padding-left: 20px;
+    color: #b5b5b5;
+
+    line-height: 1.7;
+
+    font-size: 15px;
 }
 
-.left ul li {
+/* =========================================
+   LIST
+========================================= */
 
-    color: #d1d5db;
+.left ul{
 
-    margin-bottom: 12px;
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 28px;
+
+    padding-left: 18px;
+}
+
+.left ul li{
+
+    margin-bottom: 14px;
+
+    color: #d4d4d4;
 
     font-size: 15px;
 }
@@ -183,39 +209,37 @@ body {
    RIGHT SIDE
 ========================================= */
 
-.right {
+.right{
 
     width: 55%;
 
-    background:
-        linear-gradient(
-            180deg,
-            #0d0d0d,
-            #121212
-        );
-
-    padding: 50px;
+    padding: 55px;
 
     display: flex;
 
     flex-direction: column;
 
     justify-content: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #050505,
+            #111111
+        );
 }
 
 /* =========================================
-   TITLE
+   RIGHT TITLE
 ========================================= */
 
-.right h2 {
-
-    margin: 0;
-
-    font-size: 32px;
-
-    font-weight: 700;
+.right h2{
 
     text-align: center;
+
+    font-size: 34px;
+
+    font-weight: 700;
 
     background:
         linear-gradient(
@@ -224,45 +248,31 @@ body {
             #22c55e
         );
 
-    background-clip: text;
     -webkit-background-clip: text;
 
     -webkit-text-fill-color: transparent;
 }
 
 /* =========================================
-   SUBTITLE
-========================================= */
-
-.right .sub {
-
-    text-align: center;
-
-    color: #9ca3af;
-
-    margin-top: 10px;
-
-    margin-bottom: 30px;
-}
-
-/* =========================================
    INPUT GROUP
 ========================================= */
 
-.input-group {
+.input-group{
 
     display: flex;
 
     flex-direction: column;
 
     gap: 18px;
+
+    margin-top: 25px;
 }
 
 /* =========================================
    INPUT BOX
 ========================================= */
 
-.input-box {
+.input-box{
 
     display: flex;
 
@@ -275,76 +285,74 @@ body {
    LABEL
 ========================================= */
 
-.input-box label {
+.input-box label{
 
-    color: #d1d5db;
+    color: #f1f1f1;
 
     font-size: 14px;
-
-    font-weight: 500;
 }
 
 /* =========================================
-   INPUTS
+   INPUT
 ========================================= */
 
-.input-box input {
+.input-box input{
 
     width: 100%;
 
-    padding: 14px;
+    padding: 15px;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
     border:
-        1px solid #1f2937;
+        1px solid rgba(255,255,255,.06);
 
     background:
-        #111111;
+        rgba(255,255,255,.03);
 
-    color:
-        #ffffff;
+    color: white;
 
     outline: none;
 
     transition: .25s;
-
-    box-sizing: border-box;
 }
 
 /* PLACEHOLDER */
 
-.input-box input::placeholder {
+.input-box input::placeholder{
 
     color: #6b7280;
 }
 
 /* FOCUS */
 
-.input-box input:focus {
+.input-box input:focus{
 
     border-color:
         #22c55e;
 
     box-shadow:
-        0 0 0 4px rgba(34,197,94,.12);
+        0 0 0 4px rgba(34,197,94,.15);
+
+    background:
+        rgba(255,255,255,.05);
 }
 
 /* =========================================
    BUTTON
 ========================================= */
 
-.btn {
+.btn{
 
     width: 100%;
 
-    padding: 14px;
+    margin-top: 25px;
 
-    margin-top: 24px;
+    padding: 15px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
     background:
         linear-gradient(
@@ -364,25 +372,25 @@ body {
     transition: .25s;
 
     box-shadow:
-        0 10px 24px rgba(34,197,94,.18);
+        0 10px 24px rgba(34,197,94,.25);
 }
 
-/* HOVER BUTTON */
+/* HOVER */
 
-.btn:hover {
+.btn:hover{
 
     transform:
         translateY(-2px);
 
     box-shadow:
-        0 14px 28px rgba(34,197,94,.24);
+        0 14px 30px rgba(34,197,94,.35);
 }
 
 /* =========================================
    LOGIN TEXT
 ========================================= */
 
-.login {
+.login{
 
     margin-top: 22px;
 
@@ -393,16 +401,16 @@ body {
 
 /* LINK */
 
-.login a {
+.login a{
 
     color: #22c55e;
 
-    font-weight: 600;
-
     text-decoration: none;
+
+    font-weight: 600;
 }
 
-.login a:hover {
+.login a:hover{
 
     text-decoration: underline;
 }
@@ -411,54 +419,24 @@ body {
    ERROR BOX
 ========================================= */
 
-.error-box {
+.error-box{
+
+    margin-top: 18px;
+
+    padding: 14px;
+
+    border-radius: 12px;
 
     background:
         rgba(239,68,68,.10);
 
     border:
-        1px solid rgba(239,68,68,.20);
+        1px solid rgba(239,68,68,.18);
 
     color:
         #f87171;
 
-    padding: 12px;
-
-    border-radius: 12px;
-
-    margin-bottom: 20px;
-
     text-align: center;
 
     font-size: 14px;
-}
-
-/* =========================================
-   SCROLLBAR
-========================================= */
-
-::-webkit-scrollbar {
-
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-
-    background:
-        #0b0b0b;
-}
-
-::-webkit-scrollbar-thumb {
-
-    background:
-        #1f2937;
-
-    border-radius:
-        20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-
-    background:
-        #374151;
 }
