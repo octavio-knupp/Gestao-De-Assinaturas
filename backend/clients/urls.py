@@ -5,12 +5,13 @@ from .views import (
     login_client,
     home_client,
     logout_client,
+    config_client,
 
     # CRUD CLIENTES
     list_clients,
     cadastro_client,
     update_client,
-    delete_client
+    delete_client,
 )
 
 urlpatterns = [
@@ -42,7 +43,6 @@ urlpatterns = [
     ),
 
     # CLIENTES (CRUD)
-
     path(
         'clients/',
         list_clients,
@@ -50,9 +50,9 @@ urlpatterns = [
     ),
 
     path(
-    'clients/cadastro/',
-    cadastro_client,
-    name='cadastro_client'
+        'clients/cadastro/',
+        cadastro_client,
+        name='cadastro_client'
     ),
 
     path(
@@ -65,6 +65,13 @@ urlpatterns = [
         'clients/delete/<int:client_id>/',
         delete_client,
         name='delete_client'
+    ),
+
+    # CONFIGURAÇÕES
+    path(
+        'config/',
+        config_client,
+        name='config_client'
     ),
 
 ]

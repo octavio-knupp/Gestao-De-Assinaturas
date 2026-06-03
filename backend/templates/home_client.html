@@ -9,7 +9,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/dark/home.css' %}">
-<link rel="stylesheet" href="{% static 'css/light/home_light.css' %}">
+    <link rel="stylesheet" href="{% static 'css/light/home_light.css' %}">
 
 
     <!-- ICON -->
@@ -21,113 +21,111 @@
 
 <body>
 
-<!-- ============================================================
+    <!-- ============================================================
 SIDEBAR
 ============================================================ -->
 
-<aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar">
 
-    <!-- LOGO -->
-    <div class="sidebar-logo">
-        N
-    </div>
-
-    <!-- MENU -->
-    <div class="sidebar-item" id="menuBtn">
-
-        <div class="sidebar-icon">
-            ☰
+        <!-- LOGO -->
+        <div class="sidebar-logo">
+            N
         </div>
 
-        <span class="sidebar-text">
-            Menu
-        </span>
+        <!-- MENU -->
+        <div class="sidebar-item" id="menuBtn">
 
-    </div>
+            <div class="sidebar-icon">
+                ☰
+            </div>
 
-    <!-- CLIENTES -->
-    <div class="sidebar-item" id="perfilBtn">
+            <span class="sidebar-text">
+                Menu
+            </span>
 
-        <div class="sidebar-icon">
-            <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff">
         </div>
 
-        <span class="sidebar-text">
-            Clientes
-        </span>
+        <!-- CLIENTES -->
+        <div class="sidebar-item" id="perfilBtn">
 
-    </div>
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff">
+            </div>
 
-    <!-- SUBMENU -->
-    <div class="submenu" id="perfilSubmenu">
+            <span class="sidebar-text">
+                Clientes
+            </span>
 
-        <a href="{% url 'list_clients' %}" class="submenu-item">
-            Status Cliente
+        </div>
+
+        <!-- SUBMENU -->
+        <div class="submenu" id="perfilSubmenu">
+
+            <a href="{% url 'list_clients' %}" class="submenu-item">
+                Status Cliente
+            </a>
+
+            <a href="{% url 'cadastro_client' %}" class="submenu-item">
+                Cadastro Cliente
+            </a>
+
+        </div>
+
+        <!-- CONFIG -->
+        <a href="{% url 'config_client' %}" id="config-btn" class="sidebar-item">
+
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff" alt="Configurações">
+            </div>
+
+            <span class="sidebar-text">
+                Configurações
+            </span>
+
         </a>
 
-        <a href="{% url 'cadastro_client' %}" class="submenu-item">
-            Cadastro Cliente
+        <!-- PAGAMENTOS -->
+        <a href="{% url 'pagamentos' %}" class="sidebar-item">
+
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png">
+            </div>
+
+            <span class="sidebar-text">
+                Pagamentos
+            </span>
+
         </a>
 
-    </div>
+    </aside>
 
-    <!-- CONFIG -->
-    <div class="sidebar-item">
-
-        <div class="sidebar-icon">
-            <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff">
-        </div>
-
-        <span class="sidebar-text">
-            Configurações
-        </span>
-
-    </div>
-
-    <!-- PAGAMENTOS -->
-    <a href="{% url 'pagamentos' %}" class="sidebar-item">
-
-        <div class="sidebar-icon">
-            <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png">
-        </div>
-
-        <span class="sidebar-text">
-            Pagamentos
-        </span>
-
-    </a>
-
-</aside>
-
-<!-- ============================================================
+    <!-- ============================================================
 MAIN
 ============================================================ -->
 
-<main class="main-content">
+    <main class="main-content">
 
-    <!-- ========================================================
+        <!-- ========================================================
     HEADER
     ========================================================= -->
 
-    <header>
+        <header>
 
-        <!-- LOGO -->
-        <div class="logo">
+            <!-- LOGO -->
+            <div class="logo">
 
-            <img src="{% static 'img/logosemfundo.png' %}"
-                 alt="Next Pay"
-                 class="logo-icon">
+                <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay" class="logo-icon">
 
-        </div>
+            </div>
 
-        <!-- NAV -->
-        <div class="nav-auth">
+            <!-- NAV -->
+            <div class="nav-auth">
 
-            <button id="themeToggle" class="btn-theme">
-                🌙
-            </button>
+                <button id="themeToggle" class="btn-theme">
+                    🌙
+                </button>
 
-            {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
 
                 <span class="user-name">
                     Olá, {{ user.first_name }}
@@ -137,378 +135,379 @@ MAIN
                     Logout
                 </a>
 
-            {% endif %}
+                {% endif %}
 
-        </div>
+            </div>
 
-    </header>
+        </header>
 
-    <!-- ========================================================
+        <!-- ========================================================
     HERO
     ========================================================= -->
 
-    <section class="hero-section">
+        <section class="hero-section">
 
-        <!-- GRID -->
-        <div class="hero-bg-grid"></div>
+            <!-- GRID -->
+            <div class="hero-bg-grid"></div>
 
-        <!-- DOTS -->
-        <div class="hero-bg-dots left">
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-        </div>
-
-        <div class="hero-bg-dots right">
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-            <div class="bdot"></div>
-        </div>
-
-        <!-- CONTENT -->
-        <div class="hero-content">
-
-            <!-- PILL -->
-            <div class="hero-pill">
-
-                <div class="hero-pill-dot"></div>
-
-                Cobranças automáticas via WhatsApp
-
+            <!-- DOTS -->
+            <div class="hero-bg-dots left">
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
             </div>
 
-            <!-- TITLE -->
-            <h1>
-
-                Controle suas cobranças
-                <br>
-
-                <span class="accent">
-                    Sem esforço
-                </span>
-
-            </h1>
-
-            <!-- DESC -->
-            <p class="hero-desc">
-
-                Nunca mais esqueça um vencimento.
-                <strong>
-                    Automatize cobranças, envie lembretes
-                </strong>
-                e acompanhe seus clientes em tempo real.
-
-            </p>
-
-            <!-- STATS -->
-            <div class="hero-stats">
-
-                <div>
-
-                    <div class="hero-stat-num">
-                        +500
-                    </div>
-
-                    <div class="hero-stat-label">
-                        EMPRESAS
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <div class="hero-stat-num">
-                        98%
-                    </div>
-
-                    <div class="hero-stat-label">
-                        RECUPERAÇÃO
-                    </div>
-
-                </div>
-
-                <div>
-
-                    <div class="hero-stat-num">
-                        40%
-                    </div>
-
-                    <div class="hero-stat-label">
-                        MENOS INADIMP.
-                    </div>
-
-                </div>
-
+            <div class="hero-bg-dots right">
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
             </div>
 
-            <!-- BENEFITS -->
-            <div class="hero-benefits">
+            <!-- CONTENT -->
+            <div class="hero-content">
 
-                <div class="hero-benefit">
+                <!-- PILL -->
+                <div class="hero-pill">
 
-                    <span class="hero-benefit-icon">
-                        ✔
+                    <div class="hero-pill-dot"></div>
+
+                    Cobranças automáticas via WhatsApp
+
+                </div>
+
+                <!-- TITLE -->
+                <h1>
+
+                    Controle suas cobranças
+                    <br>
+
+                    <span class="accent">
+                        Sem esforço
                     </span>
 
-                    Sem contrato mínimo
+                </h1>
+
+                <!-- DESC -->
+                <p class="hero-desc">
+
+                    Nunca mais esqueça um vencimento.
+                    <strong>
+                        Automatize cobranças, envie lembretes
+                    </strong>
+                    e acompanhe seus clientes em tempo real.
+
+                </p>
+
+                <!-- STATS -->
+                <div class="hero-stats">
+
+                    <div>
+
+                        <div class="hero-stat-num">
+                            +500
+                        </div>
+
+                        <div class="hero-stat-label">
+                            EMPRESAS
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="hero-stat-num">
+                            98%
+                        </div>
+
+                        <div class="hero-stat-label">
+                            RECUPERAÇÃO
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="hero-stat-num">
+                            40%
+                        </div>
+
+                        <div class="hero-stat-label">
+                            MENOS INADIMP.
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <div class="hero-benefit">
+                <!-- BENEFITS -->
+                <div class="hero-benefits">
 
-                    <span class="hero-benefit-icon">
-                        ✔
-                    </span>
+                    <div class="hero-benefit">
 
-                    Configuração em minutos
+                        <span class="hero-benefit-icon">
+                            ✔
+                        </span>
+
+                        Sem contrato mínimo
+
+                    </div>
+
+                    <div class="hero-benefit">
+
+                        <span class="hero-benefit-icon">
+                            ✔
+                        </span>
+
+                        Configuração em minutos
+
+                    </div>
+
+                    <div class="hero-benefit">
+
+                        <span class="hero-benefit-icon">
+                            ✔
+                        </span>
+
+                        Suporte em português
+
+                    </div>
 
                 </div>
 
-                <div class="hero-benefit">
+                <!-- BUTTON -->
+                <div class="hero-btns">
 
-                    <span class="hero-benefit-icon">
-                        ✔
-                    </span>
+                    <button class="btn-ver-planos"
+                        onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">
 
-                    Suporte em português
+                        Ver planos ↓
+
+                    </button>
 
                 </div>
 
             </div>
 
-            <!-- BUTTON -->
-            <div class="hero-btns">
+        </section>
 
-                <button class="btn-ver-planos"
-                    onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">
-
-                    Ver planos ↓
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- ========================================================
+        <!-- ========================================================
     PLANOS
     ========================================================= -->
 
-    <section class="plans-section" id="planos">
+        <section class="plans-section" id="planos">
 
-        <div class="plans-eyebrow">
-            PLANOS
-        </div>
+            <div class="plans-eyebrow">
+                PLANOS
+            </div>
 
-        <div class="plans-title">
-            Escolha o plano ideal
-        </div>
+            <div class="plans-title">
+                Escolha o plano ideal
+            </div>
 
-        <div class="plans-sub">
-            Simples e transparente.
-        </div>
+            <div class="plans-sub">
+                Simples e transparente.
+            </div>
 
-        <div class="plans-container">
+            <div class="plans-container">
 
-            <!-- BRONZE -->
-            <div class="plan-card">
+                <!-- BRONZE -->
+                <div class="plan-card">
 
-                <h2 class="bronze">
-                    BRONZE
-                </h2>
+                    <h2 class="bronze">
+                        BRONZE
+                    </h2>
 
-                <p>
-                    Ideal para quem está começando.
-                </p>
+                    <p>
+                        Ideal para quem está começando.
+                    </p>
 
-                <h3>
-                    R$ 39,90
-                    <span>/mês</span>
-                </h3>
+                    <h3>
+                        R$ 39,90
+                        <span>/mês</span>
+                    </h3>
 
-                <div class="plan-divider"></div>
+                    <div class="plan-divider"></div>
 
-                <div class="plan-features">
+                    <div class="plan-features">
 
-                    <div class="plan-feature">
+                        <div class="plan-feature">
 
-                        <div class="plan-feature-check">
-                            ✓
+                            <div class="plan-feature-check">
+                                ✓
+                            </div>
+
+                            Até 50 clientes
+
                         </div>
 
-                        Até 50 clientes
+                        <div class="plan-feature">
+
+                            <div class="plan-feature-check">
+                                ✓
+                            </div>
+
+                            Cobranças WhatsApp
+
+                        </div>
 
                     </div>
 
-                    <div class="plan-feature">
-
-                        <div class="plan-feature-check">
-                            ✓
-                        </div>
-
-                        Cobranças WhatsApp
-
-                    </div>
+                    <button class="btn-plan">
+                        Selecionar
+                    </button>
 
                 </div>
 
-                <button class="btn-plan">
-                    Selecionar
-                </button>
+                <!-- GOLD -->
+                <div class="plan-card featured">
+
+                    <div class="plan-badge">
+                        MAIS ESCOLHIDO
+                    </div>
+
+                    <h2 class="gold">
+                        GOLD
+                    </h2>
+
+                    <p>
+                        Mais controle para seu negócio.
+                    </p>
+
+                    <h3>
+                        R$ 79,90
+                        <span>/mês</span>
+                    </h3>
+
+                    <div class="plan-divider"></div>
+
+                    <div class="plan-features">
+
+                        <div class="plan-feature">
+
+                            <div class="plan-feature-check">
+                                ✓
+                            </div>
+
+                            Até 200 clientes
+
+                        </div>
+
+                        <div class="plan-feature">
+
+                            <div class="plan-feature-check">
+                                ✓
+                            </div>
+
+                            Relatórios avançados
+
+                        </div>
+
+                    </div>
+
+                    <button class="btn-plan">
+                        Selecionar
+                    </button>
+
+                </div>
+
+                <!-- BLACK -->
+                <div class="plan-card">
+
+                    <h2 class="black">
+                        BLACK
+                    </h2>
+
+                    <p>
+                        Empresas que não param.
+                    </p>
+
+                    <h3>
+                        R$ 149,90
+                        <span>/mês</span>
+                    </h3>
+
+                    <div class="plan-divider"></div>
+
+                    <div class="plan-features">
+
+                        <div class="plan-feature">
+
+                            <div class="plan-feature-check">
+                                ✓
+                            </div>
+
+                            Clientes ilimitados
+
+                        </div>
+
+                        <div class="plan-feature">
+
+                            <div class="plan-feature-check">
+                                ✓
+                            </div>
+
+                            API + suporte 24h
+
+                        </div>
+
+                    </div>
+
+                    <button class="btn-plan">
+                        Selecionar
+                    </button>
+
+                </div>
 
             </div>
 
-            <!-- GOLD -->
-            <div class="plan-card featured">
+        </section>
 
-                <div class="plan-badge">
-                    MAIS ESCOLHIDO
-                </div>
+    </main>
 
-                <h2 class="gold">
-                    GOLD
-                </h2>
-
-                <p>
-                    Mais controle para seu negócio.
-                </p>
-
-                <h3>
-                    R$ 79,90
-                    <span>/mês</span>
-                </h3>
-
-                <div class="plan-divider"></div>
-
-                <div class="plan-features">
-
-                    <div class="plan-feature">
-
-                        <div class="plan-feature-check">
-                            ✓
-                        </div>
-
-                        Até 200 clientes
-
-                    </div>
-
-                    <div class="plan-feature">
-
-                        <div class="plan-feature-check">
-                            ✓
-                        </div>
-
-                        Relatórios avançados
-
-                    </div>
-
-                </div>
-
-                <button class="btn-plan">
-                    Selecionar
-                </button>
-
-            </div>
-
-            <!-- BLACK -->
-            <div class="plan-card">
-
-                <h2 class="black">
-                    BLACK
-                </h2>
-
-                <p>
-                    Empresas que não param.
-                </p>
-
-                <h3>
-                    R$ 149,90
-                    <span>/mês</span>
-                </h3>
-
-                <div class="plan-divider"></div>
-
-                <div class="plan-features">
-
-                    <div class="plan-feature">
-
-                        <div class="plan-feature-check">
-                            ✓
-                        </div>
-
-                        Clientes ilimitados
-
-                    </div>
-
-                    <div class="plan-feature">
-
-                        <div class="plan-feature-check">
-                            ✓
-                        </div>
-
-                        API + suporte 24h
-
-                    </div>
-
-                </div>
-
-                <button class="btn-plan">
-                    Selecionar
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-<!-- ============================================================
+    <!-- ============================================================
 JS SIDEBAR
 ============================================================ -->
 
-<script>
+    <script>
 
-const sidebar = document.getElementById('sidebar');
+        const sidebar = document.getElementById('sidebar');
 
-const menuBtn = document.getElementById('menuBtn');
+        const menuBtn = document.getElementById('menuBtn');
 
-const perfilBtn = document.getElementById('perfilBtn');
+        const perfilBtn = document.getElementById('perfilBtn');
 
-const perfilSubmenu = document.getElementById('perfilSubmenu');
+        const perfilSubmenu = document.getElementById('perfilSubmenu');
 
-/* MENU */
+        /* MENU */
 
-menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', () => {
 
-    sidebar.classList.toggle('open');
+            sidebar.classList.toggle('open');
 
-});
+        });
 
-/* SUBMENU */
+        /* SUBMENU */
 
-perfilBtn.addEventListener('click', () => {
+        perfilBtn.addEventListener('click', () => {
 
-    if(!sidebar.classList.contains('open')){
+            if (!sidebar.classList.contains('open')) {
 
-        sidebar.classList.add('open');
+                sidebar.classList.add('open');
 
-    }
+            }
 
-    perfilSubmenu.classList.toggle('active');
+            perfilSubmenu.classList.toggle('active');
 
-});
+        });
 
-</script>
+    </script>
 
 </body>
+
 </html>

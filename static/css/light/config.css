@@ -1,0 +1,77 @@
+@import url("../dark/config.css");
+
+body {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.main-content {
+    background:
+        linear-gradient(rgba(15,23,42,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,0.035) 1px, transparent 1px),
+        #f8fafc;
+}
+
+.sidebar {
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+}
+
+.sidebar-link {
+    color: #0f172a;
+}
+
+.topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.theme-toggle {
+    border: 1px solid #e5e7eb;
+    color: #0f172a;
+    background: #ffffff;
+}
+
+.user-greeting {
+    color: #334155;
+}
+
+.logout-btn {
+    background: #111827;
+    color: #ffffff;
+}
+
+.config-hero h1 {
+    color: #0f172a;
+}
+
+.config-hero p,
+.plan-description,
+.actions-card p,
+.info-box span,
+.quick-action small {
+    color: #64748b;
+}
+
+.config-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+}
+
+.config-card h2,
+.config-card h3,
+.info-box strong,
+.quick-action {
+    color: #0f172a;
+}
+
+.info-box,
+.quick-action {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+}
+
+.plan-price {
+    color: #0f172a;
+}

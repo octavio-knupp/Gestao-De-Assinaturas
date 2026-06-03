@@ -381,4 +381,48 @@ def delete_client(request, client_id):
         }
     )
 
-print = "opaaa"
+# ===============================
+# ⚙️ CONFIGURAÇÕES
+# ===============================
+
+@login_required
+def config_client(request):
+
+    subscription = Subscription.objects.filter(
+        user=request.user
+    ).first()
+
+    total_clients = Client.objects.filter(
+        owner=request.user
+    ).count()
+
+    plan = None
+    max_clients = None
+    percentage = 0
+
+    if subscription:
+
+        plan = subscription.plan
+        max_clients = plan.max_clients
+
+        if max_clients:
+
+            percentage = int(
+                (total_clients / max_clients) * 100
+            )
+
+            if percentage > 100:
+                percentage = 100
+
+    return render(
+        request,
+        'config.html',
+        {
+            'subscription': subscription,
+            'plan': plan,
+            'clientes_cadastrados': total_clients,
+            'total_clients': total_clients,
+            'max_clients': max_clients,
+            'percentage': percentage
+        }
+    )

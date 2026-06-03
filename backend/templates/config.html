@@ -1,0 +1,275 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Next Pay</title>
+
+    <link rel="stylesheet" href="{% static 'css/dark/config.css' %}?v=40" id="theme-style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <a href="{% url 'home_client' %}">N</a>
+        </div>
+
+        <!-- MENU -->
+        <button type="button" class="sidebar-item sidebar-toggle" id="sidebar-toggle">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=3096&format=png&color=ffffff" alt="Menu">
+            </div>
+
+            <span class="sidebar-text">Menu</span>
+        </button>
+
+        <!-- CLIENTES -->
+        <button type="button" class="sidebar-item" id="clientes-toggle">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff" alt="Clientes">
+            </div>
+
+            <span class="sidebar-text">Clientes</span>
+        </button>
+
+        <!-- SUBMENU CLIENTES -->
+        <div class="submenu" id="clientes-submenu">
+            <a href="{% url 'list_clients' %}" class="submenu-item">
+                Status Cliente
+            </a>
+
+            <a href="{% url 'cadastro_client' %}" class="submenu-item">
+                Cadastro Cliente
+            </a>
+        </div>
+
+        <!-- CONFIGURAÇÕES -->
+        <a href="{% url 'config_client' %}" class="sidebar-item active">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff" alt="Configurações">
+            </div>
+
+            <span class="sidebar-text">Configurações</span>
+        </a>
+
+        <!-- PAGAMENTOS -->
+        <a href="{% url 'pagamentos' %}" class="sidebar-item">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png">
+            </div>
+
+            <span class="sidebar-text">Pagamentos</span>
+        </a>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-logo">
+                <a href="{% url 'home_client' %}">
+                    <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay">
+                </a>
+            </div>
+
+            <div class="topbar-actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
+                    <span id="theme-icon">🌙</span>
+                </button>
+
+                <p class="user-greeting">
+                    Olá, {{ request.user.username }}
+                </p>
+
+                <a href="{% url 'logout_client' %}" class="logout-btn">
+                    Logout
+                </a>
+            </div>
+
+        </header>
+
+        <section class="config-hero">
+
+            <div class="dots dots-left"></div>
+            <div class="dots dots-right"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-pill">
+                    <span></span>
+                    Configurações da sua conta
+                </div>
+
+                <h1>
+                    Gerencie seu plano<br>
+                    <strong>sem complicação</strong>
+                </h1>
+
+                <p>
+                    Acompanhe seu plano atual, status da assinatura, limite de clientes
+                    e informações importantes da sua conta em tempo real.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="config-section">
+
+            <div class="config-container">
+
+                <div class="config-card plan-card">
+
+                    <div class="card-header">
+                        <div>
+                            <span class="card-label">Plano atual</span>
+
+                            {% if subscription and plan %}
+                                <h2>{{ plan.name }}</h2>
+                            {% else %}
+                                <h2>Nenhum plano</h2>
+                            {% endif %}
+                        </div>
+
+                        <div class="plan-badge">
+                            {% if subscription %}
+                                {{ subscription.status }}
+                            {% else %}
+                                Inativo
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if subscription and plan %}
+
+                        <div class="plan-price">
+                            <span>R$</span>
+                            {{ plan.price }}
+                        </div>
+
+                        <p class="plan-description">
+                            Seu plano está vinculado ao usuário atual e será atualizado automaticamente
+                            sempre que houver troca de assinatura.
+                        </p>
+
+                        <div class="plan-info-grid">
+
+                            <div class="info-box">
+                                <span>Clientes cadastrados</span>
+                                <strong>{{ clientes_cadastrados }}</strong>
+                            </div>
+
+                            <div class="info-box">
+                                <span>Limite do plano</span>
+                                <strong>
+                                    {% if max_clients %}
+                                        {{ max_clients }}
+                                    {% else %}
+                                        Ilimitado
+                                    {% endif %}
+                                </strong>
+                            </div>
+
+                            <div class="info-box">
+                                <span>Status</span>
+                                <strong>{{ subscription.status }}</strong>
+                            </div>
+
+                            <div class="info-box">
+                                <span>Próximo vencimento</span>
+                                <strong>
+                                    {% if subscription.next_due_date %}
+                                        {{ subscription.next_due_date|date:"d/m/Y" }}
+                                    {% else %}
+                                        Não definido
+                                    {% endif %}
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    {% else %}
+
+                        <p class="plan-description">
+                            Nenhuma assinatura foi encontrada para este usuário.
+                            Acesse a área de pagamentos para escolher um plano.
+                        </p>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeStyle = document.getElementById("theme-style");
+        const themeIcon = document.getElementById("theme-icon");
+
+        const darkTheme = "{% static 'css/dark/config.css' %}?v=40";
+        const lightTheme = "{% static 'css/light/config.css' %}?v=40";
+
+        const savedTheme = localStorage.getItem("theme") || "dark";
+
+        function applyTheme(theme) {
+            if (theme === "light") {
+                document.documentElement.setAttribute("data-theme", "light");
+                themeStyle.setAttribute("href", lightTheme);
+                themeIcon.textContent = "☀️";
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                themeStyle.setAttribute("href", darkTheme);
+                themeIcon.textContent = "🌙";
+            }
+
+            localStorage.setItem("theme", theme);
+        }
+
+        applyTheme(savedTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const currentTheme = localStorage.getItem("theme") || "dark";
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+                applyTheme(newTheme);
+            });
+        }
+
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebar-toggle");
+        const clientesToggle = document.getElementById("clientes-toggle");
+        const clientesSubmenu = document.getElementById("clientes-submenu");
+
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener("click", () => {
+                sidebar.classList.toggle("expanded");
+
+                if (!sidebar.classList.contains("expanded") && clientesSubmenu) {
+                    clientesSubmenu.classList.remove("open");
+                }
+            });
+        }
+
+        if (clientesToggle && clientesSubmenu && sidebar) {
+            clientesToggle.addEventListener("click", () => {
+                sidebar.classList.add("expanded");
+                clientesSubmenu.classList.toggle("open");
+            });
+        }
+    </script>
+
+</body>
+</html>
