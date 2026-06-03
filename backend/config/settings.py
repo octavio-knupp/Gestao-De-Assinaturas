@@ -80,7 +80,7 @@ DATABASES = {
         'HOST': os.getenv('DB_SERVER'),
         'PORT': '1433',
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': os.getenv('DB_DRIVER'),
             'extra_params': 'Trusted_Connection=no',
         },
     }
@@ -110,3 +110,7 @@ STATICFILES_DIRS = [
 LOGIN_URL = 'login_client'
 LOGIN_REDIRECT_URL = 'home_client'
 LOGOUT_REDIRECT_URL = 'login_client'
+
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')

@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/dark/payment_success.css' %}">
+<link rel="stylesheet" href="{% static 'css/light/payment_success_light.css' %}">
+
+<script src="{% static 'js/theme.js' %}" defer></script>
+
+<div class="success-container">
+
+  <div class="success-card">
+
+    <div class="success-icon">
+      <svg width="54" height="54" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M7 12.5l3.2 3.2L17 8.8"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <h1>Pagamento aprovado!</h1>
+
+    <p>
+      Seu pagamento foi confirmado em modo teste pela Stripe.
+    </p>
+
+    <a href="{% url 'home_client' %}" class="btn-voltar">
+      Voltar para a Home
+    </a>
+
+  </div>
+
+</div>

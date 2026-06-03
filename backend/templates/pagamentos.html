@@ -407,31 +407,36 @@
 
         </div>
 
-        <!-- BOTÃO -->
-        <button class="btn-finalizar"
-                onclick="finalizarPagamento()">
+        <!-- BOTÃO STRIPE -->
+        <form method="POST" action="{% url 'create_checkout_session' %}">
+  {% csrf_token %}
 
-          <svg width="18"
-               height="18"
-               viewBox="0 0 24 24"
-               fill="none">
+  <input type="hidden" name="plan" id="selected-plan" value="Bronze">
 
-            <rect x="5"
-                  y="11"
-                  width="14"
-                  height="10"
-                  rx="2"
-                  stroke="currentColor"
-                  stroke-width="1.5"/>
+  <button type="submit" class="btn-finalizar">
 
-            <path d="M8 11V7a4 4 0 018 0v4"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"/>
-          </svg>
+    <svg width="18"
+         height="18"
+         viewBox="0 0 24 24"
+         fill="none">
 
-          Finalizar pagamento
-        </button>
+      <rect x="5"
+            y="11"
+            width="14"
+            height="10"
+            rx="2"
+            stroke="currentColor"
+            stroke-width="1.5"/>
+
+      <path d="M8 11V7a4 4 0 018 0v4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"/>
+    </svg>
+
+    Finalizar pagamento com Stripe
+  </button>
+        </form>
 
         <p class="termos-texto">
           Ao finalizar, você concorda com os nossos
@@ -559,7 +564,7 @@
           </span>
 
           <span class="seguro-marca">
-            pagar.me <span class="marca-dot">●</span>
+            Stripe <span class="marca-dot">●</span>
           </span>
         </div>
 
@@ -624,6 +629,8 @@ function selecionarPlano(el, plano) {
   el.prepend(check);
 
   const info = planoInfo[plano];
+
+  document.getElementById('selected-plan').value = info.nome;
 
   document.getElementById('resumo-plano-nome').textContent =
     info.nome;
@@ -735,43 +742,6 @@ function simularBoleto() {
     '#22c55e';
 }
 
-function finalizarPagamento() {
-
-  const btn = document.querySelector('.btn-finalizar');
-
-  btn.innerHTML = 'Processando...';
-
-  btn.disabled = true;
-
-  setTimeout(() => {
-
-    btn.innerHTML = `
-      <svg width="18"
-           height="18"
-           viewBox="0 0 24 24"
-           fill="none">
-
-        <rect x="5"
-              y="11"
-              width="14"
-              height="10"
-              rx="2"
-              stroke="currentColor"
-              stroke-width="1.5"/>
-
-        <path d="M8 11V7a4 4 0 018 0v4"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"/>
-      </svg>
-
-      Finalizar pagamento
-    `;
-
-    btn.disabled = false;
-
-  }, 2000);
-}
 
 let tempo = 300;
 
