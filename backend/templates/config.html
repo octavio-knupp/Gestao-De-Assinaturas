@@ -1,14 +1,16 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="pt-br" data-theme="dark">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações - Next Pay</title>
 
-    <link rel="stylesheet" href="{% static 'css/dark/config.css' %}?v=40" id="theme-style">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/dark/config.css' %}">
+    <link rel="stylesheet" href="{% static 'css/light/config_light.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <script src="{% static 'js/theme.js' %}" defer></script>
 </head>
 
 <body>
@@ -16,259 +18,216 @@
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-logo">
-            <a href="{% url 'home_client' %}">N</a>
-        </div>
+        <div class="sidebar-logo">N</div>
 
-        <!-- MENU -->
-        <button type="button" class="sidebar-item sidebar-toggle" id="sidebar-toggle">
-            <div class="sidebar-icon">
-                <img src="https://img.icons8.com/?size=30&id=3096&format=png&color=ffffff" alt="Menu">
-            </div>
-
+        <div class="sidebar-item" id="menuBtn">
+            <div class="sidebar-icon">☰</div>
             <span class="sidebar-text">Menu</span>
-        </button>
-
-        <!-- CLIENTES -->
-        <button type="button" class="sidebar-item" id="clientes-toggle">
-            <div class="sidebar-icon">
-                <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff" alt="Clientes">
-            </div>
-
-            <span class="sidebar-text">Clientes</span>
-        </button>
-
-        <!-- SUBMENU CLIENTES -->
-        <div class="submenu" id="clientes-submenu">
-            <a href="{% url 'list_clients' %}" class="submenu-item">
-                Status Cliente
-            </a>
-
-            <a href="{% url 'cadastro_client' %}" class="submenu-item">
-                Cadastro Cliente
-            </a>
         </div>
 
-        <!-- CONFIGURAÇÕES -->
+        <div class="sidebar-item" id="perfilBtn">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff">
+            </div>
+            <span class="sidebar-text">Clientes</span>
+        </div>
+
+        <div class="submenu" id="perfilSubmenu">
+            <a href="{% url 'list_clients' %}" class="submenu-item">Status Cliente</a>
+            <a href="{% url 'cadastro_client' %}" class="submenu-item">Cadastro Cliente</a>
+        </div>
+
         <a href="{% url 'config_client' %}" class="sidebar-item active">
             <div class="sidebar-icon">
                 <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff" alt="Configurações">
             </div>
-
             <span class="sidebar-text">Configurações</span>
         </a>
 
-        <!-- PAGAMENTOS -->
         <a href="{% url 'pagamentos' %}" class="sidebar-item">
             <div class="sidebar-icon">
                 <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png">
             </div>
-
             <span class="sidebar-text">Pagamentos</span>
         </a>
 
     </aside>
 
-    <!-- CONTEÚDO -->
+    <!-- MAIN -->
     <main class="main-content">
 
-        <header class="topbar">
-
-            <div class="topbar-logo">
-                <a href="{% url 'home_client' %}">
-                    <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay">
-                </a>
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay" class="logo-icon">
             </div>
-
-            <div class="topbar-actions">
-                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema">
-                    <span id="theme-icon">🌙</span>
-                </button>
-
-                <p class="user-greeting">
-                    Olá, {{ request.user.username }}
-                </p>
-
-                <a href="{% url 'logout_client' %}" class="logout-btn">
-                    Logout
-                </a>
+            <div class="nav-auth">
+                <button id="themeToggle" class="btn-theme">🌙</button>
+                {% if user.is_authenticated %}
+                <span class="user-name">Olá, {{ user.first_name }}</span>
+                <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
+                {% endif %}
             </div>
-
         </header>
 
-        <section class="config-hero">
-
-            <div class="dots dots-left"></div>
-            <div class="dots dots-right"></div>
-
+        <!-- HERO -->
+        <section class="hero-section">
+            <div class="hero-bg-grid"></div>
+            <div class="hero-bg-dots left">
+                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
+                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
+            </div>
+            <div class="hero-bg-dots right">
+                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
+                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
+            </div>
             <div class="hero-content">
-
                 <div class="hero-pill">
-                    <span></span>
+                    <div class="hero-pill-dot"></div>
                     Configurações da sua conta
                 </div>
-
                 <h1>
                     Gerencie seu plano<br>
-                    <strong>sem complicação</strong>
+                    <span class="accent">sem complicação</span>
                 </h1>
-
-                <p>
+                <p class="hero-desc">
                     Acompanhe seu plano atual, status da assinatura, limite de clientes
                     e informações importantes da sua conta em tempo real.
                 </p>
-
             </div>
-
         </section>
 
+        <!-- DASHBOARD -->
         <section class="config-section">
 
-            <div class="config-container">
+            {% if subscription and plan %}
 
-                <div class="config-card plan-card">
+            <!-- LINHA 1: plano + status + vencimento -->
+            <div class="config-row">
 
-                    <div class="card-header">
-                        <div>
-                            <span class="card-label">Plano atual</span>
-
-                            {% if subscription and plan %}
-                                <h2>{{ plan.name }}</h2>
-                            {% else %}
-                                <h2>Nenhum plano</h2>
-                            {% endif %}
-                        </div>
-
-                        <div class="plan-badge">
-                            {% if subscription %}
-                                {{ subscription.status }}
-                            {% else %}
-                                Inativo
-                            {% endif %}
-                        </div>
+                <!-- CARD PLANO ATUAL -->
+                <div class="cfg-card cfg-card--main">
+                    <div class="plans-eyebrow">PLANO ATUAL</div>
+                    <div class="cfg-plan-name {{ plan.name|lower }}">{{ plan.name|upper }}</div>
+                    <div class="cfg-plan-price">
+                        <span class="cfg-price-currency">R$</span>{{ plan.price }}
+                        <span class="cfg-price-period">/mês</span>
                     </div>
+                    <div class="plan-divider"></div>
+                    <a href="{% url 'pagamentos' %}" class="btn-plan">Alterar plano </a>
+                </div>
 
-                    {% if subscription and plan %}
+                <!-- CARD STATUS -->
+                <div class="cfg-card cfg-card--stat">
+                    <div class="cfg-stat-label">STATUS</div>
+                    <div class="cfg-stat-value cfg-stat--green">{{ subscription.status }}</div>
+                    <div class="cfg-stat-sub">Assinatura ativa</div>
+                </div>
 
-                        <div class="plan-price">
-                            <span>R$</span>
-                            {{ plan.price }}
-                        </div>
-
-                        <p class="plan-description">
-                            Seu plano está vinculado ao usuário atual e será atualizado automaticamente
-                            sempre que houver troca de assinatura.
-                        </p>
-
-                        <div class="plan-info-grid">
-
-                            <div class="info-box">
-                                <span>Clientes cadastrados</span>
-                                <strong>{{ clientes_cadastrados }}</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>Limite do plano</span>
-                                <strong>
-                                    {% if max_clients %}
-                                        {{ max_clients }}
-                                    {% else %}
-                                        Ilimitado
-                                    {% endif %}
-                                </strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>Status</span>
-                                <strong>{{ subscription.status }}</strong>
-                            </div>
-
-                            <div class="info-box">
-                                <span>Próximo vencimento</span>
-                                <strong>
-                                    {% if subscription.next_due_date %}
-                                        {{ subscription.next_due_date|date:"d/m/Y" }}
-                                    {% else %}
-                                        Não definido
-                                    {% endif %}
-                                </strong>
-                            </div>
-
-                        </div>
-
-                    {% else %}
-
-                        <p class="plan-description">
-                            Nenhuma assinatura foi encontrada para este usuário.
-                            Acesse a área de pagamentos para escolher um plano.
-                        </p>
-
-                    {% endif %}
-
+                <!-- CARD VENCIMENTO -->
+                <div class="cfg-card cfg-card--stat">
+                    <div class="cfg-stat-label">PRÓXIMO VENCIMENTO</div>
+                    <div class="cfg-stat-value">
+                        {% if subscription.next_due_date %}
+                            {{ subscription.next_due_date|date:"d/m" }}
+                            <span class="cfg-stat-year">{{ subscription.next_due_date|date:"Y" }}</span>
+                        {% else %}
+                            —
+                        {% endif %}
+                    </div>
+                    <div class="cfg-stat-sub">Data de renovação</div>
                 </div>
 
             </div>
+
+            <!-- LINHA 2: clientes -->
+            <div class="config-row config-row--2">
+
+                <!-- CLIENTES CADASTRADOS -->
+                <div class="cfg-card cfg-card--usage">
+                    <div class="plans-eyebrow">USO DE CLIENTES</div>
+                    <div class="cfg-usage-numbers">
+                        <span class="cfg-usage-current">{{ clientes_cadastrados }}</span>
+                        <span class="cfg-usage-sep">/</span>
+                        <span class="cfg-usage-max">
+                            {% if max_clients %}{{ max_clients }}{% else %}∞{% endif %}
+                        </span>
+                    </div>
+                    <div class="cfg-usage-bar">
+                        {% if max_clients %}
+                       <div class="cfg-usage-fill" style="width: {{ uso_percentual }}%"></div>
+                        {% else %}
+                        <div class="cfg-usage-fill" style="width: 30%"></div>
+                        {% endif %}
+                    </div>
+                    <div class="cfg-usage-legend">
+                        <span>Cadastrados</span>
+                        <span>{% if max_clients %}Limite do plano{% else %}Ilimitado{% endif %}</span>
+                    </div>
+                </div>
+
+                <!-- FEATURES DO PLANO -->
+                <div class="cfg-card cfg-card--features">
+                    <div class="plans-eyebrow">INCLUSO NO PLANO</div>
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <div class="plan-feature-check">✓</div>
+                            Cobranças automáticas via WhatsApp
+                        </div>
+                        <div class="plan-feature">
+                            <div class="plan-feature-check">✓</div>
+                            {% if max_clients %}Até {{ max_clients }} clientes{% else %}Clientes ilimitados{% endif %}
+                        </div>
+                        <div class="plan-feature">
+                            <div class="plan-feature-check">✓</div>
+                            Relatórios e controle de assinaturas
+                        </div>
+                        <div class="plan-feature">
+                            <div class="plan-feature-check">✓</div>
+                            Suporte em português
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <!-- SEM PLANO -->
+            <div class="config-row">
+                <div class="cfg-card cfg-card--empty">
+                    <div class="plans-eyebrow">PLANO ATUAL</div>
+                    <div class="cfg-plan-name">Nenhum plano ativo</div>
+                    <p class="hero-desc" style="margin: 18px 0 28px;">
+                        Você ainda não possui uma assinatura. Escolha um plano para começar.
+                    </p>
+                    <a href="{% url 'pagamentos' %}" class="btn-plan">Ver planos disponíveis →</a>
+                </div>
+            </div>
+
+            {% endif %}
 
         </section>
 
     </main>
 
+    <!-- JS SIDEBAR -->
     <script>
-        const themeToggle = document.getElementById("theme-toggle");
-        const themeStyle = document.getElementById("theme-style");
-        const themeIcon = document.getElementById("theme-icon");
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.getElementById('menuBtn');
+        const perfilBtn = document.getElementById('perfilBtn');
+        const perfilSubmenu = document.getElementById('perfilSubmenu');
 
-        const darkTheme = "{% static 'css/dark/config.css' %}?v=40";
-        const lightTheme = "{% static 'css/light/config.css' %}?v=40";
+        menuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
 
-        const savedTheme = localStorage.getItem("theme") || "dark";
-
-        function applyTheme(theme) {
-            if (theme === "light") {
-                document.documentElement.setAttribute("data-theme", "light");
-                themeStyle.setAttribute("href", lightTheme);
-                themeIcon.textContent = "☀️";
-            } else {
-                document.documentElement.setAttribute("data-theme", "dark");
-                themeStyle.setAttribute("href", darkTheme);
-                themeIcon.textContent = "🌙";
+        perfilBtn.addEventListener('click', () => {
+            if (!sidebar.classList.contains('open')) {
+                sidebar.classList.add('open');
             }
-
-            localStorage.setItem("theme", theme);
-        }
-
-        applyTheme(savedTheme);
-
-        if (themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const currentTheme = localStorage.getItem("theme") || "dark";
-                const newTheme = currentTheme === "dark" ? "light" : "dark";
-
-                applyTheme(newTheme);
-            });
-        }
-
-        const sidebar = document.getElementById("sidebar");
-        const sidebarToggle = document.getElementById("sidebar-toggle");
-        const clientesToggle = document.getElementById("clientes-toggle");
-        const clientesSubmenu = document.getElementById("clientes-submenu");
-
-        if (sidebarToggle && sidebar) {
-            sidebarToggle.addEventListener("click", () => {
-                sidebar.classList.toggle("expanded");
-
-                if (!sidebar.classList.contains("expanded") && clientesSubmenu) {
-                    clientesSubmenu.classList.remove("open");
-                }
-            });
-        }
-
-        if (clientesToggle && clientesSubmenu && sidebar) {
-            clientesToggle.addEventListener("click", () => {
-                sidebar.classList.add("expanded");
-                clientesSubmenu.classList.toggle("open");
-            });
-        }
+            perfilSubmenu.classList.toggle('active');
+        });
     </script>
 
 </body>
