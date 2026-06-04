@@ -17,6 +17,9 @@
 
     <script src="{% static 'js/theme.js' %}" defer></script>
     <script src="{% static 'js/whatsapp_toggle.js' %}" defer></script>
+
+    <script src="{% static 'js/theme.js' %}" defer></script>
+    <script src="{% static 'js/whatsapp_toggle.js' %}" defer></script>
 </head>
 
 <body>
@@ -37,13 +40,48 @@
     <div class="toggle-container">
         <span>Envio automático WhatsApp</span>
 
-        <button id="toggleWhats" class="toggle-btn">
+        <button id="toggleWhats" class="toggle-btn" type="button">
             <span class="toggle-circle"></span>
         </button>
     </div>
 
-    <!-- FILTRO -->
-    <form method="GET">
+    <!-- FILTROS -->
+    <form method="GET" class="filters-form">
+
+        <!-- PESQUISA -->
+        <div class="search-box">
+
+            <label for="pesquisa">
+                Pesquisar cliente:
+            </label>
+
+            <div class="search-input-area">
+
+                <input
+                    type="text"
+                    name="pesquisa"
+                    id="pesquisa"
+                    placeholder="Digite o número de telefone:"
+                    value="{{ pesquisa }}"
+                >
+
+                <button type="submit" class="btn-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Buscar
+                </button>
+
+                {% if pesquisa or status_selected != "todos" %}
+                    <a href="{% url 'list_clients' %}" class="btn-clear">
+                        <i class="fa-solid fa-xmark"></i>
+                        Limpar
+                    </a>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        <!-- FILTRO POR STATUS -->
         <div id="status-filter">
 
             <label for="status">
@@ -55,7 +93,7 @@
                     onchange="this.form.submit()">
 
                 <option value="todos"
-                    {% if status_selected == "todos" %}
+                    {% if status_selected == "todos" or not status_selected %}
                         selected
                     {% endif %}>
                     Todos
@@ -92,6 +130,7 @@
             </select>
 
         </div>
+
     </form>
 
     <!-- TABELA -->
@@ -186,11 +225,59 @@
                 </td>
 
             </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="7" class="empty-message">
+                    Nenhum cliente encontrado.
+                </td>
+            </tr>
+
             {% endfor %}
 
         </table>
 
     </div>
+
+    <!-- PAGINAÇÃO -->
+    {% if clients_status.has_other_pages %}
+    <div class="pagination">
+
+        {% if clients_status.has_previous %}
+            <a href="?page={{ clients_status.previous_page_number }}&pesquisa={{ pesquisa }}&status={{ status_selected }}"
+               class="page-btn">
+
+                <i class="fa-solid fa-chevron-left"></i>
+                Anterior
+            </a>
+        {% else %}
+            <span class="page-btn disabled">
+                <i class="fa-solid fa-chevron-left"></i>
+                Anterior
+            </span>
+        {% endif %}
+
+        <span class="page-info">
+            Página {{ clients_status.number }} de {{ clients_status.paginator.num_pages }}
+        </span>
+
+        {% if clients_status.has_next %}
+            <a href="?page={{ clients_status.next_page_number }}&pesquisa={{ pesquisa }}&status={{ status_selected }}"
+               class="page-btn">
+
+                Próximo
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+        {% else %}
+            <span class="page-btn disabled">
+                Próximo
+                <i class="fa-solid fa-chevron-right"></i>
+            </span>
+        {% endif %}
+
+    </div>
+    {% endif %}
 
 </div>
 

@@ -1,13 +1,33 @@
 /* =========================================
-   HOME — LIGHT THEME PREMIUM
+   HOME — LIGHT THEME PREMIUM CORRIGIDO
+   Só ativa quando html[data-theme="light"]
 ========================================= */
+
+/* =========================================
+   VARIÁVEIS
+========================================= */
+
+html[data-theme="light"] {
+    --bg-page: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+
+    --primary-green: #16a34a;
+    --green-dim: #15803d;
+
+    --text-white: #111827;
+    --text-gray: #4b5563;
+    --text-muted: rgba(17, 24, 39, 0.45);
+
+    --border: #e5e7eb;
+}
 
 /* =========================================
    BODY
 ========================================= */
 
+html[data-theme="light"],
 html[data-theme="light"] body {
-
     background:
         linear-gradient(
             135deg,
@@ -23,13 +43,12 @@ html[data-theme="light"] body {
 ========================================= */
 
 html[data-theme="light"] .main-content {
-
     background:
         radial-gradient(
             circle at top,
             #ffffff 0%,
             #f3f4f6 70%
-        );
+        ) !important;
 }
 
 /* =========================================
@@ -37,7 +56,6 @@ html[data-theme="light"] .main-content {
 ========================================= */
 
 html[data-theme="light"] .sidebar {
-
     background:
         linear-gradient(
             180deg,
@@ -45,79 +63,100 @@ html[data-theme="light"] .sidebar {
             #f3f4f6
         ) !important;
 
-    border-right:
-        1px solid #e5e7eb !important;
+    border-right: 1px solid #e5e7eb !important;
 
-    box-shadow:
-        4px 0 20px rgba(0,0,0,.04);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.04) !important;
 }
 
 /* LOGO */
 
 html[data-theme="light"] .sidebar-logo {
-
     background:
         linear-gradient(
             135deg,
             #22c55e,
             #16a34a
-        );
+        ) !important;
 
-    color: white;
+    color: #ffffff !important;
 }
 
 /* ITENS */
 
 html[data-theme="light"] .sidebar-item {
-
     color: #374151 !important;
 }
 
-html[data-theme="light"] .sidebar-item:hover {
-
-    background:
-        rgba(34,197,94,.08) !important;
+html[data-theme="light"] .sidebar-item:hover,
+html[data-theme="light"] .sidebar-item.active {
+    background: rgba(34, 197, 94, 0.08) !important;
+    color: #16a34a !important;
 }
 
 /* TEXT */
 
 html[data-theme="light"] .sidebar-text {
-
     color: #374151 !important;
+}
+
+html[data-theme="light"] .sidebar-item:hover .sidebar-text,
+html[data-theme="light"] .sidebar-item.active .sidebar-text {
+    color: #16a34a !important;
 }
 
 /* ÍCONES */
 
+html[data-theme="light"] .sidebar-icon {
+    color: #374151 !important;
+}
+
 html[data-theme="light"] .sidebar-icon img {
+    opacity: 1 !important;
 
     filter:
-        invert(15%)
-        sepia(10%)
-        saturate(500%)
-        hue-rotate(180deg)
-        brightness(90%);
+        brightness(0)
+        saturate(100%)
+        invert(23%)
+        sepia(12%)
+        saturate(707%)
+        hue-rotate(176deg)
+        brightness(92%)
+        contrast(89%) !important;
+}
+
+html[data-theme="light"] .sidebar-item:hover .sidebar-icon,
+html[data-theme="light"] .sidebar-item.active .sidebar-icon {
+    color: #16a34a !important;
+}
+
+html[data-theme="light"] .sidebar-item:hover .sidebar-icon img,
+html[data-theme="light"] .sidebar-item.active .sidebar-icon img {
+    opacity: 1 !important;
+
+    filter:
+        brightness(0)
+        saturate(100%)
+        invert(42%)
+        sepia(83%)
+        saturate(508%)
+        hue-rotate(93deg)
+        brightness(88%)
+        contrast(92%) !important;
 }
 
 /* SUBMENU */
 
 html[data-theme="light"] .submenu {
-
     background: #f9fafb !important;
-
-    border:
-        1px solid #e5e7eb;
+    border: 1px solid #e5e7eb !important;
 }
 
 html[data-theme="light"] .submenu-item {
-
     color: #374151 !important;
 }
 
 html[data-theme="light"] .submenu-item:hover {
-
-    background:
-        rgba(34,197,94,.08) !important;
-
+    background: rgba(34, 197, 94, 0.08) !important;
     color: #16a34a !important;
 }
 
@@ -126,15 +165,13 @@ html[data-theme="light"] .submenu-item:hover {
 ========================================= */
 
 html[data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.78) !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    backdrop-filter: blur(10px) !important;
+}
 
-    background:
-        rgba(255,255,255,.75);
-
-    border-bottom:
-        1px solid #e5e7eb;
-
-    backdrop-filter:
-        blur(10px);
+html[data-theme="light"] .user-name {
+    color: #374151 !important;
 }
 
 /* =========================================
@@ -142,23 +179,30 @@ html[data-theme="light"] header {
 ========================================= */
 
 html[data-theme="light"] .btn-theme {
-
-    background: #ffffff;
-
-    border:
-        1px solid #d1d5db;
-
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
     color: #111827 !important;
 
-    box-shadow:
-        0 2px 8px rgba(0,0,0,.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
 }
 
 html[data-theme="light"] .btn-theme:hover {
-
-    border-color: #22c55e;
-
+    border-color: #22c55e !important;
     transform: translateY(-1px);
+}
+
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+
+html[data-theme="light"] .btn-register {
+    background: #111827 !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="light"] .btn-register:hover {
+    background: #1f2937 !important;
+    color: #ffffff !important;
 }
 
 /* =========================================
@@ -166,28 +210,28 @@ html[data-theme="light"] .btn-theme:hover {
 ========================================= */
 
 html[data-theme="light"] .hero-section {
-
     background:
         radial-gradient(
             circle at top,
             #ffffff 0%,
             #f3f4f6 75%
-        );
+        ) !important;
 }
 
 /* GRID */
 
 html[data-theme="light"] .hero-bg-grid {
+    opacity: 0.35 !important;
 
-    opacity: .08;
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 24, 39, 0.035) 1px, transparent 1px) !important;
 }
 
 /* DOTS */
 
 html[data-theme="light"] .bdot {
-
-    background:
-        rgba(34,197,94,.18);
+    background: rgba(34, 197, 94, 0.35) !important;
 }
 
 /* =========================================
@@ -195,26 +239,15 @@ html[data-theme="light"] .bdot {
 ========================================= */
 
 html[data-theme="light"] .hero-section h1 {
+    color: #111827 !important;
+    background: none !important;
 
-    background:
-        linear-gradient(
-            to right,
-            #111827,
-            #22c55e
-        ) !important;
-
-    background-clip: text !important;
-    -webkit-background-clip: text !important;
-
-    color: transparent !important;
-    -webkit-text-fill-color: transparent !important;
+    -webkit-text-fill-color: initial !important;
 }
 
-/* ACCENT */
-
-html[data-theme="light"] .accent {
-
+html[data-theme="light"] .hero-section h1 .accent {
     color: #22c55e !important;
+    -webkit-text-fill-color: #22c55e !important;
 }
 
 /* =========================================
@@ -222,8 +255,11 @@ html[data-theme="light"] .accent {
 ========================================= */
 
 html[data-theme="light"] .hero-desc {
-
     color: #6b7280 !important;
+}
+
+html[data-theme="light"] .hero-desc strong {
+    color: #374151 !important;
 }
 
 /* =========================================
@@ -231,14 +267,13 @@ html[data-theme="light"] .hero-desc {
 ========================================= */
 
 html[data-theme="light"] .hero-pill {
+    background: rgba(34, 197, 94, 0.08) !important;
+    border: 1px solid rgba(34, 197, 94, 0.18) !important;
+    color: #166534 !important;
+}
 
-    background:
-        rgba(34,197,94,.08);
-
-    border:
-        1px solid rgba(34,197,94,.18);
-
-    color: #166534;
+html[data-theme="light"] .hero-pill-dot {
+    background: #22c55e !important;
 }
 
 /* =========================================
@@ -246,12 +281,10 @@ html[data-theme="light"] .hero-pill {
 ========================================= */
 
 html[data-theme="light"] .hero-stat-num {
-
-    color: #111827 !important;
+    color: #16a34a !important;
 }
 
 html[data-theme="light"] .hero-stat-label {
-
     color: #6b7280 !important;
 }
 
@@ -260,18 +293,13 @@ html[data-theme="light"] .hero-stat-label {
 ========================================= */
 
 html[data-theme="light"] .hero-benefit {
-
-    background: #ffffff;
-
-    border:
-        1px solid #e5e7eb;
-
-    color: #374151;
+    background: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+    color: #374151 !important;
 }
 
 html[data-theme="light"] .hero-benefit-icon {
-
-    color: #22c55e;
+    color: #22c55e !important;
 }
 
 /* =========================================
@@ -279,40 +307,44 @@ html[data-theme="light"] .hero-benefit-icon {
 ========================================= */
 
 html[data-theme="light"] .btn-ver-planos {
-
     background:
         linear-gradient(
             135deg,
             #16a34a,
             #22c55e
-        );
+        ) !important;
 
-    color: white;
+    color: #ffffff !important;
 
-    box-shadow:
-        0 8px 20px rgba(34,197,94,.25);
+    border: none !important;
+
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25) !important;
 }
 
 html[data-theme="light"] .btn-ver-planos:hover {
+    transform: translateY(-2px);
 
-    transform:
-        translateY(-2px);
+    box-shadow: 0 12px 24px rgba(34, 197, 94, 0.35) !important;
+}
 
-    box-shadow:
-        0 12px 24px rgba(34,197,94,.35);
+/* remove seta automática se ainda existir */
+html[data-theme="light"] .btn-ver-planos::after {
+    content: none !important;
 }
 
 /* =========================================
    PLANOS
 ========================================= */
 
-html[data-theme="light"] .plans-title {
+html[data-theme="light"] .plans-eyebrow {
+    color: #16a34a !important;
+}
 
+html[data-theme="light"] .plans-title {
     color: #111827 !important;
 }
 
 html[data-theme="light"] .plans-sub {
-
     color: #6b7280 !important;
 }
 
@@ -321,7 +353,6 @@ html[data-theme="light"] .plans-sub {
 ========================================= */
 
 html[data-theme="light"] .plan-card {
-
     background:
         linear-gradient(
             145deg,
@@ -329,115 +360,109 @@ html[data-theme="light"] .plan-card {
             #f8fafc
         ) !important;
 
-    border:
-        1px solid #e5e7eb !important;
+    border: 1px solid #e5e7eb !important;
 
-    box-shadow:
-        0 4px 20px rgba(0,0,0,.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 
-    transition: .25s;
+    transition: 0.25s;
+}
+
+html[data-theme="light"] .plan-card::before {
+    background:
+        linear-gradient(
+            105deg,
+            transparent 40%,
+            rgba(34, 197, 94, 0.10) 50%,
+            transparent 60%
+        ) !important;
 }
 
 html[data-theme="light"] .plan-card:hover {
+    transform: translateY(-6px);
 
-    transform:
-        translateY(-6px);
+    border-color: #d1d5db !important;
 
-    border-color:
-        #d1d5db !important;
-
-    box-shadow:
-        0 12px 28px rgba(0,0,0,.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* FEATURED */
 
 html[data-theme="light"] .plan-card.featured {
-
-    border:
-        1px solid rgba(34,197,94,.35) !important;
+    border: 1px solid rgba(34, 197, 94, 0.35) !important;
+    background: #ffffff !important;
 }
 
 /* BADGE */
 
 html[data-theme="light"] .plan-badge {
-
     background:
         linear-gradient(
             135deg,
             #16a34a,
             #22c55e
-        );
+        ) !important;
 
-    color: white;
+    color: #ffffff !important;
 }
 
 /* TEXTOS PLANO */
 
 html[data-theme="light"] .plan-card h2,
 html[data-theme="light"] .plan-card h3 {
-
     color: #111827 !important;
+}
+
+html[data-theme="light"] .plan-card h2.bronze {
+    color: #16a34a !important;
+}
+
+html[data-theme="light"] .plan-card h2.gold {
+    color: #d97706 !important;
+}
+
+html[data-theme="light"] .plan-card h2.black {
+    color: #7c3aed !important;
 }
 
 html[data-theme="light"] .plan-card p,
 html[data-theme="light"] .plan-feature {
+    color: #6b7280 !important;
+}
 
+html[data-theme="light"] .plan-card h3 span {
     color: #6b7280 !important;
 }
 
 /* DIVIDER */
 
 html[data-theme="light"] .plan-divider {
+    background: #e5e7eb !important;
+}
 
-    background: #e5e7eb;
+html[data-theme="light"] .plan-feature-check {
+    background: rgba(22, 163, 74, 0.12) !important;
+    color: #16a34a !important;
 }
 
 /* BOTÃO PLANO */
 
 html[data-theme="light"] .btn-plan {
-
     background:
         linear-gradient(
             135deg,
             #16a34a,
             #22c55e
-        );
+        ) !important;
 
-    color: white;
+    color: #ffffff !important;
 
-    border: none;
+    border: none !important;
 }
 
 html[data-theme="light"] .btn-plan:hover {
-
-    transform:
-        translateY(-2px);
-}
-
-/* =========================================
-   USER NAME
-========================================= */
-
-html[data-theme="light"] .user-name {
-
-    color: #374151 !important;
-}
-
-/* =========================================
-   LOGOUT BUTTON
-========================================= */
-
-html[data-theme="light"] .btn-register {
-
-    background: #111827;
-
-    color: white;
-}
-
-html[data-theme="light"] .btn-register:hover {
-
-    background: #1f2937;
+    transform: translateY(-2px);
+    background: #15803d !important;
+    color: #ffffff !important;
 }
 
 /* =========================================
@@ -445,23 +470,18 @@ html[data-theme="light"] .btn-register:hover {
 ========================================= */
 
 html[data-theme="light"] ::-webkit-scrollbar {
-
     width: 10px;
 }
 
 html[data-theme="light"] ::-webkit-scrollbar-track {
-
     background: #eef2f7;
 }
 
 html[data-theme="light"] ::-webkit-scrollbar-thumb {
-
     background: #cbd5e1;
-
     border-radius: 20px;
 }
 
 html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
-
-    background: #94a3b8;
+    background: #a6b3c6;
 }

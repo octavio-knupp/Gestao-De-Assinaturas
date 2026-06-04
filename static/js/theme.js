@@ -2,51 +2,38 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const themeToggle =
-        document.getElementById("themeToggle");
+    const themeToggle = document.getElementById("themeToggle");
 
-    // PEGA TEMA SALVO
-    const savedTheme =
-        localStorage.getItem("theme");
+    const savedTheme = localStorage.getItem("theme");
 
-    // APLICA TEMA
     if (savedTheme === "light") {
 
-        document.documentElement
-            .setAttribute("data-theme", "light");
+        document.documentElement.setAttribute("data-theme", "light");
 
         if (themeToggle) {
-
             themeToggle.textContent = "☀️";
-
         }
 
     } else {
 
-        document.documentElement
-            .removeAttribute("data-theme");
+        document.documentElement.removeAttribute("data-theme");
 
         if (themeToggle) {
-
             themeToggle.textContent = "🌙";
-
         }
 
     }
 
-    // BOTÃO TROCAR TEMA
     if (themeToggle) {
 
         themeToggle.addEventListener("click", () => {
 
             const isLight =
-                document.documentElement
-                .getAttribute("data-theme") === "light";
+                document.documentElement.getAttribute("data-theme") === "light";
 
             if (isLight) {
 
-                document.documentElement
-                    .removeAttribute("data-theme");
+                document.documentElement.removeAttribute("data-theme");
 
                 localStorage.setItem("theme", "dark");
 
@@ -54,8 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             } else {
 
-                document.documentElement
-                    .setAttribute("data-theme", "light");
+                document.documentElement.setAttribute("data-theme", "light");
 
                 localStorage.setItem("theme", "light");
 

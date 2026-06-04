@@ -7,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurações - Next Pay</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/dark/config.css' %}">
-    <link rel="stylesheet" href="{% static 'css/light/config_light.css' %}">
+    <link rel="stylesheet" href="{% static 'css/light/config.css' %}">
+
+    <!-- ICON -->
     <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+
+    <!-- TEMA GLOBAL -->
     <script src="{% static 'js/theme.js' %}" defer></script>
 </head>
 
@@ -37,18 +42,18 @@
             <a href="{% url 'cadastro_client' %}" class="submenu-item">Cadastro Cliente</a>
         </div>
 
-        <a href="{% url 'config_client' %}" class="sidebar-item active">
-            <div class="sidebar-icon">
-                <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff" alt="Configurações">
-            </div>
-            <span class="sidebar-text">Configurações</span>
-        </a>
-
         <a href="{% url 'pagamentos' %}" class="sidebar-item">
             <div class="sidebar-icon">
                 <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png">
             </div>
             <span class="sidebar-text">Pagamentos</span>
+        </a>
+
+        <a href="{% url 'config_client' %}" class="sidebar-item active">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff" alt="Configurações">
+            </div>
+            <span class="sidebar-text">Configurações</span>
         </a>
 
     </aside>
@@ -61,35 +66,62 @@
             <div class="logo">
                 <img src="{% static 'img/logosemfundo.png' %}" alt="Next Pay" class="logo-icon">
             </div>
+
             <div class="nav-auth">
-                <button id="themeToggle" class="btn-theme">🌙</button>
                 {% if user.is_authenticated %}
-                <span class="user-name">Olá, {{ user.first_name }}</span>
-                <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
+                    <span class="user-name">Olá, {{ user.first_name }}</span>
+                    <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
                 {% endif %}
             </div>
         </header>
 
+        <!-- BOTÃO HOME -->
+        <div class="config-home-area">
+            <a href="{% url 'home_client' %}" class="btn-home">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1H15v-5h-6v5H4a1 1 0 01-1-1V10.5z"
+                          stroke="currentColor"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+                Home
+            </a>
+        </div>
+
         <!-- HERO -->
         <section class="hero-section">
             <div class="hero-bg-grid"></div>
+
             <div class="hero-bg-dots left">
-                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
-                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
             </div>
+
             <div class="hero-bg-dots right">
-                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
-                <div class="bdot"></div><div class="bdot"></div><div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
+                <div class="bdot"></div>
             </div>
+
             <div class="hero-content">
                 <div class="hero-pill">
                     <div class="hero-pill-dot"></div>
                     Configurações da sua conta
                 </div>
+
                 <h1>
                     Gerencie seu plano<br>
                     <span class="accent">sem complicação</span>
                 </h1>
+
                 <p class="hero-desc">
                     Acompanhe seu plano atual, status da assinatura, limite de clientes
                     e informações importantes da sua conta em tempo real.
@@ -102,31 +134,36 @@
 
             {% if subscription and plan %}
 
-            <!-- LINHA 1: plano + status + vencimento -->
             <div class="config-row">
 
-                <!-- CARD PLANO ATUAL -->
                 <div class="cfg-card cfg-card--main">
                     <div class="plans-eyebrow">PLANO ATUAL</div>
-                    <div class="cfg-plan-name {{ plan.name|lower }}">{{ plan.name|upper }}</div>
+
+                    <div class="cfg-plan-name {{ plan.name|lower }}">
+                        {{ plan.name|upper }}
+                    </div>
+
                     <div class="cfg-plan-price">
                         <span class="cfg-price-currency">R$</span>{{ plan.price }}
                         <span class="cfg-price-period">/mês</span>
                     </div>
+
                     <div class="plan-divider"></div>
-                    <a href="{% url 'pagamentos' %}" class="btn-plan">Alterar plano </a>
+
+                    <a href="{% url 'pagamentos' %}" class="btn-plan">
+                        Alterar plano
+                    </a>
                 </div>
 
-                <!-- CARD STATUS -->
                 <div class="cfg-card cfg-card--stat">
                     <div class="cfg-stat-label">STATUS</div>
                     <div class="cfg-stat-value cfg-stat--green">{{ subscription.status }}</div>
                     <div class="cfg-stat-sub">Assinatura ativa</div>
                 </div>
 
-                <!-- CARD VENCIMENTO -->
                 <div class="cfg-card cfg-card--stat">
                     <div class="cfg-stat-label">PRÓXIMO VENCIMENTO</div>
+
                     <div class="cfg-stat-value">
                         {% if subscription.next_due_date %}
                             {{ subscription.next_due_date|date:"d/m" }}
@@ -135,57 +172,80 @@
                             —
                         {% endif %}
                     </div>
+
                     <div class="cfg-stat-sub">Data de renovação</div>
                 </div>
 
             </div>
 
-            <!-- LINHA 2: clientes -->
             <div class="config-row config-row--2">
 
-                <!-- CLIENTES CADASTRADOS -->
                 <div class="cfg-card cfg-card--usage">
                     <div class="plans-eyebrow">USO DE CLIENTES</div>
+
                     <div class="cfg-usage-numbers">
                         <span class="cfg-usage-current">{{ clientes_cadastrados }}</span>
                         <span class="cfg-usage-sep">/</span>
+
                         <span class="cfg-usage-max">
-                            {% if max_clients %}{{ max_clients }}{% else %}∞{% endif %}
+                            {% if max_clients %}
+                                {{ max_clients }}
+                            {% else %}
+                                ∞
+                            {% endif %}
                         </span>
                     </div>
+
                     <div class="cfg-usage-bar">
                         {% if max_clients %}
-                       <div class="cfg-usage-fill" style="width: {{ uso_percentual }}%"></div>
+                            <div class="cfg-usage-fill" style="width: {{ uso_percentual }}%"></div>
                         {% else %}
-                        <div class="cfg-usage-fill" style="width: 30%"></div>
+                            <div class="cfg-usage-fill" style="width: 30%"></div>
                         {% endif %}
                     </div>
+
                     <div class="cfg-usage-legend">
                         <span>Cadastrados</span>
-                        <span>{% if max_clients %}Limite do plano{% else %}Ilimitado{% endif %}</span>
+
+                        <span>
+                            {% if max_clients %}
+                                Limite do plano
+                            {% else %}
+                                Ilimitado
+                            {% endif %}
+                        </span>
                     </div>
                 </div>
 
-                <!-- FEATURES DO PLANO -->
                 <div class="cfg-card cfg-card--features">
                     <div class="plans-eyebrow">INCLUSO NO PLANO</div>
+
                     <div class="plan-features">
+
                         <div class="plan-feature">
                             <div class="plan-feature-check">✓</div>
                             Cobranças automáticas via WhatsApp
                         </div>
+
                         <div class="plan-feature">
                             <div class="plan-feature-check">✓</div>
-                            {% if max_clients %}Até {{ max_clients }} clientes{% else %}Clientes ilimitados{% endif %}
+                            {% if max_clients %}
+                                Até {{ max_clients }} clientes
+                            {% else %}
+                                Clientes ilimitados
+                            {% endif %}
                         </div>
+
                         <div class="plan-feature">
                             <div class="plan-feature-check">✓</div>
                             Relatórios e controle de assinaturas
                         </div>
+
                         <div class="plan-feature">
                             <div class="plan-feature-check">✓</div>
                             Suporte em português
                         </div>
+
                     </div>
                 </div>
 
@@ -193,15 +253,21 @@
 
             {% else %}
 
-            <!-- SEM PLANO -->
             <div class="config-row">
                 <div class="cfg-card cfg-card--empty">
                     <div class="plans-eyebrow">PLANO ATUAL</div>
-                    <div class="cfg-plan-name">Nenhum plano ativo</div>
+
+                    <div class="cfg-plan-name">
+                        Nenhum plano ativo
+                    </div>
+
                     <p class="hero-desc" style="margin: 18px 0 28px;">
                         Você ainda não possui uma assinatura. Escolha um plano para começar.
                     </p>
-                    <a href="{% url 'pagamentos' %}" class="btn-plan">Ver planos disponíveis →</a>
+
+                    <a href="{% url 'pagamentos' %}" class="btn-plan">
+                        Ver planos disponíveis →
+                    </a>
                 </div>
             </div>
 
@@ -226,6 +292,7 @@
             if (!sidebar.classList.contains('open')) {
                 sidebar.classList.add('open');
             }
+
             perfilSubmenu.classList.toggle('active');
         });
     </script>

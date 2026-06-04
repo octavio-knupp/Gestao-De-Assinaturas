@@ -53,9 +53,6 @@ body{
 /* =========================================================
    BOTÃO HOME
 ========================================================= */
-/* =========================================================
-   BOTÃO HOME
-========================================================= */
 .btn-home{
     display: inline-flex;
     align-items: center;
@@ -112,23 +109,15 @@ h2{
 ========================================================= */
 .toggle-container{
     width: fit-content;
-
     display: flex;
     align-items: center;
     gap: 15px;
-
     background: #050505;
-
     border: 1px solid rgba(34,197,94,0.20);
-
     padding: 14px 18px;
-
     border-radius: 16px;
-
     margin-bottom: 28px;
-
-    box-shadow:
-        0 0 15px rgba(34,197,94,0.05);
+    box-shadow: 0 0 15px rgba(34,197,94,0.05);
 }
 
 .toggle-container span{
@@ -139,25 +128,93 @@ h2{
 .toggle-btn{
     width: 58px;
     height: 30px;
-
     background: #181818;
-
-    border: 1px solid rgba(34,197,94,0.25);
-
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 999px;
-
     position: relative;
-
     cursor: pointer;
-
     transition: .25s ease;
 }
 
+/* DESLIGADO */
+.toggle-circle{
+    width: 22px;
+    height: 22px;
+    background: #6b7280;
+    border-radius: 50%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    transition: .25s ease;
+    box-shadow: none;
+}
+
+/* LIGADO - caso seu JS use active */
+.toggle-btn.active{
+    background: rgba(34,197,94,0.18);
+    border-color: #22c55e;
+}
+
+.toggle-btn.active .toggle-circle{
+    left: 30px;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.65);
+}
+
+/* LIGADO - caso seu JS use ativo */
+.toggle-btn.ativo{
+    background: rgba(34,197,94,0.18);
+    border-color: #22c55e;
+}
+
+.toggle-btn.ativo .toggle-circle{
+    left: 30px;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.65);
+}
+
+/* LIGADO - caso seu JS use enabled */
+.toggle-btn.enabled{
+    background: rgba(34,197,94,0.18);
+    border-color: #22c55e;
+}
+
+.toggle-btn.enabled .toggle-circle{
+    left: 30px;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.65);
+}
+
+/* LIGADO - caso seu JS use checked */
+.toggle-btn.checked{
+    background: rgba(34,197,94,0.18);
+    border-color: #22c55e;
+}
+
+.toggle-btn.checked .toggle-circle{
+    left: 30px;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.65);
+}
+
+/* LIGADO - caso seu JS use aria */
+.toggle-btn[aria-pressed="true"]{
+    background: rgba(34,197,94,0.18);
+    border-color: #22c55e;
+}
+
+.toggle-btn[aria-pressed="true"] .toggle-circle{
+    left: 30px;
+    background: #22c55e;
+    box-shadow: 0 0 12px rgba(34,197,94,0.65);
+}
+
+/* BOLINHA DESLIGADA */
 .toggle-circle{
     width: 22px;
     height: 22px;
 
-    background: #22c55e;
+    background: #6b7280;
 
     border-radius: 50%;
 
@@ -167,17 +224,166 @@ h2{
     left: 4px;
 
     transition: .25s ease;
+
+    box-shadow: none;
+}
+
+/* BOTÃO LIGADO */
+.toggle-btn.ativo{
+    background: rgba(34,197,94,0.18);
+
+    border-color: #22c55e;
+}
+
+/* BOLINHA LIGADA */
+.toggle-btn.ativo .toggle-circle{
+    left: 30px;
+
+    background: #22c55e;
+
+    box-shadow: 0 0 12px rgba(34,197,94,0.65);
 }
 
 /* =========================================================
-   FILTRO
+   FILTROS E PESQUISA
+========================================================= */
+.filters-form{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    margin-bottom: 30px;
+}
+
+.search-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-box label{
+    color: #d1d5db;
+    font-size: 15px;
+}
+
+.search-input-area{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search-input-area input{
+    width: 100%;
+    max-width: 420px;
+
+    background: #050505;
+
+    border: 1px solid rgba(34,197,94,0.30);
+
+    color: white;
+
+    padding: 13px 16px;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: .25s ease;
+}
+
+.search-input-area input::placeholder{
+    color: #6b7280;
+}
+
+.search-input-area input:focus{
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 0 4px rgba(34,197,94,0.15);
+}
+
+/* BOTÃO BUSCAR */
+.btn-search{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: none;
+
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+
+    color: white;
+
+    padding: 13px 18px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+    box-shadow:
+        0 8px 18px rgba(34,197,94,0.18);
+}
+
+.btn-search:hover{
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 24px rgba(34,197,94,0.28);
+}
+
+/* BOTÃO LIMPAR */
+.btn-clear{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: #181818;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #d1d5db;
+
+    padding: 13px 18px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: .25s ease;
+}
+
+.btn-clear:hover{
+    color: #ef4444;
+
+    border-color: rgba(239,68,68,0.40);
+
+    background: rgba(239,68,68,0.08);
+
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   FILTRO STATUS
 ========================================================= */
 #status-filter{
     display: flex;
     align-items: center;
     gap: 14px;
 
-    margin-bottom: 30px;
+    margin-bottom: 0;
 }
 
 #status-filter label{
@@ -371,6 +577,90 @@ tr:hover{
 }
 
 /* =========================================================
+   MENSAGEM VAZIA
+========================================================= */
+.empty-message{
+    text-align: center;
+
+    padding: 28px;
+
+    color: #9ca3af;
+
+    font-size: 15px;
+}
+
+/* =========================================================
+   PAGINAÇÃO
+========================================================= */
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 28px;
+
+    flex-wrap: wrap;
+}
+
+.page-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: #0d0d0d;
+
+    border: 1px solid rgba(34,197,94,0.22);
+
+    color: #d1d5db;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: .25s ease;
+}
+
+.page-btn:hover{
+    border-color: #22c55e;
+
+    color: #22c55e;
+
+    background: rgba(34,197,94,0.06);
+
+    transform: translateY(-2px);
+}
+
+.page-btn.disabled{
+    opacity: .45;
+
+    cursor: not-allowed;
+
+    pointer-events: none;
+}
+
+.page-info{
+    color: #d1d5db;
+
+    background: #050505;
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================================================
    ANIMAÇÃO
 ========================================================= */
 @keyframes aparecer{
@@ -417,6 +707,27 @@ tr:hover{
 
     h2{
         font-size: 24px;
+    }
+
+    .search-input-area{
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input-area input,
+    .btn-search,
+    .btn-clear{
+        width: 100%;
+    }
+
+    .pagination{
+        flex-direction: column;
+    }
+
+    .page-btn,
+    .page-info{
+        width: 100%;
+        text-align: center;
     }
 
 }

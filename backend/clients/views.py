@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.core.paginator import Paginator
+
 from .models import Client
 
 from datetime import date, timedelta
@@ -27,8 +30,6 @@ def create_client(request):
 
         erros = []
 
-        # 🔥 VALIDAÇÕES
-
         if password != confirm_password:
             erros.append('As senhas não coincidem!')
 
@@ -41,8 +42,6 @@ def create_client(request):
         if "@" not in email:
             erros.append('Email inválido!')
 
-        # ❌ SE TIVER ERROS
-
         if erros:
             return render(
                 request,
@@ -53,8 +52,6 @@ def create_client(request):
                 }
             )
 
-        # ✅ CRIA USUÁRIO
-
         user = User.objects.create_user(
             username=email,
             email=email,
@@ -62,8 +59,6 @@ def create_client(request):
             first_name=first_name,
             last_name=last_name
         )
-
-        # 🧠 CRIA ASSINATURA AUTOMÁTICA (BRONZE)
 
         plan = Plan.objects.get(name="Bronze")
 
@@ -176,34 +171,49 @@ def logout_client(request):
 @login_required
 def list_clients(request):
 
-    status_filter = request.GET.get('status')
+    pesquisa = request.GET.get('pesquisa', '').strip()
+    status_filter = request.GET.get('status', 'todos')
 
     clients = Client.objects.filter(
         owner=request.user
-    )
+    ).order_by('id')
+
+    # 🔍 FILTRO DE PESQUISA
+    if pesquisa:
+        clients = clients.filter(
+            Q(first_name__icontains=pesquisa) |
+            Q(last_name__icontains=pesquisa) |
+            Q(phone__icontains=pesquisa)
+        )
 
     today = date.today()
     breve = today + timedelta(days=3)
 
-    # 🔥 FILTRO NO BANCO (ANTES DO LOOP)
+    # 🔥 FILTRO POR STATUS
     if status_filter == 'todos' or not status_filter:
-        pass  # não filtra nada
+        pass
 
     elif status_filter == 'vencido':
-        clients = clients.filter(due_date__lt=today)
+        clients = clients.filter(
+            due_date__lt=today
+        )
 
     elif status_filter == 'vence_hoje':
-        clients = clients.filter(due_date=today)
+        clients = clients.filter(
+            due_date=today
+        )
 
     elif status_filter == 'vence_breve':
-        clients = clients.filter(due_date__gt=today, due_date__lte=breve)
+        clients = clients.filter(
+            due_date__gt=today,
+            due_date__lte=breve
+        )
 
     elif status_filter == 'em_dia':
-        clients = clients.filter(due_date__gt=breve)
-    
-  
+        clients = clients.filter(
+            due_date__gt=breve
+        )
 
-    # 🧠 AGORA MONTA STATUS (SÓ PRA EXIBIÇÃO)
     clients_status = []
 
     for client in clients:
@@ -225,14 +235,20 @@ def list_clients(request):
             'status': status
         })
 
+    paginator = Paginator(clients_status, 15)
+    page_number = request.GET.get('page')
+    clients_status = paginator.get_page(page_number)
+
     return render(
         request,
         'list_client.html',
         {
             'clients_status': clients_status,
-            'status_selected': status_filter
+            'status_selected': status_filter,
+            'pesquisa': pesquisa
         }
     )
+
 
 # ===============================
 # 📋 CADASTRO CLIENTE
@@ -242,8 +258,6 @@ def list_clients(request):
 def cadastro_client(request):
 
     if request.method == 'POST':
-
-        # 🔎 BUSCA ASSINATURA
 
         subscription = Subscription.objects.filter(
             user=request.user
@@ -261,13 +275,9 @@ def cadastro_client(request):
 
         plan = subscription.plan
 
-        # 🔎 CONTAR CLIENTES
-
         total_clients = Client.objects.filter(
             owner=request.user
         ).count()
-
-        # 🚫 VERIFICAR LIMITE
 
         if plan.max_clients is not None:
 
@@ -281,8 +291,6 @@ def cadastro_client(request):
                     }
                 )
 
-        # 💰 TRATAR MENSALIDADE
-
         monthly_fee_value = request.POST.get('monthly_fee')
 
         if not monthly_fee_value:
@@ -290,19 +298,14 @@ def cadastro_client(request):
 
         monthly_fee = Decimal(monthly_fee_value)
 
-        # ✅ CRIAR CLIENTE
-
         Client.objects.create(
-
             owner=request.user,
-
             first_name=request.POST.get('first_name'),
             last_name=request.POST.get('last_name'),
             phone=request.POST.get('phone'),
             gender=request.POST.get('gender'),
             due_date=request.POST.get('due_date'),
             monthly_fee=monthly_fee
-
         )
 
         return redirect('cadastro_client')
@@ -381,6 +384,7 @@ def delete_client(request, client_id):
         }
     )
 
+
 # ===============================
 # ⚙️ CONFIGURAÇÕES
 # ===============================
@@ -423,6 +427,7 @@ def config_client(request):
             'clientes_cadastrados': total_clients,
             'total_clients': total_clients,
             'max_clients': max_clients,
-            'percentage': percentage
+            'percentage': percentage,
+            'uso_percentual': percentage
         }
     )
