@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Client(models.Model):
 
     owner = models.ForeignKey(
@@ -15,7 +16,6 @@ class Client(models.Model):
     last_name = models.CharField(
         max_length=100
     )
-
 
     phone = models.CharField(
         max_length=20
@@ -38,7 +38,6 @@ class Client(models.Model):
             ('M', 'Masculino'),
             ('F', 'Feminino'),
             ('O', 'Outro')
-
         ]
     )
 
@@ -53,3 +52,21 @@ class Client(models.Model):
 
     def __str__(self):
         return self.first_name
+
+
+class UserProfile(models.Model):
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='profile'
+    )
+
+    phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.user.email

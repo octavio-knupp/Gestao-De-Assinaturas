@@ -97,7 +97,7 @@ html[data-theme="light"] .btn-register {
 
 html[data-theme="light"] .btn-register:hover {
     background: #030712 !important;
-    color: #ffffff !important;
+    color: #000000 !important;
 }
 
 /* BOTÃO HOME */

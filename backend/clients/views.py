@@ -4,10 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
-
 from django.db.models import Sum
 
-from .models import Client
+from .models import Client, UserProfile
 
 from datetime import date, timedelta
 from decimal import Decimal
@@ -27,6 +26,7 @@ def create_client(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
+        phone = request.POST.get('phone') or request.POST.get('telefone')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
 
@@ -60,6 +60,11 @@ def create_client(request):
             password=password,
             first_name=first_name,
             last_name=last_name
+        )
+
+        UserProfile.objects.create(
+            user=user,
+            phone=phone
         )
 
         plan = Plan.objects.get(name="Bronze")
@@ -154,6 +159,7 @@ def home_client(request):
         }
     )
 
+
 # ===============================
 # 📊 DASHBOARD
 # ===============================
@@ -206,11 +212,15 @@ def dashboard_client(request):
     percentage = 0
 
     if subscription:
+
         plan = subscription.plan
         max_clients = plan.max_clients
 
         if max_clients:
-            percentage = int((total_clients / max_clients) * 100)
+
+            percentage = int(
+                (total_clients / max_clients) * 100
+            )
 
             if percentage > 100:
                 percentage = 100
@@ -271,8 +281,8 @@ def list_clients(request):
         owner=request.user
     ).order_by('id')
 
-    # 🔍 FILTRO DE PESQUISA
     if pesquisa:
+
         clients = clients.filter(
             Q(first_name__icontains=pesquisa) |
             Q(last_name__icontains=pesquisa) |
@@ -282,27 +292,30 @@ def list_clients(request):
     today = date.today()
     breve = today + timedelta(days=3)
 
-    # 🔥 FILTRO POR STATUS
     if status_filter == 'todos' or not status_filter:
         pass
 
     elif status_filter == 'vencido':
+
         clients = clients.filter(
             due_date__lt=today
         )
 
     elif status_filter == 'vence_hoje':
+
         clients = clients.filter(
             due_date=today
         )
 
     elif status_filter == 'vence_breve':
+
         clients = clients.filter(
             due_date__gt=today,
             due_date__lte=breve
         )
 
     elif status_filter == 'em_dia':
+
         clients = clients.filter(
             due_date__gt=breve
         )
@@ -496,11 +509,19 @@ def config_client(request):
     plan = None
     max_clients = None
     percentage = 0
+    phone = "Não informado"
+    status_active = False
+
+    if hasattr(request.user, 'profile') and request.user.profile.phone:
+        phone = request.user.profile.phone
 
     if subscription:
 
         plan = subscription.plan
         max_clients = plan.max_clients
+
+        status = str(subscription.status).strip().lower()
+        status_active = status in ['ativo', 'active']
 
         if max_clients:
 
@@ -517,6 +538,8 @@ def config_client(request):
         {
             'subscription': subscription,
             'plan': plan,
+            'phone': phone,
+            'status_active': status_active,
             'clientes_cadastrados': total_clients,
             'total_clients': total_clients,
             'max_clients': max_clients,

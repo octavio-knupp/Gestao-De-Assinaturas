@@ -26,7 +26,7 @@
             <div class="dashboard-title-area">
 
                 <a href="{% url 'home_client' %}" class="btn-back-home">
-                    ← Voltar para Home
+                    Voltar para Home
                 </a>
 
                 <div>
@@ -48,25 +48,76 @@
         <section class="summary-grid">
 
             <div class="summary-card">
-                <div class="card-icon">👥</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="10" cy="7" r="4"
+                                stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21v-2a4 4 0 00-3-3.87"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 3.13a4 4 0 010 7.75"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
                 <span>Total de clientes</span>
                 <strong>{{ total_clients }}</strong>
             </div>
 
             <div class="summary-card success">
-                <div class="card-icon">✅</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10"
+                                stroke="currentColor" stroke-width="1.8"/>
+                        <path d="M8 12.5l2.5 2.5L16 9"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
                 <span>Clientes em dia</span>
                 <strong>{{ clients_em_dia }}</strong>
             </div>
 
             <div class="summary-card danger">
-                <div class="card-icon">⚠️</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 9v4"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round"/>
+                        <path d="M12 17h.01"
+                              stroke="currentColor" stroke-width="2.4"
+                              stroke-linecap="round"/>
+                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
                 <span>Clientes vencidos</span>
                 <strong>{{ clients_vencidos }}</strong>
             </div>
 
             <div class="summary-card warning">
-                <div class="card-icon">📅</div>
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="4" width="18" height="17" rx="2"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 2v4M8 2v4M3 10h18"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 14v3l2 1"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
                 <span>Vencem hoje</span>
                 <strong>{{ clients_vence_hoje }}</strong>
             </div>
@@ -120,21 +171,22 @@
                 <span>Plano atual</span>
 
                 {% if plan %}
-                <h2>{{ plan.name }}</h2>
-                <p>
-                    Uso do plano:
-                    {{ total_clients }}
-                    /
-                    {% if max_clients %}
-                    {{ max_clients }}
-                    {% else %}
-                    Ilimitado
-                    {% endif %}
-                    clientes
-                </p>
+                    <h2>{{ plan.name }}</h2>
+
+                    <p>
+                        Uso do plano:
+                        {{ total_clients }}
+                        /
+                        {% if max_clients %}
+                            {{ max_clients }}
+                        {% else %}
+                            Ilimitado
+                        {% endif %}
+                        clientes
+                    </p>
                 {% else %}
-                <h2>Sem plano</h2>
-                <p>Nenhuma assinatura ativa encontrada.</p>
+                    <h2>Sem plano</h2>
+                    <p>Nenhuma assinatura ativa encontrada.</p>
                 {% endif %}
 
             </div>
@@ -170,27 +222,27 @@
 
                     {% for client in ultimos_clientes %}
 
-                    <div class="mini-row">
-                        <div>
-                            <strong>
-                                {{ client.first_name }} {{ client.last_name }}
-                            </strong>
+                        <div class="mini-row">
+                            <div>
+                                <strong>
+                                    {{ client.first_name }} {{ client.last_name }}
+                                </strong>
 
-                            <span>
-                                {{ client.phone }}
-                            </span>
+                                <span>
+                                    {{ client.phone }}
+                                </span>
+                            </div>
+
+                            <p>
+                                R$ {{ client.monthly_fee|floatformat:2 }}
+                            </p>
                         </div>
-
-                        <p>
-                            R$ {{ client.monthly_fee|floatformat:2 }}
-                        </p>
-                    </div>
 
                     {% empty %}
 
-                    <div class="empty-state">
-                        Nenhum cliente cadastrado ainda.
-                    </div>
+                        <div class="empty-state">
+                            Nenhum cliente cadastrado ainda.
+                        </div>
 
                     {% endfor %}
 
@@ -212,27 +264,27 @@
 
                     {% for client in proximos_vencimentos %}
 
-                    <div class="mini-row">
-                        <div>
-                            <strong>
-                                {{ client.first_name }} {{ client.last_name }}
-                            </strong>
+                        <div class="mini-row">
+                            <div>
+                                <strong>
+                                    {{ client.first_name }} {{ client.last_name }}
+                                </strong>
 
-                            <span>
-                                Vence em {{ client.due_date|date:"d/m/Y" }}
-                            </span>
+                                <span>
+                                    Vence em {{ client.due_date|date:"d/m/Y" }}
+                                </span>
+                            </div>
+
+                            <p>
+                                R$ {{ client.monthly_fee|floatformat:2 }}
+                            </p>
                         </div>
-
-                        <p>
-                            R$ {{ client.monthly_fee|floatformat:2 }}
-                        </p>
-                    </div>
 
                     {% empty %}
 
-                    <div class="empty-state">
-                        Nenhum vencimento futuro encontrado.
-                    </div>
+                        <div class="empty-state">
+                            Nenhum vencimento futuro encontrado.
+                        </div>
 
                     {% endfor %}
 
