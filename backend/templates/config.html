@@ -56,6 +56,13 @@
             <span class="sidebar-text">Configurações</span>
         </a>
 
+        <a href="{% url 'dashboard_client' %}" class="sidebar-item">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/combo-chart.png">
+            </div>
+            <span class="sidebar-text">Dashboard</span>
+        </a>
+
     </aside>
 
     <!-- MAIN -->
@@ -69,8 +76,8 @@
 
             <div class="nav-auth">
                 {% if user.is_authenticated %}
-                    <span class="user-name">Olá, {{ user.first_name }}</span>
-                    <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
+                <span class="user-name">Olá, {{ user.first_name }}</span>
+                <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
                 {% endif %}
             </div>
         </header>
@@ -79,11 +86,8 @@
         <div class="config-home-area">
             <a href="{% url 'home_client' %}" class="btn-home">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1H15v-5h-6v5H4a1 1 0 01-1-1V10.5z"
-                          stroke="currentColor"
-                          stroke-width="1.6"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"/>
+                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1H15v-5h-6v5H4a1 1 0 01-1-1V10.5z" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 Home
             </a>
@@ -166,10 +170,10 @@
 
                     <div class="cfg-stat-value">
                         {% if subscription.next_due_date %}
-                            {{ subscription.next_due_date|date:"d/m" }}
-                            <span class="cfg-stat-year">{{ subscription.next_due_date|date:"Y" }}</span>
+                        {{ subscription.next_due_date|date:"d/m" }}
+                        <span class="cfg-stat-year">{{ subscription.next_due_date|date:"Y" }}</span>
                         {% else %}
-                            —
+                        —
                         {% endif %}
                     </div>
 
@@ -189,18 +193,18 @@
 
                         <span class="cfg-usage-max">
                             {% if max_clients %}
-                                {{ max_clients }}
+                            {{ max_clients }}
                             {% else %}
-                                ∞
+                            ∞
                             {% endif %}
                         </span>
                     </div>
 
                     <div class="cfg-usage-bar">
                         {% if max_clients %}
-                            <div class="cfg-usage-fill" style="width: {{ uso_percentual }}%"></div>
+                        <div class="cfg-usage-fill" style="width: {{ uso_percentual }}%"></div>
                         {% else %}
-                            <div class="cfg-usage-fill" style="width: 30%"></div>
+                        <div class="cfg-usage-fill" style="width: 30%"></div>
                         {% endif %}
                     </div>
 
@@ -209,9 +213,9 @@
 
                         <span>
                             {% if max_clients %}
-                                Limite do plano
+                            Limite do plano
                             {% else %}
-                                Ilimitado
+                            Ilimitado
                             {% endif %}
                         </span>
                     </div>
@@ -230,9 +234,9 @@
                         <div class="plan-feature">
                             <div class="plan-feature-check">✓</div>
                             {% if max_clients %}
-                                Até {{ max_clients }} clientes
+                            Até {{ max_clients }} clientes
                             {% else %}
-                                Clientes ilimitados
+                            Clientes ilimitados
                             {% endif %}
                         </div>
 
@@ -298,4 +302,5 @@
     </script>
 
 </body>
+
 </html>

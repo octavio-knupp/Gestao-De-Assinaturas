@@ -1,0 +1,258 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Next Pay</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/dark/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/light/dashboard_light.css' %}">
+
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+
+    <script src="{% static 'js/theme.js' %}" defer></script>
+</head>
+
+<body>
+
+    <main class="main-content">
+
+        <header class="dashboard-header">
+
+            <div class="dashboard-title-area">
+
+                <a href="{% url 'home_client' %}" class="btn-back-home">
+                    ← Voltar para Home
+                </a>
+
+                <div>
+                    <span class="dashboard-eyebrow">Visão geral</span>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p>
+                        Acompanhe clientes, vencimentos, faturamento e uso do plano.
+                    </p>
+                </div>
+
+            </div>
+
+        </header>
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+                <div class="card-icon">👥</div>
+                <span>Total de clientes</span>
+                <strong>{{ total_clients }}</strong>
+            </div>
+
+            <div class="summary-card success">
+                <div class="card-icon">✅</div>
+                <span>Clientes em dia</span>
+                <strong>{{ clients_em_dia }}</strong>
+            </div>
+
+            <div class="summary-card danger">
+                <div class="card-icon">⚠️</div>
+                <span>Clientes vencidos</span>
+                <strong>{{ clients_vencidos }}</strong>
+            </div>
+
+            <div class="summary-card warning">
+                <div class="card-icon">📅</div>
+                <span>Vencem hoje</span>
+                <strong>{{ clients_vence_hoje }}</strong>
+            </div>
+
+        </section>
+
+        <section class="finance-grid">
+
+            <div class="finance-card">
+                <span>Faturamento mensal previsto</span>
+
+                <strong>
+                    R$ {{ faturamento_mensal|floatformat:2 }}
+                </strong>
+
+                <p>
+                    Soma das mensalidades dos seus clientes cadastrados.
+                </p>
+            </div>
+
+            <div class="finance-card danger">
+                <span>Valor total vencido</span>
+
+                <strong>
+                    R$ {{ valor_vencido|floatformat:2 }}
+                </strong>
+
+                <p>
+                    Soma das mensalidades de clientes com vencimento atrasado.
+                </p>
+            </div>
+
+            <div class="finance-card">
+                <span>Vencem nos próximos 3 dias</span>
+
+                <strong>
+                    {{ clients_vence_breve }}
+                </strong>
+
+                <p>
+                    Clientes que precisam de atenção em breve.
+                </p>
+            </div>
+
+        </section>
+
+        <section class="plan-card">
+
+            <div class="plan-info">
+
+                <span>Plano atual</span>
+
+                {% if plan %}
+                <h2>{{ plan.name }}</h2>
+                <p>
+                    Uso do plano:
+                    {{ total_clients }}
+                    /
+                    {% if max_clients %}
+                    {{ max_clients }}
+                    {% else %}
+                    Ilimitado
+                    {% endif %}
+                    clientes
+                </p>
+                {% else %}
+                <h2>Sem plano</h2>
+                <p>Nenhuma assinatura ativa encontrada.</p>
+                {% endif %}
+
+            </div>
+
+            <div class="plan-progress-area">
+
+                <div class="progress-number">
+                    {{ percentage }}%
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" data-percentage="{{ percentage|default:0 }}">
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="tables-grid">
+
+            <div class="table-card">
+
+                <div class="table-header">
+                    <h3>Últimos clientes cadastrados</h3>
+
+                    <a href="{% url 'list_clients' %}">
+                        Ver todos
+                    </a>
+                </div>
+
+                <div class="mini-table">
+
+                    {% for client in ultimos_clientes %}
+
+                    <div class="mini-row">
+                        <div>
+                            <strong>
+                                {{ client.first_name }} {{ client.last_name }}
+                            </strong>
+
+                            <span>
+                                {{ client.phone }}
+                            </span>
+                        </div>
+
+                        <p>
+                            R$ {{ client.monthly_fee|floatformat:2 }}
+                        </p>
+                    </div>
+
+                    {% empty %}
+
+                    <div class="empty-state">
+                        Nenhum cliente cadastrado ainda.
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <div class="table-card">
+
+                <div class="table-header">
+                    <h3>Próximos vencimentos</h3>
+
+                    <a href="{% url 'list_clients' %}?status=vence_breve">
+                        Ver vencimentos
+                    </a>
+                </div>
+
+                <div class="mini-table">
+
+                    {% for client in proximos_vencimentos %}
+
+                    <div class="mini-row">
+                        <div>
+                            <strong>
+                                {{ client.first_name }} {{ client.last_name }}
+                            </strong>
+
+                            <span>
+                                Vence em {{ client.due_date|date:"d/m/Y" }}
+                            </span>
+                        </div>
+
+                        <p>
+                            R$ {{ client.monthly_fee|floatformat:2 }}
+                        </p>
+                    </div>
+
+                    {% empty %}
+
+                    <div class="empty-state">
+                        Nenhum vencimento futuro encontrado.
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        const progressFill = document.querySelector('.progress-fill');
+
+        if (progressFill) {
+            const percentage = progressFill.dataset.percentage || 0;
+            progressFill.style.width = `${percentage}%`;
+        }
+    </script>
+
+</body>
+
+</html>

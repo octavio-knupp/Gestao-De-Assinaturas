@@ -4,14 +4,17 @@ from .views import (
     create_client,
     login_client,
     home_client,
+    dashboard_client,
     logout_client,
-    config_client,
 
     # CRUD CLIENTES
     list_clients,
     cadastro_client,
     update_client,
     delete_client,
+
+    # CONFIG
+    config_client,
 )
 
 urlpatterns = [
@@ -21,6 +24,13 @@ urlpatterns = [
         '',
         home_client,
         name='home_client'
+    ),
+
+    # DASHBOARD
+    path(
+    'dashboard/',
+    dashboard_client,
+    name='dashboard_client'
     ),
 
     # AUTH

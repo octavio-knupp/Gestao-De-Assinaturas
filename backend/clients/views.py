@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.paginator import Paginator
 
+from django.db.models import Sum
+
 from .models import Client
 
 from datetime import date, timedelta
@@ -94,7 +96,7 @@ def login_client(request):
 
             login(request, user)
 
-            return redirect('home_client')
+            return redirect('dashboard_client')
 
         else:
 
@@ -149,6 +151,97 @@ def home_client(request):
             'total_clients': total_clients,
             'max_clients': max_clients,
             'percentage': percentage
+        }
+    )
+
+# ===============================
+# 📊 DASHBOARD
+# ===============================
+
+@login_required
+def dashboard_client(request):
+
+    today = date.today()
+    breve = today + timedelta(days=3)
+
+    clients = Client.objects.filter(
+        owner=request.user
+    )
+
+    total_clients = clients.count()
+
+    clients_vencidos = clients.filter(
+        due_date__lt=today
+    ).count()
+
+    clients_vence_hoje = clients.filter(
+        due_date=today
+    ).count()
+
+    clients_vence_breve = clients.filter(
+        due_date__gt=today,
+        due_date__lte=breve
+    ).count()
+
+    clients_em_dia = clients.filter(
+        due_date__gt=breve
+    ).count()
+
+    faturamento_mensal = clients.aggregate(
+        total=Sum('monthly_fee')
+    )['total'] or Decimal('0.00')
+
+    valor_vencido = clients.filter(
+        due_date__lt=today
+    ).aggregate(
+        total=Sum('monthly_fee')
+    )['total'] or Decimal('0.00')
+
+    subscription = Subscription.objects.filter(
+        user=request.user
+    ).first()
+
+    plan = None
+    max_clients = None
+    percentage = 0
+
+    if subscription:
+        plan = subscription.plan
+        max_clients = plan.max_clients
+
+        if max_clients:
+            percentage = int((total_clients / max_clients) * 100)
+
+            if percentage > 100:
+                percentage = 100
+
+    ultimos_clientes = clients.order_by(
+        '-created_at'
+    )[:5]
+
+    proximos_vencimentos = clients.filter(
+        due_date__gte=today
+    ).order_by(
+        'due_date'
+    )[:5]
+
+    return render(
+        request,
+        'dashboard_client.html',
+        {
+            'total_clients': total_clients,
+            'clients_em_dia': clients_em_dia,
+            'clients_vencidos': clients_vencidos,
+            'clients_vence_hoje': clients_vence_hoje,
+            'clients_vence_breve': clients_vence_breve,
+            'faturamento_mensal': faturamento_mensal,
+            'valor_vencido': valor_vencido,
+            'subscription': subscription,
+            'plan': plan,
+            'max_clients': max_clients,
+            'percentage': percentage,
+            'ultimos_clientes': ultimos_clientes,
+            'proximos_vencimentos': proximos_vencimentos,
         }
     )
 
