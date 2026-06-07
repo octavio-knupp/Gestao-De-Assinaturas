@@ -14,21 +14,29 @@
     <script src="{% static 'js/theme.js' %}" defer></script>
 </head>
 
-<body>
+<body class="sidebar-open">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar open" id="sidebar">
 
-        <div class="sidebar-logo">N</div>
-
-        <div class="sidebar-item" id="menuBtn">
-            <div class="sidebar-icon">☰</div>
-            <span class="sidebar-text">Menu</span>
+        <div class="sidebar-logo">
+            N
         </div>
 
+        <div class="sidebar-item" id="menuBtn">
+            <div class="sidebar-icon">
+                ☰
+            </div>
+
+            <span class="sidebar-text">
+                Menu
+            </span>
+        </div>
+
+        <!-- CLIENTES -->
         <div class="sidebar-item" id="perfilBtn">
             <div class="sidebar-icon">
-                <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff">
+                <img src="https://img.icons8.com/?size=30&id=98957&format=png&color=ffffff" alt="Clientes">
             </div>
             <span class="sidebar-text">Clientes</span>
         </div>
@@ -38,19 +46,49 @@
             <a href="{% url 'cadastro_client' %}" class="submenu-item">Cadastro Cliente</a>
         </div>
 
+        <!-- PAGAMENTOS -->
         <a href="{% url 'pagamentos' %}" class="sidebar-item">
             <div class="sidebar-icon">
-                <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/bank-card-back-side.png" alt="Pagamentos">
             </div>
             <span class="sidebar-text">Pagamentos</span>
         </a>
 
-        <a href="{% url 'config_client' %}" class="sidebar-item active">
+        <!-- DASHBOARD -->
+        <a href="{% url 'dashboard_client' %}" class="sidebar-item">
+            <div class="sidebar-icon">
+                <img src="https://img.icons8.com/ios-filled/30/ffffff/combo-chart.png" alt="Dashboard">
+            </div>
+            <span class="sidebar-text">Dashboard</span>
+        </a>
+
+        <!-- CONFIGURAÇÕES -->
+        <div class="sidebar-item active" id="configBtn">
             <div class="sidebar-icon">
                 <img src="https://img.icons8.com/?size=30&id=364&format=png&color=ffffff" alt="Configurações">
             </div>
             <span class="sidebar-text">Configurações</span>
-        </a>
+        </div>
+
+        <div class="submenu active" id="configSubmenu">
+
+            <a href="{% url 'config_client' %}" class="submenu-item active-submenu">
+                Perfil
+            </a>
+
+            <button id="themeToggle" class="submenu-theme-btn" type="button" aria-label="Alternar tema">
+                <span class="theme-label">Tema</span>
+
+                <span class="theme-switch" aria-hidden="true">
+                    <span class="theme-switch-ball"></span>
+                </span>
+            </button>
+
+            <a href="#" class="submenu-item">
+                Segurança
+            </a>
+
+        </div>
 
     </aside>
 
@@ -65,8 +103,11 @@
 
             <div class="nav-auth">
                 {% if user.is_authenticated %}
-                    <span class="user-name">Olá, {{ user.first_name }}</span>
-                    <a href="{% url 'logout_client' %}" class="btn-register">Logout</a>
+                <span class="user-name">Olá, {{ user.first_name }}</span>
+
+                <a href="{% url 'logout_client' %}" class="btn-register">
+                    Logout
+                </a>
                 {% endif %}
             </div>
         </header>
@@ -75,9 +116,8 @@
         <div class="config-home-area">
             <a href="{% url 'home_client' %}" class="btn-home">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1H15v-5h-6v5H4a1 1 0 01-1-1V10.5z"
-                          stroke="currentColor" stroke-width="1.6"
-                          stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1H15v-5h-6v5H4a1 1 0 01-1-1V10.5z" stroke="currentColor"
+                        stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 Home
             </a>
@@ -87,36 +127,52 @@
         <section class="config-section">
 
             <div class="config-row config-row--1">
+
                 <div class="cfg-card cfg-card--profile">
 
                     <!-- CABEÇALHO DO PERFIL -->
                     <div class="cfg-profile-header">
+
                         <div class="cfg-profile-avatar">
                             {{ user.first_name|slice:":1"|upper }}{{ user.last_name|slice:":1"|upper }}
                         </div>
 
                         <div class="cfg-profile-title">
-                            <div class="plans-eyebrow">PERFIL DO USUÁRIO</div>
-                            <div class="cfg-profile-name">{{ user.first_name }} {{ user.last_name }}</div>
-                            <div class="cfg-profile-role">Administrador da conta</div>
+                            <div class="plans-eyebrow">
+                                PERFIL DO USUÁRIO
+                            </div>
+
+                            <div class="cfg-profile-name">
+                                {{ user.first_name }} {{ user.last_name }}
+                            </div>
+
+                            <div class="cfg-profile-role">
+                                Administrador da conta
+                            </div>
                         </div>
 
                         <!-- BADGES DE PLANO E STATUS -->
                         <div class="cfg-profile-badges">
+
                             {% if plan %}
-                                <div class="cfg-badge cfg-badge--plan {{ plan.name|lower }}">
-                                    {{ plan.name|upper }}
-                                </div>
+                            <div class="cfg-badge cfg-badge--plan {{ plan.name|lower }}">
+                                {{ plan.name|upper }}
+                            </div>
                             {% endif %}
 
                             {% if subscription %}
-                                <div class="cfg-badge cfg-badge--status {% if status_active %}green{% else %}red{% endif %}">
-                                    {{ subscription.status|capfirst }}
-                                </div>
+                            <div
+                                class="cfg-badge cfg-badge--status {% if status_active %}green{% else %}red{% endif %}">
+                                {{ subscription.status|capfirst }}
+                            </div>
                             {% else %}
-                                <div class="cfg-badge cfg-badge--status red">Sem plano</div>
+                            <div class="cfg-badge cfg-badge--status red">
+                                Sem plano
+                            </div>
                             {% endif %}
+
                         </div>
+
                     </div>
 
                     <div class="plan-divider" style="margin: 24px 0;"></div>
@@ -129,10 +185,11 @@
                             <div class="cfg-field-icon">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                     <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                        stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                             </div>
+
                             <div class="cfg-field-content">
                                 <span class="cfg-field-label">Nome completo</span>
                                 <span class="cfg-field-value">{{ user.first_name }} {{ user.last_name }}</span>
@@ -143,14 +200,15 @@
                         <div class="cfg-profile-field">
                             <div class="cfg-field-icon">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M22 6l-10 7L2 6"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                        stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.7"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
+
                             <div class="cfg-field-content">
                                 <span class="cfg-field-label">E-mail</span>
                                 <span class="cfg-field-value">{{ user.email }}</span>
@@ -161,18 +219,21 @@
                         <div class="cfg-profile-field">
                             <div class="cfg-field-icon">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72c.12.9.33 1.77.63 2.6a2 2 0 01-.45 2.11L9 10.6a16 16 0 006.4 6.4l1.17-1.17a2 2 0 012.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0122 16.92z"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path
+                                        d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72c.12.9.33 1.77.63 2.6a2 2 0 01-.45 2.11L9 10.6a16 16 0 006.4 6.4l1.17-1.17a2 2 0 012.11-.45c.83.3 1.7.51 2.6.63A2 2 0 0122 16.92z"
+                                        stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                             </div>
+
                             <div class="cfg-field-content">
                                 <span class="cfg-field-label">Telefone</span>
+
                                 <span class="cfg-field-value">
                                     {% if phone %}
-                                        {{ phone }}
+                                    {{ phone }}
                                     {% else %}
-                                        <span class="cfg-field-empty">Não informado</span>
+                                    <span class="cfg-field-empty">Não informado</span>
                                     {% endif %}
                                 </span>
                             </div>
@@ -182,14 +243,13 @@
                         <div class="cfg-profile-field">
                             <div class="cfg-field-icon">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 2v4M8 2v4M3 10h18"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor"
+                                        stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.7"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
+
                             <div class="cfg-field-content">
                                 <span class="cfg-field-label">Membro desde</span>
                                 <span class="cfg-field-value">{{ user.date_joined|date:"d/m/Y" }}</span>
@@ -200,18 +260,21 @@
                         <div class="cfg-profile-field">
                             <div class="cfg-field-icon">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                                        stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                                        stroke-linejoin="round" />
                                 </svg>
                             </div>
+
                             <div class="cfg-field-content">
                                 <span class="cfg-field-label">Plano atual</span>
+
                                 <span class="cfg-field-value">
                                     {% if plan %}
-                                        {{ plan.name|upper }}
+                                    {{ plan.name|upper }}
                                     {% else %}
-                                        <span class="cfg-field-empty">Nenhum</span>
+                                    <span class="cfg-field-empty">Nenhum</span>
                                     {% endif %}
                                 </span>
                             </div>
@@ -221,21 +284,22 @@
                         <div class="cfg-profile-field">
                             <div class="cfg-field-icon">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                    <circle cx="12" cy="12" r="10"
-                                            stroke="currentColor" stroke-width="1.7"
-                                            stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M12 8v4l3 3"
-                                          stroke="currentColor" stroke-width="1.7"
-                                          stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.7"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1.7"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
+
                             <div class="cfg-field-content">
                                 <span class="cfg-field-label">Status da assinatura</span>
-                                <span class="cfg-field-value {% if status_active %}cfg-field-green{% else %}cfg-field-red{% endif %}">
+
+                                <span
+                                    class="cfg-field-value {% if status_active %}cfg-field-green{% else %}cfg-field-red{% endif %}">
                                     {% if subscription %}
-                                        {{ subscription.status|capfirst }}
+                                    {{ subscription.status|capfirst }}
                                     {% else %}
-                                        <span class="cfg-field-empty">Sem assinatura</span>
+                                    <span class="cfg-field-empty">Sem assinatura</span>
                                     {% endif %}
                                 </span>
                             </div>
@@ -244,28 +308,48 @@
                     </div>
 
                 </div>
+
             </div>
 
         </section>
 
     </main>
 
-    <!-- JS -->
+    <!-- JS SIDEBAR -->
     <script>
-        const sidebar       = document.getElementById('sidebar');
-        const menuBtn       = document.getElementById('menuBtn');
-        const perfilBtn     = document.getElementById('perfilBtn');
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.getElementById('menuBtn');
+
+        const perfilBtn = document.getElementById('perfilBtn');
         const perfilSubmenu = document.getElementById('perfilSubmenu');
+
+        const configBtn = document.getElementById('configBtn');
+        const configSubmenu = document.getElementById('configSubmenu');
 
         menuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('open');
+            document.body.classList.toggle('sidebar-open');
         });
 
         perfilBtn.addEventListener('click', () => {
-            if (!sidebar.classList.contains('open')) sidebar.classList.add('open');
+            if (!sidebar.classList.contains('open')) {
+                sidebar.classList.add('open');
+                document.body.classList.add('sidebar-open');
+            }
+
             perfilSubmenu.classList.toggle('active');
+        });
+
+        configBtn.addEventListener('click', () => {
+            if (!sidebar.classList.contains('open')) {
+                sidebar.classList.add('open');
+                document.body.classList.add('sidebar-open');
+            }
+
+            configSubmenu.classList.toggle('active');
         });
     </script>
 
 </body>
+
 </html>

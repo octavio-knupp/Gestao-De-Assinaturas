@@ -1,56 +1,33 @@
-// static/js/theme.js
-
 document.addEventListener("DOMContentLoaded", () => {
-
     const themeToggle = document.getElementById("themeToggle");
-
     const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === "light") {
+    function applyTheme(theme) {
+        const isLight = theme === "light";
 
-        document.documentElement.setAttribute("data-theme", "light");
-
-        if (themeToggle) {
-            themeToggle.textContent = "☀️";
+        if (isLight) {
+            document.documentElement.setAttribute("data-theme", "light");
+            localStorage.setItem("theme", "light");
+        } else {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "dark");
         }
 
-    } else {
-
-        document.documentElement.removeAttribute("data-theme");
-
         if (themeToggle) {
-            themeToggle.textContent = "🌙";
+            themeToggle.classList.toggle("is-light", isLight);
+            themeToggle.setAttribute(
+                "aria-label",
+                isLight ? "Mudar para tema escuro" : "Mudar para tema claro"
+            );
         }
-
     }
+
+    applyTheme(savedTheme === "light" ? "light" : "dark");
 
     if (themeToggle) {
-
         themeToggle.addEventListener("click", () => {
-
-            const isLight =
-                document.documentElement.getAttribute("data-theme") === "light";
-
-            if (isLight) {
-
-                document.documentElement.removeAttribute("data-theme");
-
-                localStorage.setItem("theme", "dark");
-
-                themeToggle.textContent = "🌙";
-
-            } else {
-
-                document.documentElement.setAttribute("data-theme", "light");
-
-                localStorage.setItem("theme", "light");
-
-                themeToggle.textContent = "☀️";
-
-            }
-
+            const isLight = document.documentElement.getAttribute("data-theme") === "light";
+            applyTheme(isLight ? "dark" : "light");
         });
-
     }
-
 });
