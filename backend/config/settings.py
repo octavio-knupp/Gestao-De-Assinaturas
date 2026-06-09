@@ -71,16 +71,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_SERVER'),
+        'NAME': 'free-sql-db-gestao_de_assinaturas',
+        'USER': 'db_gestao_de_assinaturas',
+        'PASSWORD': 'bd$GS5216',
+        'HOST': 'servidor-gestao-de-assinaturas.database.windows.net',
         'PORT': '1433',
         'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': 'ODBC Driver 18 for SQL Server',
         },
     }
 }
