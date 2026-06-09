@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.documentElement.setAttribute("data-theme", "light");
             localStorage.setItem("theme", "light");
         } else {
-            document.documentElement.removeAttribute("data-theme");
+            document.documentElement.setAttribute("data-theme", "dark");
             localStorage.setItem("theme", "dark");
         }
 
