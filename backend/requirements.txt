@@ -1,6 +1,5 @@
-pyautogui==0.9.54
+Django==5.2.15
 python-dotenv==1.2.2
-pywhatkit==5.4
 stripe==5.0.0
 pyodbc>=4.0.0
 mssql-django>=2.1.0
