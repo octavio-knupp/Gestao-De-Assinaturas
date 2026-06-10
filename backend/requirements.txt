@@ -1,5 +1,5 @@
 
-Django==6.0.3
+Django==5.2.15
 pyautogui==0.9.54
 python-dotenv==1.2.2
 pywhatkit==5.4
