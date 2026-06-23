@@ -341,7 +341,7 @@ def list_clients(request):
             'status': status
         })
 
-    paginator = Paginator(clients_status, 15)
+    paginator = Paginator(clients_status, 5)
     page_number = request.GET.get('page')
     clients_status = paginator.get_page(page_number)
 
